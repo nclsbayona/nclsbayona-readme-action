@@ -292,7 +292,7 @@ if __name__ == "__main__":
                 )
 
         async def updateFile(
-            path_to_template_file: str = "directory_file",
+            path_to_template_file: str = "/directory_file",
             open_weather_query: str = None,
             open_weather_key: str = None,
             waka_time_api_key: str = None,
