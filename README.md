@@ -5,7 +5,7 @@
 - WAKATIME_API_KEY : Your WakaTime API Key, so the request can be made to the API to get the desired data about your programming activity
 - OPEN_WEATHER_MAP_KEY: Your Open Weather map key, so the request can be made to the API to get the desired data about your location's weather
 - LOCATION: Your Location's name in a format that Open Weather map can understand.
-- GH_TOKEN: A Github token with repo access to publish new readme
+- GH_TOKEN: A Github token with repo and user access to publish new readme
 
 Please use:
 ```yaml
