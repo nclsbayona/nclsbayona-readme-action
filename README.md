@@ -13,7 +13,7 @@ env:
     OPEN_WEATHER_MAP_KEY: ${{ secrets.OPEN_WEATHER_MAP_KEY }}
     LOCATION: ${{ secrets.LOCATION }}
 ```
-when calling the action
+when calling the action.
 Here, you can see an example of a workflow that uses this action
 ```yaml
 jobs:
@@ -34,3 +34,4 @@ jobs:
           env:
             GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 ```
+**Note here that _GH_TOKEN_ here is a token with only repo access to publish the readme**
