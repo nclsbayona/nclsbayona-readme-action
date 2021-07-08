@@ -14,3 +14,23 @@ env:
     LOCATION: ${{ secrets.LOCATION }}
 ```
 when calling the action
+Here, you can see an example of a workflow that uses this action
+```yaml
+jobs:
+  build:
+    name: Update README
+    runs-on: ubuntu-latest
+    steps:
+        - uses: actions/checkout@v2
+        - name: Generate README file
+          uses: nclsbayona/nclsbayona-readme-action@v1
+          env:
+            WAKATIME_API_KEY: ${{ secrets.WAKATIME_API_KEY }}
+            OPEN_WEATHER_MAP_KEY: ${{ secrets.OPEN_WEATHER_MAP_KEY }}
+            LOCATION: ${{ secrets.LOCATION }}
+
+        - name: Push new README.md
+          uses: mikeal/publish-to-github-action@master
+          env:
+            GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+```
