@@ -1,8 +1,10 @@
 FROM python:3
 
-COPY . /readme_action
-
 WORKDIR /readme_action
+
+ADD main.py .
+
+ADD directory_file .
 
 RUN chmod +x ./main.py
 
