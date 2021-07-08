@@ -186,14 +186,16 @@ async def getWeather(query: str = None, key: str = None) -> Dict[str, str]:
         the_response: Dict[str, str] = response.json()
         dictionary: Dict[str, str] = dict()
         dictionary["city_temperature"] = str(the_response["main"]["temp"])
-        dictionary["city_min_temperature"] = str(
-            the_response["main"]["temp_min"]) + "°C"
-        dictionary["city_max_temperature"] = str(
-            the_response["main"]["temp_max"]) + "°C"
-        dictionary["city_termic_sensation"] = str(
-            the_response["main"]["feels_like"]) + "°C"
-        dictionary["city_pressure"] = str(
-            the_response["main"]["pressure"]) + "Pa"
+        dictionary["city_min_temperature"] = (
+            str(the_response["main"]["temp_min"]) + "°C"
+        )
+        dictionary["city_max_temperature"] = (
+            str(the_response["main"]["temp_max"]) + "°C"
+        )
+        dictionary["city_termic_sensation"] = (
+            str(the_response["main"]["feels_like"]) + "°C"
+        )
+        dictionary["city_pressure"] = str(the_response["main"]["pressure"]) + "Pa"
         dictionary["city_weather"] = the_response["weather"][0]["description"]
 
         return dictionary
@@ -213,15 +215,13 @@ async def getWakaStats(waka_key: str = None, format: str = "string") -> Dict[str
         ).json()
 
         # Tables
-        table_languages: PrettyTable = PrettyTable(
-            ["Language name", "Time spent"])
+        table_languages: PrettyTable = PrettyTable(["Language name", "Time spent"])
         temp_list: List[str] = list()
         coded_on: List[Dict[str, str]] = wakatime_data["data"]["languages"]
         for language in coded_on:
             temp_list.clear()
             temp_list.append(language["name"])
-            temp_list.append(
-                "{hours} hours and {minutes} minutes".format(**language))
+            temp_list.append("{hours} hours and {minutes} minutes".format(**language))
             table_languages.add_row(temp_list.copy())
 
         table_os: PrettyTable = PrettyTable(["OS name", "Time spent"])
@@ -230,24 +230,20 @@ async def getWakaStats(waka_key: str = None, format: str = "string") -> Dict[str
         for os in coded_on:
             temp_list.clear()
             temp_list.append(os["name"])
-            temp_list.append(
-                "{hours} hours and {minutes} minutes".format(**os))
+            temp_list.append("{hours} hours and {minutes} minutes".format(**os))
             table_os.add_row(temp_list.copy())
 
         if format == "string":
             dictionary["languages"] = table_languages.get_string(format=True)
             dictionary["coded_on_os"] = table_os.get_string(format=True)
         elif format == "html":
-            dictionary["languages"] = table_languages.get_html_string(
-                format=True)
+            dictionary["languages"] = table_languages.get_html_string(format=True)
             dictionary["coded_on_os"] = table_os.get_html_string(format=True)
         elif format == "json":
-            dictionary["languages"] = table_languages.get_json_string(
-                format=True)
+            dictionary["languages"] = table_languages.get_json_string(format=True)
             dictionary["coded_on_os"] = table_os.get_json_string(format=True)
         elif format == "csv":
-            dictionary["languages"] = table_languages.get_csv_string(
-                format=True)
+            dictionary["languages"] = table_languages.get_csv_string(format=True)
             dictionary["coded_on_os"] = table_os.get_csv_string(format=True)
 
         del temp_list, table_os, table_languages
@@ -270,8 +266,7 @@ async def getAll(
         weather = await getWeather(query=open_weather_query, key=open_weather_key)
         waka = await getWakaStats(waka_key=waka_time_api_key, format=format)
         print(drink, affirmation, weather, waka)
-        dictionary: Dict[str, str] = {
-            **drink, **affirmation, **weather, **waka}
+        dictionary: Dict[str, str] = {**drink, **affirmation, **weather, **waka}
         return dictionary
     except Exception or KeyboardInterrupt:
         return {"error_msj": "Error ocurred"}

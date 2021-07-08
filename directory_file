@@ -119,7 +119,7 @@
         Currently, the weather in my location is: 
         <p>
             <b> 
-                {{ city_temperature }}°C, 
+                {{ city_temperature }}°C, however it feels like {{ city_termic_sensation }}, climate is
                 <i>{{ city_weather }}</i>
             .
             Min. temperature: {{ city_min_temperature }}
