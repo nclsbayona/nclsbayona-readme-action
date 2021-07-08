@@ -323,9 +323,10 @@ if __name__ == "__main__":
                     sha=old_readme.sha,
                     committer=committer,
                 )
-                print("Readme updated")
+                print("Readme updated", new_readme)
                 return True
             except Exception or KeyboardInterrupt:
+                print (print_exc())
                 return False
 
         async def main(open_weather_query, open_weather_key, waka_time_api_key, format):
