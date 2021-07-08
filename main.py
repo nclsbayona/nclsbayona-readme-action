@@ -1,13 +1,17 @@
 # coding: utf-8
 from asyncio import get_event_loop
 from base64 import b64encode
+
+# This is from PyGithub
+from github import Github, GithubException, InputGitAuthor
 from os import environ
 from random import choice, randint
+from traceback import print_exc
 from typing import Dict, List
 
 from chevron.renderer import render
 from prettytable import PrettyTable
-from requests import get
+from requests import get, post
 from requests.models import Response
 
 # nclsbayona
@@ -273,50 +277,102 @@ async def getAll(
 
 
 if __name__ == "__main__":
+    try:
+        def run_query(query):
+            request = post(
+                "https://api.github.com/graphql", json={"query": query}, headers=headers
+            )
+            if request.status_code == 200:
+                return request.json()
+            else:
+                raise Exception(
+                    "Query failed to run by returning code of {}. {}".format(
+                        request.status_code, query
+                    )
+                )
 
-    async def updateFile(
-        path_to_new_file: str = "README.md",
-        path_to_template_file: str = "directory_file",
-        open_weather_query: str = None,
-        open_weather_key: str = None,
-        waka_time_api_key: str = None,
-        format: str = "string",
-    ) -> bool:
-        """Updates a file with the information gathered using the rest of the functions"""
-        try:
-            dictionary = await getAll(
+        async def updateFile(
+            path_to_template_file: str = "directory_file",
+            open_weather_query: str = None,
+            open_weather_key: str = None,
+            waka_time_api_key: str = None,
+            format: str = "string",
+        ) -> bool:
+            """Updates a file with the information gathered using the rest of the functions"""
+            try:
+                dictionary = await getAll(
+                    open_weather_query=open_weather_query,
+                    open_weather_key=open_weather_key,
+                    waka_time_api_key=waka_time_api_key,
+                    format=format,
+                )
+                print("The dictionary\n", dictionary)
+
+                with (open(path_to_template_file, "r")) as template_file:
+                    new_readme = render(template_file, dictionary)
+
+                committer = InputGitAuthor(
+                    "readme-bot",
+                    "41898282+github-actions[bot]@users.noreply.github.com",
+                )
+                old_readme=repo.get_readme()
+                repo.update_file(
+                    path=old_readme.path,
+                    message="Updated the README file",
+                    content=new_readme,
+                    sha=old_readme.sha,
+                    committer=committer,
+                )
+                print("Readme updated")
+
+                return True
+            except Exception or KeyboardInterrupt:
+                return False
+
+        async def main(open_weather_query, open_weather_key, waka_time_api_key, format):
+            await updateFile(
                 open_weather_query=open_weather_query,
                 open_weather_key=open_weather_key,
                 waka_time_api_key=waka_time_api_key,
                 format=format,
             )
-            print("The dictionary\n", dictionary)
-            with (open(path_to_template_file, "r")) as template_file:
-                with (open(path_to_new_file, "w")) as new_file:
-                    new_file.write(render(template_file, dictionary))
-            return True
-        except Exception or KeyboardInterrupt:
-            return False
 
-    async def main(open_weather_query, open_weather_key, waka_time_api_key, format):
-        await updateFile(
-            open_weather_query=open_weather_query,
-            open_weather_key=open_weather_key,
-            waka_time_api_key=waka_time_api_key,
-            format=format,
+        waka_api_key = environ["WAKATIME_API_KEY"]
+        open_weather_key = environ["OPEN_WEATHER_MAP_KEY"]
+        open_weather_query = environ["LOCATION"]
+        ghtoken = environ["GH_TOKEN"]
+        format = "html"
+        if ghtoken is None:
+            raise Exception("Token not available")
+        g = Github(ghtoken)
+        headers = {"Authorization": "Bearer " + ghtoken}
+        # The GraphQL query to get commit data.
+        userInfoQuery = """
+        {
+            viewer {
+            login
+            email
+            id
+            }
+        }
+        """
+        user_data = run_query(userInfoQuery)  # Execute the query
+        username = user_data["data"]["viewer"]["login"]
+        email = user_data["data"]["viewer"]["email"]
+        id = user_data["data"]["viewer"]["id"]
+        print("Username " + username)
+        repo = g.get_repo(f"{username}/{username}")
+        contents = repo.get_readme()
+        loop = get_event_loop()
+        loop.run_until_complete(
+            main(
+                open_weather_query=open_weather_query,
+                open_weather_key=open_weather_key,
+                waka_time_api_key=waka_api_key,
+                format=format,
+            )
         )
+        loop.close()
 
-    waka_api_key = environ["WAKATIME_API_KEY"]
-    open_weather_key = environ["OPEN_WEATHER_MAP_KEY"]
-    open_weather_query = environ["LOCATION"]
-    format = "html"
-    loop = get_event_loop()
-    loop.run_until_complete(
-        main(
-            open_weather_query=open_weather_query,
-            open_weather_key=open_weather_key,
-            waka_time_api_key=waka_api_key,
-            format=format,
-        )
-    )
-    loop.close()
+    except Exception as e:
+        print("Exception Occurred " + str(e)+ '\n'+print_exc())
