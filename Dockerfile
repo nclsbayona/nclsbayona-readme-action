@@ -6,4 +6,6 @@ WORKDIR /readme_action
 
 RUN pip install --no-cache-dir -r requirements.txt
 
+RUN chmod +x ./main.py
+
 CMD [ "python", "./main.py" ]
