@@ -277,8 +277,7 @@ async def getAll(
 
 if __name__ == "__main__":
     try:
-
-        async def run_query(query):
+        def run_query(query):
             request = post(
                 "https://api.github.com/graphql", json={"query": query}, headers=headers
             )
@@ -375,5 +374,4 @@ if __name__ == "__main__":
         loop.close()
 
     except Exception as e:
-        traceback.print_exc()
         print("Exception Occurred " + str(e))
