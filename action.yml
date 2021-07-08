@@ -1,0 +1,9 @@
+name: "README Build"
+author: "nclsbayona"
+description: "Update your README file with some data acquired via some APIs"
+branding:
+  icon: user-check
+  color: black
+runs:
+  using: "docker"
+  image: "Dockerfile"
