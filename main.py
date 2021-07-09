@@ -292,7 +292,7 @@ if __name__ == "__main__":
                 )
 
         async def updateFile(
-            path_to_template_file: str = "directory_file",
+            path_to_template_file: str = "/directory_file",
             open_weather_query: str = None,
             open_weather_key: str = None,
             waka_time_api_key: str = None,
@@ -323,10 +323,10 @@ if __name__ == "__main__":
                     sha=old_readme.sha,
                     committer=committer,
                 )
-                print("Readme updated")
-
+                print("Readme updated", new_readme)
                 return True
             except Exception or KeyboardInterrupt:
+                print (print_exc())
                 return False
 
         async def main(open_weather_query, open_weather_key, waka_time_api_key, format):
