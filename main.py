@@ -3,7 +3,7 @@ from asyncio import get_event_loop
 from base64 import b64encode
 
 # This is from PyGithub
-from github import Github, GithubException, InputGitAuthor
+from github import Github, InputGitAuthor
 from os import environ
 from random import choice, randint
 from traceback import print_exc
@@ -326,7 +326,7 @@ if __name__ == "__main__":
                 print("Readme updated", new_readme)
                 return True
             except Exception or KeyboardInterrupt:
-                print (print_exc())
+                print_exc()
                 return False
 
         async def main(open_weather_query, open_weather_key, waka_time_api_key, format):
@@ -358,11 +358,8 @@ if __name__ == "__main__":
         """
         user_data = run_query(userInfoQuery)  # Execute the query
         username = user_data["data"]["viewer"]["login"]
-        email = user_data["data"]["viewer"]["email"]
-        id = user_data["data"]["viewer"]["id"]
         print("Username " + username)
         repo = g.get_repo(f"{username}/{username}")
-        contents = repo.get_readme()
         loop = get_event_loop()
         loop.run_until_complete(
             main(
