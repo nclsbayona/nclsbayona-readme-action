@@ -3,7 +3,7 @@ from asyncio import get_event_loop
 from base64 import b64encode
 
 # This is from PyGithub
-from github import Github, GithubException, InputGitAuthor
+from github import Github, InputGitAuthor
 from os import environ
 from random import choice, randint
 from traceback import print_exc
@@ -278,6 +278,7 @@ async def getAll(
 
 if __name__ == "__main__":
     try:
+
         def run_query(query):
             request = post(
                 "https://api.github.com/graphql", json={"query": query}, headers=headers
@@ -315,7 +316,8 @@ if __name__ == "__main__":
                     "readme-bot",
                     "41898282+github-actions[bot]@users.noreply.github.com",
                 )
-                old_readme=repo.get_readme()
+
+                old_readme = repo.get_readme()
                 repo.update_file(
                     path=old_readme.path,
                     message="Updated the README file",
@@ -323,10 +325,11 @@ if __name__ == "__main__":
                     sha=old_readme.sha,
                     committer=committer,
                 )
+
                 print("Readme updated", new_readme)
                 return True
             except Exception or KeyboardInterrupt:
-                print (print_exc())
+                print_exc()
                 return False
 
         async def main(open_weather_query, open_weather_key, waka_time_api_key, format):
@@ -358,11 +361,8 @@ if __name__ == "__main__":
         """
         user_data = run_query(userInfoQuery)  # Execute the query
         username = user_data["data"]["viewer"]["login"]
-        email = user_data["data"]["viewer"]["email"]
-        id = user_data["data"]["viewer"]["id"]
         print("Username " + username)
         repo = g.get_repo(f"{username}/{username}")
-        contents = repo.get_readme()
         loop = get_event_loop()
         loop.run_until_complete(
             main(
@@ -373,6 +373,6 @@ if __name__ == "__main__":
             )
         )
         loop.close()
-
     except Exception as e:
-        print("Exception Occurred " + str(e)+ '\n'+print_exc())
+        print("Exception Occurred " + str(e))
+        print_exc()
