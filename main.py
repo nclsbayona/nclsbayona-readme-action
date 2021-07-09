@@ -373,7 +373,6 @@ if __name__ == "__main__":
             )
         )
         loop.close()
-
     except Exception as e:
         print("Exception Occurred " + str(e))
         print_exc()
