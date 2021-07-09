@@ -278,6 +278,7 @@ async def getAll(
 
 if __name__ == "__main__":
     try:
+
         def run_query(query):
             request = post(
                 "https://api.github.com/graphql", json={"query": query}, headers=headers
@@ -315,7 +316,8 @@ if __name__ == "__main__":
                     "readme-bot",
                     "41898282+github-actions[bot]@users.noreply.github.com",
                 )
-                old_readme=repo.get_readme()
+
+                old_readme = repo.get_readme()
                 repo.update_file(
                     path=old_readme.path,
                     message="Updated the README file",
@@ -323,6 +325,7 @@ if __name__ == "__main__":
                     sha=old_readme.sha,
                     committer=committer,
                 )
+                
                 print("Readme updated", new_readme)
                 return True
             except Exception or KeyboardInterrupt:
@@ -372,4 +375,4 @@ if __name__ == "__main__":
         loop.close()
 
     except Exception as e:
-        print("Exception Occurred " + str(e)+ '\n'+print_exc())
+        print("Exception Occurred " + str(e) + "\n" + print_exc())
