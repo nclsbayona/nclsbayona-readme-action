@@ -1,4 +1,4 @@
 chevron==0.14.0
-prettytable==2.1.0
+prettytable==2.2.0
 requests==2.26.0
 PyGithub==1.55
