@@ -1,0 +1,11 @@
+# This is a basic workflow to help you get started with Actions
+name: CI
+on: [pull_request]
+
+jobs:
+  automerge:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: fastify/github-action-merge-dependabot@v2.1.1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
