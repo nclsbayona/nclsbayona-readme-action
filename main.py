@@ -171,7 +171,9 @@ async def getAffirmation() -> Dict[str, str]:
                 "affirmation_image"
             ] = "https://cdn.dribbble.com/users/2110632/screenshots/5607696/dribbble-03_2x.png"
         elif translate_to == "huttese":
-            new_dictionary["affirmation_image"] = "https://static.memrise.com/img/400sqf/from/uploads/course_photos/6265139000150814054627.jpeg"
+            new_dictionary[
+                "affirmation_image"
+            ] = "https://static.memrise.com/img/400sqf/from/uploads/course_photos/6265139000150814054627.jpeg"
 
         return new_dictionary
 
@@ -273,7 +275,7 @@ if __name__ == "__main__":
                 )
                 print("The dictionary\n", dictionary)
 
-                with (open(path_to_template_file, "r")) as template_file:
+                with open(path_to_template_file, "r") as template_file:
                     new_readme = render(template_file, dictionary)
 
                 committer = InputGitAuthor(
