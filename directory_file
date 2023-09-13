@@ -4,11 +4,15 @@
 
 <h3 align="center">I'm really grateful that you came here 😎</h3>
 
-<img align="center" src="logo.png" alt="Logo">
+<p  align="center">
+<img src="logo.png" alt="Logo">
+</p>
 
 <h5 align="center">{{ text_affirmation }}</h5>
 
-<img align="center" src="{{{ affirmation_image }}}" alt="Affirmation image">
+<p align="center">
+<img src="{{{ affirmation_image }}}" alt="Affirmation image">
+<p>
 
 ----
 
