@@ -1,4 +1,5 @@
 <div id="full-page" style="background-color:#000011;" align="center">
+
     <div id="greetings" align="center">
         <img src="https://socialify.git.ci/nclsbayona/nclsbayona/image?description=1&font=KoHo&pattern=Charlie%20Brown&theme=Dark">
         <h2>👋 Hey there 👋</h2> 
@@ -9,7 +10,9 @@
         </h5>
         <img src="{{ affirmation_image }}" alt="Affirmation image">
     </div>
+
     <hr>
+
     <details>
         <summary>Maybe a drink? 🍹</summary>
         <div id="drink">
@@ -38,24 +41,27 @@
                 </font>
             </h4>        
         </div>
+
+        <div id="profile-info">
+            <h5>
+                <font color="#67d6b1">
+                    👀 Visitor count
+                </font>
+            </h5>
+            <img src="https://visitor-badge-reloaded.herokuapp.com/badge?page_id=nclsbayona.visitor.badge.reloaded&color=003153&style=for-the-badge&logo=github" alt="Visitor count">
+            <img src="https://img.shields.io/github/followers/nclsbayona?color=003153&logo=github&style=for-the-badge" alt="Profile followers">
+            <img src="https://img.shields.io/github/last-commit/nclsbayona/nclsbayona?color=003153&logo=github&style=for-the-badge&label=Latest%20Profile%20Commit" alt="nclsbayona's profile visited count">
+            <h5>
+                <font color="#67d6b1">
+                    Profile trophies 🏆
+                </font>
+            </h5>
+            <img src="https://github-profile-trophy.vercel.app/?username=nclsbayona&theme=dracula&no-frame=false&margin-w=5&margin-h=5&no-bg=true&column=4" alt="nclsbayona's profile trophies">
+        </div>
     </details>
-    <div id="profile-info">
-        <h5>
-            <font color="#67d6b1">
-                👀 Visitor count
-            </font>
-        </h5>
-        <img src="https://visitor-badge-reloaded.herokuapp.com/badge?page_id=nclsbayona.visitor.badge.reloaded&color=003153&style=for-the-badge&logo=github" alt="Visitor count">
-        <img src="https://img.shields.io/github/followers/nclsbayona?color=003153&logo=github&style=for-the-badge" alt="Profile followers">
-        <img src="https://img.shields.io/github/last-commit/nclsbayona/nclsbayona?color=003153&logo=github&style=for-the-badge&label=Latest%20Profile%20Commit" alt="nclsbayona's profile visited count">
-        <h5>
-            <font color="#67d6b1">
-                Profile trophies 🏆
-            </font>
-        </h5>
-        <img src="https://github-profile-trophy.vercel.app/?username=nclsbayona&theme=dracula&no-frame=false&margin-w=5&margin-h=5&no-bg=true&column=4" alt="nclsbayona's profile trophies">
-    </div>
+
     <hr>
+
     <details>
         <summary>Want to check out my stats? 🐣</summary>
         <div id="general">
@@ -113,6 +119,8 @@
             </div>
          </div>
     </details>
+
+    <hr>
 
     <div id="contact">
         <h3>
