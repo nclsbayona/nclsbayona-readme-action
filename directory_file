@@ -1,3 +1,4 @@
+<p align="center">
 ![Greetings](https://socialify.git.ci/nclsbayona/nclsbayona/image?description=1&font=KoHo&pattern=Charlie%20Brown&theme=Dark)
 
 ## 👋 Hey there 👋
@@ -9,12 +10,14 @@
 ##### {{ text_affirmation }}
 
 ![Affirmation Image]({{ affirmation_image }})
+</p>
 
 ----
 
 <details>
 <summary>Maybe a drink? 🍹</summary>
 
+<p align="center">
 ![Drink image]({{ drink_image }})
 
 #### Name: **{{ drink_name }}**
@@ -27,6 +30,7 @@
 
 
 #### Preparation instructions: {{ drink_instructions }}
+</p>
 
 ----
 
@@ -35,6 +39,7 @@
 <details>
 <summary>Want to know more about my profile?</summary>
 
+<p align="center">
 ##### 👀 Visitor count
 
 ![Visitor count](https://profile-counter.glitch.me/nclsbayona/count.svg)
@@ -49,6 +54,7 @@
 ##### Profile trophies 🏆
 
 ![Trophies](https://github-profile-trophy.vercel.app/?username=nclsbayona&theme=dracula&no-frame=false&margin-w=5&margin-h=5&no-bg=true&column=4)
+</p>
 
 ----
 
@@ -56,6 +62,7 @@
 <details>
 <summary>Want to check out my stats? 🐣</summary>
 
+<p align="center">
 #### General GitHub Stats 🌀
 
 ##### 😃 General Overview
@@ -86,10 +93,12 @@
 
 {{{ coded_on_os }}}
 
+</p>
 ----
 
 </details>
 
+<p align="center">
 ### Contact me!
 
 [![Github](https://img.shields.io/badge/GitHub-%2312100E.svg?&style=for-the-badge&logo=Github&logoColor=white)](https://github.com/nclsbayona)
@@ -105,4 +114,4 @@
 
 ### Visit my webpage 🛸
 ![QR](QR.png)
-
+</p>
