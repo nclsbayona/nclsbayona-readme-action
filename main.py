@@ -179,35 +179,6 @@ async def getAffirmation() -> Dict[str, str]:
         return {"text_affirmation": "An error ocurred please try again later"}
 
 
-async def getWeather(query: str = None, key: str = None) -> Dict[str, str]:
-    """Gets the weather information from OPENWEATHER API using a query and a key specified by the user"""
-    try:
-        query = environ["THE_CITY"] if query is None else query
-        key = environ["OPEN_WEATHER_MAP_KEY"] if key is None else key
-        response = get(
-            f"https://api.openweathermap.org/data/2.5/weather?q={query}&appid={key}&units=metric"
-        )
-        the_response: Dict[str, str] = response.json()
-        dictionary: Dict[str, str] = dict()
-        dictionary["city_temperature"] = str(the_response["main"]["temp"])
-        dictionary["city_min_temperature"] = (
-            str(the_response["main"]["temp_min"]) + "°C"
-        )
-        dictionary["city_max_temperature"] = (
-            str(the_response["main"]["temp_max"]) + "°C"
-        )
-        dictionary["city_termic_sensation"] = (
-            str(the_response["main"]["feels_like"]) + "°C"
-        )
-        dictionary["city_pressure"] = str(the_response["main"]["pressure"]) + "Pa"
-        dictionary["city_weather"] = the_response["weather"][0]["description"]
-
-        return dictionary
-
-    except Exception or KeyboardInterrupt:
-        return {"error_msj": "An error ocurred please verify your inputs and try again"}
-
-
 async def getWakaStats(waka_key: str = None, format: str = "string") -> Dict[str, str]:
     """Gets WAKATIME API data, and returns in a dictionary some of the information"""
     try:
@@ -266,8 +237,8 @@ async def getAll(
         drink = await getDrink(format=format)
         affirmation = await getAffirmation()
         waka = await getWakaStats(waka_key=waka_time_api_key, format=format)
-        print(drink, affirmation, weather, waka)
-        dictionary: Dict[str, str] = {**drink, **affirmation, **weather, **waka}
+        print(drink, affirmation, waka)
+        dictionary: Dict[str, str] = {**drink, **affirmation, **waka}
         return dictionary
     except Exception or KeyboardInterrupt:
         return {"error_msj": "Error ocurred"}
