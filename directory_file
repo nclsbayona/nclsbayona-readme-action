@@ -1,25 +1,22 @@
-<p align="center">
-
 ![Greetings](https://socialify.git.ci/nclsbayona/nclsbayona/image?description=1&font=KoHo&pattern=Charlie%20Brown&theme=Dark)
 
-## 👋 Hey there 👋
+<h2 align="center">👋 Hey there 👋</h2>
 
-### I'm really grateful that you came here 😎
+<h3 align="center">I'm really grateful that you came here 😎</h3>
 
 ![Logo](logo.png)
 
-##### {{ text_affirmation }}
+<h5 align="center">{{ text_affirmation }}</h5>
 
 ![Affirmation Image]({{ affirmation_image }})
 
-</p>
+
 
 ----
 
 <details>
 <summary>Maybe a drink? 🍹</summary>
 
-<p align="center">
 
 ![Drink image]({{ drink_image }})
 
@@ -34,7 +31,6 @@
 
 #### Preparation instructions: {{ drink_instructions }}
 
-</p>
 
 ----
 
@@ -42,8 +38,6 @@
 
 <details>
 <summary>Want to know more about my profile?</summary>
-
-<p align="center">
 
 ##### 👀 Visitor count
 
@@ -60,7 +54,6 @@
 
 ![Trophies](https://github-profile-trophy.vercel.app/?username=nclsbayona&theme=dracula&no-frame=false&margin-w=5&margin-h=5&no-bg=true&column=4)
 
-</p>
 
 ----
 
@@ -68,7 +61,6 @@
 <details>
 <summary>Want to check out my stats? 🐣</summary>
 
-<p align="center">
 
 #### General GitHub Stats 🌀
 
@@ -100,14 +92,12 @@
 
 {{{ coded_on_os }}}
 
-</p>
 ----
 
 </details>
 
-<p align="center">
 
-### Contact me!
+<h3 align="center">Contact me! 📇</h3>
 
 [![Github](https://img.shields.io/badge/GitHub-%2312100E.svg?&style=for-the-badge&logo=Github&logoColor=white)](https://github.com/nclsbayona)
 [![Twitter](https://img.shields.io/badge/twitter-%231DA1F2.svg?&style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/nclsbayona)<a href="" target="_blank">
@@ -120,7 +110,5 @@
 
 ![Snake-SVG](https://raw.githubusercontent.com/nclsbayona/Daily.dev-devcard-books/output/github-contribution-grid-snake-sissa.svg)
 
-### Visit my webpage 🛸
+<h3 align="center">Visit my webpage 🛸</h3>
 ![QR](QR.png)
-
-</p>
