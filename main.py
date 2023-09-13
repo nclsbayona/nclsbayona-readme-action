@@ -296,7 +296,7 @@ if __name__ == "__main__":
                 print_exc()
                 return False
 
-        async def main(open_weather_query, open_weather_key, waka_time_api_key, format):
+        async def main(waka_time_api_key, format):
             await updateFile(
                 waka_time_api_key=waka_time_api_key,
                 format=format,
@@ -326,8 +326,6 @@ if __name__ == "__main__":
         loop = get_event_loop()
         loop.run_until_complete(
             main(
-                open_weather_query=open_weather_query,
-                open_weather_key=open_weather_key,
                 waka_time_api_key=waka_api_key,
                 format=format,
             )
