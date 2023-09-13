@@ -24,6 +24,8 @@
 #### Category: **{{ drink_category }}**
  
 {{{ table_drink }}}
+
+
 #### Preparation instructions: {{ drink_instructions }}
 
 ----
@@ -74,7 +76,7 @@
 
 <br />
 
-####⌚General Weekly-Stats
+#### ⌚General Weekly-Stats
 
 ##### Overview ✨
 
