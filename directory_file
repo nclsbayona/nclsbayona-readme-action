@@ -1,65 +1,111 @@
 
-        ![Greetings](https://socialify.git.ci/nclsbayona/nclsbayona/image?description=1&font=KoHo&pattern=Charlie%20Brown&theme=Dark)
-        ##👋 Hey there 👋
-        ### I'm really grateful that you came here 😎
-        ![Logo](logo.png)
-        ##### {{ text_affirmation }}
-        ![Affirmation Image]({{ affirmation_image }})
+![Greetings](https://socialify.git.ci/nclsbayona/nclsbayona/image?description=1&font=KoHo&pattern=Charlie%20Brown&theme=Dark)
 
-    <hr>
+## 👋 Hey there 👋
 
-    <details>
-        <summary>Maybe a drink? 🍹</summary>
-            ![Drink image]({{ drink_image }})
-            #### Name: **{{ drink_name }}**
-            #### Alcoholic category: **{{ drink_alcoholic_category }}**
-            #### Category: **{{ drink_category }}**
-            {{{ table_drink }}}
-            #### Preparation instructions: {{ drink_instructions }}
-            <br />
-            ##### 👀 Visitor count
-            ![Visitor count](https://visitor-badge-reloaded.herokuapp.com/badge?page_id=nclsbayona.visitor.badge.reloaded&color=003153&style=for-the-badge&logo=github)
-            ![Followers](https://img.shields.io/github/followers/nclsbayona?color=003153&logo=github&style=for-the-badge)
-            Profile visited count](https://img.shields.io/github/last-commit/nclsbayona/nclsbayona?color=003153&logo=github&style=for-the-badge&label=Latest%20Profile%20Commit
-            ##### Profile trophies 🏆
-            ![Trophies](https://github-profile-trophy.vercel.app/?username=nclsbayona&theme=dracula&no-frame=false&margin-w=5&margin-h=5&no-bg=true&column=4)
-        
-    </details>
-    <hr>
+### I'm really grateful that you came here 😎
 
-    <details>
-        <summary>Want to check out my stats? 🐣</summary>
+![Logo](logo.png)
 
-            #### General GitHub Stats 🌀
-            ##### 😃 General Overview
-            ![General Stats](https://github-readme-stats.vercel.app/api?username=nclsbayona&show_icons=true&count_private=true&include_all_commits=true&locale=en&theme=tokyonight)
-            ##### Life-Time Stats Overview 😃
-            ![Specific Stats](https://github-readme-streak-stats.herokuapp.com/?user=nclsbayona&theme=algolia)
-            <br />
-            #### 🤖 Programming Languages Stats
-            ##### Most Used Languages Stats 💾
-            ![Most used languages](https://github-readme-stats.vercel.app/api/top-langs/?username=nclsbayona&show_icons=true&locale=en&langs_count=5&theme=tokyonight)
-            <br />
-            ####⌚General Weekly-Stats
-            ##### Overview ✨
-            {{{ languages }}}
-            <br /> 
-            {{{ coded_on_os }}}
-            <hr>
-    </details>
-    <hr>
+##### {{ text_affirmation }}
 
-        ### Contact me!
-        [![Github](https://img.shields.io/badge/GitHub-%2312100E.svg?&style=for-the-badge&logo=Github&logoColor=white)](https://github.com/nclsbayona)
-        [![Twitter](https://img.shields.io/badge/twitter-%231DA1F2.svg?&style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/nclsbayona)<a href="" target="_blank">
-        [![Instagram](https://img.shields.io/badge/-INSTAGRAM-critical?&style=for-the-badge&logo=instagram&logoColor=white)](https://instagram.com/nclsbayona)
-        [![Telegram](https://img.shields.io/badge/-TELEGRAM-blue?&style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/nclsbayona)
-        [![Discord](https://img.shields.io/badge/-DISCORD-darkblue?&style=for-the-badge&logo=discord&logoColor=white)](https://www.discord.com/channels/@nclsbayona#6681)
-        [![Linkedin](https://img.shields.io/badge/-Linkedin-silver?&style=for-the-badge&logo=linkedin&logoColor=black)](https://www.linkedin.com/in/nclsbayona/)
+![Affirmation Image]({{ affirmation_image }})
+
+----
+
+<details>
+<summary>Maybe a drink? 🍹</summary>
+
+![Drink image]({{ drink_image }})
+
+#### Name: **{{ drink_name }}**
+ 
+#### Alcoholic category: **{{ drink_alcoholic_category }}**
+ 
+#### Category: **{{ drink_category }}**
+ 
+{{{ table_drink }}}
+#### Preparation instructions: {{ drink_instructions }}
+
+<hr />
+
+</details>
+
+<details>
+<summary>Want to know more about me?</summary>
+
+##### 👀 Visitor count
+
+![Visitor count](https://visitor-badge-reloaded.herokuapp.com/badge?page_id=nclsbayona.visitor.badge.reloaded&color=003153&style=for-the-badge&logo=github)
+
+##### Followers
+
+![Followers](https://img.shields.io/github/followers/nclsbayona?color=003153&logo=github&style=for-the-badge)
+
+##### Times my profile was visited
+
+![Profile visited count](https://img.shields.io/github/last-commit/nclsbayona/nclsbayona?color=003153&logo=github&style=for-the-badge&label=Latest%20Profile%20Commit
+            
+##### Profile trophies 🏆
+
+![Trophies](https://github-profile-trophy.vercel.app/?username=nclsbayona&theme=dracula&no-frame=false&margin-w=5&margin-h=5&no-bg=true&column=4)
+<hr />
+</details>
+<details>
+<summary>Want to check out my stats? 🐣</summary>
+
+#### General GitHub Stats 🌀
+
+##### 😃 General Overview
+
+![General Stats](https://github-readme-stats.vercel.app/api?username=nclsbayona&show_icons=true&count_private=true&include_all_commits=true&locale=en&theme=tokyonight)
+
+##### Life-Time Stats Overview 😃
+
+![Specific Stats](https://github-readme-streak-stats.herokuapp.com/?user=nclsbayona&theme=algolia)
+
+<br />
+
+#### 🤖 Programming Languages Stats
+
+##### Most Used Languages Stats 💾
+
+![Most used languages](https://github-readme-stats.vercel.app/api/top-langs/?username=nclsbayona&show_icons=true&locale=en&langs_count=5&theme=tokyonight)
+
+<br />
+
+####⌚General Weekly-Stats
+
+##### Overview ✨
+
+{{{ languages }}}
+
+<br> 
+
+{{{ coded_on_os }}}
+
+<hr>
+
+</details>
+
+### Contact me!
+
+[![Github](https://img.shields.io/badge/GitHub-%2312100E.svg?&style=for-the-badge&logo=Github&logoColor=white)](https://github.com/nclsbayona)
+
+[![Twitter](https://img.shields.io/badge/twitter-%231DA1F2.svg?&style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/nclsbayona)<a href="" target="_blank">
+
+[![Instagram](https://img.shields.io/badge/-INSTAGRAM-critical?&style=for-the-badge&logo=instagram&logoColor=white)](https://instagram.com/nclsbayona)
+
+[![Telegram](https://img.shields.io/badge/-TELEGRAM-blue?&style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/nclsbayona)
+
+[![Discord](https://img.shields.io/badge/-DISCORD-darkblue?&style=for-the-badge&logo=discord&logoColor=white)](https://www.discord.com/channels/@nclsbayona#6681)
+
+[![Linkedin](https://img.shields.io/badge/-Linkedin-silver?&style=for-the-badge&logo=linkedin&logoColor=black)](https://www.linkedin.com/in/nclsbayona/)
     
+<br />
 
-    ![Snake-SVG](https://raw.githubusercontent.com/nclsbayona/Daily.dev-devcard-books/output/github-contribution-grid-snake-sissa.svg)
+![Snake-SVG](https://raw.githubusercontent.com/nclsbayona/Daily.dev-devcard-books/output/github-contribution-grid-snake-sissa.svg)
 
-        ### Visit my webpage 🛸
-        ![QR}(QR.png)
+### Visit my webpage 🛸
+![QR}(QR.png)
 
