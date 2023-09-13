@@ -341,8 +341,6 @@ if __name__ == "__main__":
             )
 
         waka_api_key = environ["WAKATIME_API_KEY"]
-        open_weather_key = environ["OPEN_WEATHER_MAP_KEY"]
-        open_weather_query = environ["LOCATION"]
         ghtoken = environ["GH_TOKEN"]
         format = "html"
         if ghtoken is None:
