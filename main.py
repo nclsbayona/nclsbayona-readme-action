@@ -258,8 +258,6 @@ async def getWakaStats(waka_key: str = None, format: str = "string") -> Dict[str
 
 
 async def getAll(
-    open_weather_query: str = None,
-    open_weather_key: str = None,
     waka_time_api_key: str = None,
     format: str = "string",
 ) -> Dict[str, str]:
@@ -267,7 +265,6 @@ async def getAll(
     try:
         drink = await getDrink(format=format)
         affirmation = await getAffirmation()
-        weather = await getWeather(query=open_weather_query, key=open_weather_key)
         waka = await getWakaStats(waka_key=waka_time_api_key, format=format)
         print(drink, affirmation, weather, waka)
         dictionary: Dict[str, str] = {**drink, **affirmation, **weather, **waka}
@@ -294,16 +291,12 @@ if __name__ == "__main__":
 
         async def updateFile(
             path_to_template_file: str = "/directory_file",
-            open_weather_query: str = None,
-            open_weather_key: str = None,
             waka_time_api_key: str = None,
             format: str = "string",
         ) -> bool:
             """Updates a file with the information gathered using the rest of the functions"""
             try:
                 dictionary = await getAll(
-                    open_weather_query=open_weather_query,
-                    open_weather_key=open_weather_key,
                     waka_time_api_key=waka_time_api_key,
                     format=format,
                 )
@@ -332,17 +325,13 @@ if __name__ == "__main__":
                 print_exc()
                 return False
 
-        async def main(open_weather_query, open_weather_key, waka_time_api_key, format):
+        async def main(waka_time_api_key, format):
             await updateFile(
-                open_weather_query=open_weather_query,
-                open_weather_key=open_weather_key,
                 waka_time_api_key=waka_time_api_key,
                 format=format,
             )
 
         waka_api_key = environ["WAKATIME_API_KEY"]
-        open_weather_key = environ["OPEN_WEATHER_MAP_KEY"]
-        open_weather_query = environ["LOCATION"]
         ghtoken = environ["GH_TOKEN"]
         format = "html"
         if ghtoken is None:
@@ -366,8 +355,6 @@ if __name__ == "__main__":
         loop = get_event_loop()
         loop.run_until_complete(
             main(
-                open_weather_query=open_weather_query,
-                open_weather_key=open_weather_key,
                 waka_time_api_key=waka_api_key,
                 format=format,
             )
