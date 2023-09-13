@@ -4,13 +4,11 @@
 
 <h3 align="center">I'm really grateful that you came here 😎</h3>
 
-![Logo](logo.png)
+<img align="center" src="logo.png" alt="Logo">
 
 <h5 align="center">{{ text_affirmation }}</h5>
 
-![Affirmation Image]({{ affirmation_image }})
-
-
+<img align="center" src="{{{ affirmation_image }}}" alt="Affirmation image">
 
 ----
 
@@ -111,4 +109,5 @@
 ![Snake-SVG](https://raw.githubusercontent.com/nclsbayona/Daily.dev-devcard-books/output/github-contribution-grid-snake-sissa.svg)
 
 <h3 align="center">Visit my webpage 🛸</h3>
+
 ![QR](QR.png)
