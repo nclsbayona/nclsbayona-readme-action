@@ -143,7 +143,7 @@ async def getAffirmation() -> Dict[str, str]:
         elif translate_to == "valyrian":
             new_dictionary[
                 "affirmation_image"
-            ] = "https://www.theverge.com/tldr/2017/7/11/15952124/game-of-thrones-high-valyrian-language-course-app"
+            ] = "https://duet-cdn.vox-cdn.com/thumbor/0x0:2933x2100/750x500/filters:focal(1716x679:1717x680):format(webp)/cdn0.vox-cdn.com/uploads/chorus_asset/file/3361192/Emilia_Clarke_as_Daenerys_Targaryen__photo_Helen_Sloan_HBO.0.jpg"
         elif translate_to == "vulcan":
             new_dictionary[
                 "affirmation_image"
@@ -171,7 +171,7 @@ async def getAffirmation() -> Dict[str, str]:
                 "affirmation_image"
             ] = "https://cdn.dribbble.com/users/2110632/screenshots/5607696/dribbble-03_2x.png"
         elif translate_to == "huttese":
-            new_dictionary["affirmation_image"] = "https://rb.gy/vu0j2o"
+            new_dictionary["affirmation_image"] = "https://static.memrise.com/img/400sqf/from/uploads/course_photos/6265139000150814054627.jpeg"
 
         return new_dictionary
 
