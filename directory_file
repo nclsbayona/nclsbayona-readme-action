@@ -167,7 +167,7 @@
 
 <p align="center">
 
-![Snake-SVG](https://raw.githubusercontent.com/nclsbayona/Daily.dev-devcard-books/output/github-contribution-grid-snake-sissa.svg)
+<img src="https://raw.githubusercontent.com/nclsbayona/Daily.dev-devcard-books/output/github-contribution-grid-snake-sissa.svg">
 
 </p>
 
@@ -175,6 +175,8 @@
 
 <p align="center">
 
-<a href="https://nclsbayona.github.io" target="_blank"><img src="QR.png"></a>
+<a href="https://nclsbayona.github.io" target="_blank">
+ <img src="QR.png">
+</a>
 
 </p>
