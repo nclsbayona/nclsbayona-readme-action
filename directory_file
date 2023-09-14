@@ -9,7 +9,9 @@
 </p>
 
 <h5 align="center">{{ text_affirmation1 }}</h5>
-<i align="center">{{ text_affirmation2 }}</i>
+<p align="center">
+  <i>{{ text_affirmation2 }}</i>
+</p>
 ----
 
 <details>
