@@ -155,7 +155,7 @@ async def getAffirmation() -> Dict[str, str]:
         elif translate_to == "pig-latin":
             new_dictionary[
                 "affirmation_image"
-            ] = "https://www.quickanddirtytips.com/sites/default/files/images/2104/piglatin.jpg"
+            ] = "https://miro.medium.com/v2/resize:fit:600/format:png/0*2FCuv0KJMX2knKa0.png"
         elif translate_to == "sith":
             new_dictionary["affirmation_image"] = "https://i.redd.it/ra6s480wfi701.jpg"
         elif translate_to == "cheunh":
