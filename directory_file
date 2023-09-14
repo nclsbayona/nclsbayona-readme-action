@@ -8,12 +8,8 @@
 <img src="logo.png" alt="Logo">
 </p>
 
-<h5 align="center">{{ text_affirmation }}</h5>
-
-<p align="center">
-<img src="{{ affirmation_image }}" alt="Affirmation image">
-<p>
-
+<h5 align="center">{{ text_affirmation1 }}</h5>
+<i align="center">{{ text_affirmation2 }}</i>
 ----
 
 <details>
