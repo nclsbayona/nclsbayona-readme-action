@@ -106,7 +106,7 @@ async def getAffirmation() -> Dict[str, str]:
         )
         affirmation = (response.json()).get("contents").get("translated")
         affirmation = f"Someone once said: {affirmation}"
-        text = f"{text} in {translate_to} language"
+        text = f"-- {text} in {translate_to} language"
 
         new_dictionary: Dict[str, str] = dict()
         new_dictionary["text_affirmation1"] = affirmation
@@ -180,7 +180,7 @@ async def getAffirmation() -> Dict[str, str]:
         return new_dictionary
 
     except Exception or KeyboardInterrupt:
-        return {"text_affirmation": "An error ocurred please try again later"}
+        return {"text_affirmation1": "An error ocurred", "text_affirmation2":"Please try again later"}
 
 
 async def getWakaStats(waka_key: str = None, format: str = "string") -> Dict[str, str]:
