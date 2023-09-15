@@ -112,7 +112,7 @@ async def getAffirmation() -> Dict[str, str]:
         new_dictionary["text_affirmation1"] = affirmation
         new_dictionary["text_affirmation2"] = text
 
-        '''
+        """
         if translate_to == "yoda":
             new_dictionary[
                 "affirmation_image"
@@ -175,12 +175,15 @@ async def getAffirmation() -> Dict[str, str]:
             new_dictionary[
                 "affirmation_image"
             ] = "https://static.memrise.com/img/400sqf/from/uploads/course_photos/6265139000150814054627.jpeg"
-        '''
+        """
 
         return new_dictionary
 
     except Exception or KeyboardInterrupt:
-        return {"text_affirmation1": "An error ocurred", "text_affirmation2":"Please try again later"}
+        return {
+            "text_affirmation1": "An error ocurred", 
+            "text_affirmation2":"Please try again later"
+        }
 
 
 async def getWakaStats(waka_key: str = None, format: str = "string") -> Dict[str, str]:
