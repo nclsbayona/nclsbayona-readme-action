@@ -8,9 +8,9 @@
 <img src="logo.png" alt="Logo" width="480">
 </p>
 
-<p align="center">
+<strong align="center">{{ text_affirmation1 }}</strong>
 
-  <strong>{{ text_affirmation1 }}</strong>
+<p align="center">
 
   <i>{{ text_affirmation2 }}</i>
 
