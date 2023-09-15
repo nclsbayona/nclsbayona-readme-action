@@ -68,12 +68,10 @@ async def getAffirmation() -> Dict[str, str]:
             "minion",
             "sindarin",
             "oldenglish",
-            "ferblatin",
             "dothraki",
             "valyrian",
             "vulcan",
             "klingon",
-            "pig-latin",
             "yoda",
             "sith",
             "cheunh",
@@ -107,11 +105,14 @@ async def getAffirmation() -> Dict[str, str]:
             f"https://api.funtranslations.com/translate/{translate_to}.json?text={affirmation}"
         )
         affirmation = (response.json()).get("contents").get("translated")
-        affirmation = f"The text '{text}' was translated to {translate_to} language, and the result is: '{affirmation}'"
+        affirmation = f'Someone once said: "{affirmation}"'
+        text = f'-- "{text}" in {translate_to} language --'
 
         new_dictionary: Dict[str, str] = dict()
-        new_dictionary["text_affirmation"] = affirmation
+        new_dictionary["text_affirmation1"] = affirmation
+        new_dictionary["text_affirmation2"] = text
 
+        """
         if translate_to == "yoda":
             new_dictionary[
                 "affirmation_image"
@@ -174,11 +175,15 @@ async def getAffirmation() -> Dict[str, str]:
             new_dictionary[
                 "affirmation_image"
             ] = "https://static.memrise.com/img/400sqf/from/uploads/course_photos/6265139000150814054627.jpeg"
+        """
 
         return new_dictionary
 
     except Exception or KeyboardInterrupt:
-        return {"text_affirmation": "An error ocurred please try again later"}
+        return {
+            "text_affirmation1": "An error ocurred",
+            "text_affirmation2": "Please try again later",
+        }
 
 
 async def getWakaStats(waka_key: str = None, format: str = "string") -> Dict[str, str]:

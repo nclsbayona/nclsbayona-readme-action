@@ -5,40 +5,45 @@
 <h3 align="center">I'm really grateful that you came here 😎</h3>
 
 <p  align="center">
-<img src="logo.png" alt="Logo">
+<img src="logo.png" alt="Logo" width="480">
 </p>
 
-<h5 align="center">{{ text_affirmation }}</h5>
+<strong align="center">{{ text_affirmation1 }}</strong>
 
 <p align="center">
-<img src="{{ affirmation_image }}" alt="Affirmation image">
-<p>
+
+  <i>{{ text_affirmation2 }}</i>
+
+</p>
 
 ----
 
 <details>
 <summary>Maybe a drink? 🍹</summary>
-
-
-
-
+<br />
+<h4 align="center">{{ drink_name }}</h4>
 <p align="center">
 
 <img src="{{ drink_image }}" alt="Drink image" />
 
 </p>
+ 
+<h5 align="center">{{ drink_alcoholic_category }} - {{ drink_category }}</h5>
 
-#### Name: **{{ drink_name }}**
- 
-#### Alcoholic category: **{{ drink_alcoholic_category }}**
- 
-#### Category: **{{ drink_category }}**
- 
+<h5 align="center">Neccesary ingredients</h5>
+<table align="center">
+<tr>
+<td>
 {{{ table_drink }}}
+</td>
+</tr>
+</table>
 
 
-#### Preparation instructions: {{ drink_instructions }}
 
+<p align="center">
+{{ drink_instructions }}
+</p>
 
 ----
 
@@ -46,92 +51,67 @@
 
 <details>
 <summary>Want to know more about my profile? 🪂</summary>
-
-##### 👀 Visitor count
-
-
+<br />
+<h5 align="center">👀 Visitor count</h5>
 <p align="center">
 
-<img src="https://profile-counter.glitch.me/nclsbayona/count.svg" />
+<img src="https://profile-counter.glitch.me/nclsbayona/count.svg"/>
 
 </p>
-
-
-##### Followers
-
-
 <p align="center">
 
-<img src="https://img.shields.io/github/followers/nclsbayona?color=003153&logo=github&style=for-the-badge" />
-
-</p>
-
-
-##### Last profile commit
-
-
-<p align="center">
-
+<img src="https://img.shields.io/github/followers/nclsbayona?color=003153&logo=github&style=for-the-badge"/>
 <img src="https://img.shields.io/github/last-commit/nclsbayona/nclsbayona?color=003153&logo=github&style=for-the-badge&label=Latest%20Profile%20Commit">
-            
+
 </p>
-
-##### Profile trophies 🏆
-
 <p align="center">
 
 <img src="https://github-profile-trophy.vercel.app/?username=nclsbayona&theme=dracula&no-frame=false&margin-w=5&margin-h=5&no-bg=true&column=4">
 
 </p>
 
-
 ----
 
 </details>
 <details>
 <summary>Want to check out my stats? 🐣</summary>
-
-
-#### General GitHub Stats 🌀
-
-##### 😃 General Overview
+<br />
+<h4 align="center">General GitHub Stats 🌀</h4>
 
 <p align="center">
 
-<img src="https://github-readme-stats.vercel.app/api?username=nclsbayona&show_icons=true&count_private=true&include_all_commits=true&locale=en&theme=tokyonight">
+<!--h5>😃 General Overview</h5-->
+<img src="https://github-readme-stats.vercel.app/api?username=nclsbayona&show_icons=true&count_private=true&include_all_commits=true&locale=en&theme=tokyonight" width="360">
+
+<!--h5>Life-Time Stats Overview 😃</h5-->
+<img src="https://github-readme-streak-stats.herokuapp.com/?user=nclsbayona&theme=algolia" width="360">
 
 </p>
 
-##### Life-Time Stats Overview 😃
-
-<p align="center">
-
-<img src="https://github-readme-streak-stats.herokuapp.com/?user=nclsbayona&theme=algolia">
-
-</p>
 <br />
 
-#### 🤖 Programming Languages Stats
-
-##### Most Used Languages Stats 💾
+<h4 align="center">🤖 Programming Languages Stats</h4>
 
 <p align="center">
 
+<!--h5>Most Used Languages Stats 💾</h5-->
 <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=nclsbayona&show_icons=true&locale=en&langs_count=5&theme=tokyonight">
 
 </p>
 
 <br />
 
-#### ⌚General Weekly-Stats
-
-##### Overview ✨
-
+<h4 align="center">⌚General Weekly-Stats</h4>
+<table align="center">
+<tr>
+<td>
 {{{ languages }}}
-
-<br> 
-
+</td>
+<td>
 {{{ coded_on_os }}}
+</td>
+</tr>
+</table>
 
 ----
 
