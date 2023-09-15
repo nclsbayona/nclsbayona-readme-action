@@ -16,7 +16,7 @@
 
 <details>
 <summary>Maybe a drink? 🍹</summary>
-
+<br />
 <p align="center">
 
 <img src="{{ drink_image }}" alt="Drink image" />
@@ -34,22 +34,26 @@
 
 #### Preparation instructions: {{ drink_instructions }}
 
-
 ----
 
 </details>
 
 <details>
 <summary>Want to know more about my profile? 🪂</summary>
-
+<br />
 <h5 align="center">👀 Visitor count</h5>
-
 <p align="center">
 
 <img src="https://profile-counter.glitch.me/nclsbayona/count.svg" width="60"/>
 
+</p>
+<p align="center">
+
 <img src="https://img.shields.io/github/followers/nclsbayona?color=003153&logo=github&style=for-the-badge" width="60"/>
 <img src="https://img.shields.io/github/last-commit/nclsbayona/nclsbayona?color=003153&logo=github&style=for-the-badge&label=Latest%20Profile%20Commit" width="60">
+
+</p>
+<p align="center">
 
 <img src="https://github-profile-trophy.vercel.app/?username=nclsbayona&theme=dracula&no-frame=false&margin-w=5&margin-h=5&no-bg=true&column=4" width="80">
 
@@ -60,6 +64,7 @@
 </details>
 <details>
 <summary>Want to check out my stats? 🐣</summary>
+<br />
 <h4 align="center">General GitHub Stats 🌀</h4>
 
 <p align="center">
