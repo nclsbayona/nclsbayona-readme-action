@@ -13,21 +13,17 @@
   <i>{{ text_affirmation2 }}</i>
 </p>
 ----
-
 <details>
 <summary>Maybe a drink? 🍹</summary>
 <br />
+<h4 align="center">**{{ drink_name }}**</h4>
 <p align="center">
 
 <img src="{{ drink_image }}" alt="Drink image" />
 
 </p>
-
-#### Name: **{{ drink_name }}**
  
-#### Alcoholic category: **{{ drink_alcoholic_category }}**
- 
-#### Category: **{{ drink_category }}**
+<h5 align="center">**{{ drink_alcoholic_category }}** - **{{ drink_category }}**</h5>
  
 {{{ table_drink }}}
 
@@ -55,7 +51,7 @@
 </p>
 <p align="center">
 
-<img src="https://github-profile-trophy.vercel.app/?username=nclsbayona&theme=dracula&no-frame=false&margin-w=5&margin-h=5&no-bg=true&column=4" width="80">
+<img src="https://github-profile-trophy.vercel.app/?username=nclsbayona&theme=dracula&no-frame=false&margin-w=5&margin-h=5&no-bg=true&column=4">
 
 </p>
 
@@ -70,10 +66,10 @@
 <p align="center">
 
 <!--h5>😃 General Overview</h5-->
-<img src="https://github-readme-stats.vercel.app/api?username=nclsbayona&show_icons=true&count_private=true&include_all_commits=true&locale=en&theme=tokyonight">
+<img src="https://github-readme-stats.vercel.app/api?username=nclsbayona&show_icons=true&count_private=true&include_all_commits=true&locale=en&theme=tokyonight" width="120">
 
 <!--h5>Life-Time Stats Overview 😃</h5-->
-<img src="https://github-readme-streak-stats.herokuapp.com/?user=nclsbayona&theme=algolia">
+<img src="https://github-readme-streak-stats.herokuapp.com/?user=nclsbayona&theme=algolia" width="120">
 
 </p>
 
@@ -91,12 +87,16 @@
 <br />
 
 <h4 align="center">⌚General Weekly-Stats</h4>
-
+<table align="center">
+<tr>
+<td>
 {{{ languages }}}
-
-<br> 
-
+</td>
+<td>
 {{{ coded_on_os }}}
+</td>
+</tr>
+</table>
 
 ----
 
