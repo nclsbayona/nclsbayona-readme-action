@@ -16,19 +16,21 @@
 <details>
 <summary>Maybe a drink? 🍹</summary>
 <br />
-<h4 align="center">**{{ drink_name }}**</h4>
+<h4 align="center">{{ drink_name }}</h4>
 <p align="center">
 
 <img src="{{ drink_image }}" alt="Drink image" />
 
 </p>
  
-<h5 align="center">**{{ drink_alcoholic_category }}** - **{{ drink_category }}**</h5>
+<h5 align="center">{{ drink_alcoholic_category }} - {{ drink_category }}</h5>
  
 {{{ table_drink }}}
 
 
-#### Preparation instructions: {{ drink_instructions }}
+<p align="center">
+{{ drink_instructions }}
+</p>
 
 ----
 
@@ -66,10 +68,10 @@
 <p align="center">
 
 <!--h5>😃 General Overview</h5-->
-<img src="https://github-readme-stats.vercel.app/api?username=nclsbayona&show_icons=true&count_private=true&include_all_commits=true&locale=en&theme=tokyonight" width="120">
+<img src="https://github-readme-stats.vercel.app/api?username=nclsbayona&show_icons=true&count_private=true&include_all_commits=true&locale=en&theme=tokyonight" width="360">
 
 <!--h5>Life-Time Stats Overview 😃</h5-->
-<img src="https://github-readme-streak-stats.herokuapp.com/?user=nclsbayona&theme=algolia" width="120">
+<img src="https://github-readme-streak-stats.herokuapp.com/?user=nclsbayona&theme=algolia" width="360">
 
 </p>
 
