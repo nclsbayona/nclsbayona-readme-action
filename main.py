@@ -105,8 +105,8 @@ async def getAffirmation() -> Dict[str, str]:
             f"https://api.funtranslations.com/translate/{translate_to}.json?text={affirmation}"
         )
         affirmation = (response.json()).get("contents").get("translated")
-        affirmation = f"Someone once said: {affirmation}"
-        text = f"-- {text} in {translate_to} language"
+        affirmation = f"Someone once said: \"{affirmation}\""
+        text = f"-- \"{text}\" in {translate_to} language --"
 
         new_dictionary: Dict[str, str] = dict()
         new_dictionary["text_affirmation1"] = affirmation
