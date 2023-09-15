@@ -9,8 +9,11 @@
 </p>
 
 <p align="center">
+
   <strong>{{ text_affirmation1 }}</strong>
+
   <i>{{ text_affirmation2 }}</i>
+
 </p>
 
 ----
@@ -26,8 +29,16 @@
 </p>
  
 <h5 align="center">{{ drink_alcoholic_category }} - {{ drink_category }}</h5>
- 
+
+<h5 align="center">Neccesary ingredients</h5>
+<table align="center">
+<tr>
+<td>
 {{{ table_drink }}}
+</td>
+</tr>
+</table>
+
 
 
 <p align="center">
