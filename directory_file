@@ -114,9 +114,22 @@
 </table>
 
 ----
-
 </details>
 
+<details>
+<summary>Want to see something about our universe? 🔭</summary>
+
+<br />
+<h4 align="center">{{ universe_image_name }} - {{ universe_image_copyright }}</h4>
+<p align="center">
+
+<img src="{{ universe_image_url }}" alt="{{ universe_image_name }} image" />
+
+</p>
+ 
+<h5 align="center">{{ universe_image_description }}</h5>
+
+----
 
 <h3 align="center">Contact me! 📇</h3>
 
