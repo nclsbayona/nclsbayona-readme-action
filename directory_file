@@ -137,16 +137,30 @@
 <summary>Maybe you are looking for some cool animal pictures? 👁️</summary>
 
 <br />
-<p align="center">
-
+<table align="center">
+<tr>
+<td>
 <img src="{{ animal_image1 }}" width="180"/>
+</td>
+<td>
 <img src="{{ animal_image2 }}" width="180"/>
+</td>
+<td>
 <img src="{{ animal_image3 }}" width="180"/>
+</td>
+</tr>
+<tr>
+<td>
 <img src="{{ animal_image4 }}" width="180"/>
+</td>
+<td>
 <img src="{{ animal_image5 }}" width="180"/>
+</td>
+<td>
 <img src="{{ animal_image6 }}" width="180"/>
-
-</p>
+</td>
+</tr>
+</table>
 
 ----
 
