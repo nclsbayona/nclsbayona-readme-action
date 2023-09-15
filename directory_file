@@ -50,7 +50,7 @@
 </details>
 
 <details>
-<summary>Want to know more about my profile? 🪂</summary>
+<summary>Maybe you want to know more about my profile? 🪂</summary>
 <br />
 <h5 align="center">👀 Visitor count</h5>
 <p align="center">
@@ -74,7 +74,7 @@
 
 </details>
 <details>
-<summary>Want to check out my stats? 🐣</summary>
+<summary>Maybe you want to check out my stats? 🐣</summary>
 <br />
 <h4 align="center">General GitHub Stats 🌀</h4>
 
@@ -117,7 +117,7 @@
 </details>
 
 <details>
-<summary>Want to see something about our universe? 🔭</summary>
+<summary>Maybe you're looking to see something about our universe? 🔭</summary>
 
 <br />
 <h4 align="center">{{ universe_image_name }} - {{ universe_image_copyright }}</h4>
@@ -130,6 +130,27 @@
 <h5 align="center">{{ universe_image_description }}</h5>
 
 ----
+
+</details>
+
+<details>
+<summary>Maybe yu are looking for some cool animal pictures?</summary>
+
+<br />
+<p align="center">
+
+<img src="{{ animal_image1 }}" width="100"/>
+<img src="{{ animal_image2 }}" width="100"/>
+<img src="{{ animal_image3 }}" width="100"/>
+<img src="{{ animal_image4 }}" width="100"/>
+<img src="{{ animal_image5 }}" width="100"/>
+<img src="{{ animal_image6 }}" width="100"/>
+
+</p>
+
+----
+
+</details>
 
 <h3 align="center">Contact me! 📇</h3>
 
