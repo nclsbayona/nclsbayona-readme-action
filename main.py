@@ -15,8 +15,6 @@ from requests import get, post
 from requests.models import Response
 
 # nclsbayona
-
-
 async def getDrink(format="string") -> Dict[str, str]:
     """Gets a random drink information from The Cocktail DB API"""
     try:
@@ -234,9 +232,27 @@ async def getWakaStats(waka_key: str = None, format: str = "string") -> Dict[str
     except Exception or KeyboardInterrupt:
         return {"error_msj": "An error ocurred please verify your inputs and try again"}
 
+async def getNasaImage(nasa_api_key: str = None) -> Dict[str, str]:
+    """Gets the image of the day from NASA Apod API"""
+    try:
+        the_response: Response = get(
+            "https://api.nasa.gov/planetary/apod?api_key="+nasa_api_key
+        )
+        response: Dict[str, str] = the_response.json()
+        nasa: Dict[str, str] = dict()
+        nasa["universe_image_name"] = response["title"]
+        nasa["universe_image_copyright"] = f'©️ {response["copyright"]} @ {response["date"]}'.replace('\n','')
+        nasa["universe_image_url"] = response["url"]
+        nasa["universe_image_description"] = response["explanation"]
+
+        return nasa
+
+    except Exception or KeyboardInterrupt:
+        return {"error_msj": "An error ocurred please try again"}
 
 async def getAll(
     waka_time_api_key: str = None,
+    nasa_api_key: str = None,
     format: str = "string",
 ) -> Dict[str, str]:
     """Gets the information gathered using the rest of the functions"""
@@ -244,8 +260,8 @@ async def getAll(
         drink = await getDrink(format=format)
         affirmation = await getAffirmation()
         waka = await getWakaStats(waka_key=waka_time_api_key, format=format)
-        print(drink, affirmation, waka)
-        dictionary: Dict[str, str] = {**drink, **affirmation, **waka}
+        nasa = await getNasaImage(nasa_key=nasa_api_key)
+        dictionary: Dict[str, str] = {**drink, **affirmation, **waka, **nasa}
         return dictionary
     except Exception or KeyboardInterrupt:
         return {"error_msj": "Error ocurred"}
@@ -270,12 +286,14 @@ if __name__ == "__main__":
         async def updateFile(
             path_to_template_file: str = "/directory_file",
             waka_time_api_key: str = None,
+            nasa_api_key: str = None,
             format: str = "string",
         ) -> bool:
             """Updates a file with the information gathered using the rest of the functions"""
             try:
                 dictionary = await getAll(
                     waka_time_api_key=waka_time_api_key,
+                    nasa_api_key = nasa_api_key,
                     format=format,
                 )
                 print("The dictionary\n", dictionary)
@@ -297,19 +315,21 @@ if __name__ == "__main__":
                     committer=committer,
                 )
 
-                print("Readme updated", new_readme)
+                print("\n\nReadme updated\n", new_readme)
                 return True
             except Exception or KeyboardInterrupt:
                 print_exc()
                 return False
 
-        async def main(waka_time_api_key, format):
+        async def main(waka_time_api_key, nasa_api_key, format):
             await updateFile(
                 waka_time_api_key=waka_time_api_key,
+                nasa_api_key=nasa_api_key,
                 format=format,
             )
 
         waka_api_key = environ["WAKATIME_API_KEY"]
+        nasa_api_key = environ["NASA_KEY"]
         ghtoken = environ["GH_TOKEN"]
         format = "html"
         if ghtoken is None:
@@ -334,6 +354,7 @@ if __name__ == "__main__":
         loop.run_until_complete(
             main(
                 waka_time_api_key=waka_api_key,
+                nasa_api_key=nasa_api_key,
                 format=format,
             )
         )
