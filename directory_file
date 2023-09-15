@@ -134,17 +134,17 @@
 </details>
 
 <details>
-<summary>Maybe yu are looking for some cool animal pictures?</summary>
+<summary>Maybe you are looking for some cool animal pictures?</summary>
 
 <br />
 <p align="center">
 
-<img src="{{ animal_image1 }}" width="100"/>
-<img src="{{ animal_image2 }}" width="100"/>
-<img src="{{ animal_image3 }}" width="100"/>
-<img src="{{ animal_image4 }}" width="100"/>
-<img src="{{ animal_image5 }}" width="100"/>
-<img src="{{ animal_image6 }}" width="100"/>
+<img src="{{ animal_image1 }}" width="180"/>
+<img src="{{ animal_image2 }}" width="180"/>
+<img src="{{ animal_image3 }}" width="180"/>
+<img src="{{ animal_image4 }}" width="180"/>
+<img src="{{ animal_image5 }}" width="180"/>
+<img src="{{ animal_image6 }}" width="180"/>
 
 </p>
 
