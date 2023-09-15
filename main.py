@@ -258,20 +258,14 @@ async def getNasaImage(nasa_api_key: str = None) -> Dict[str, str]:
 async def getAnimals() -> Dict[str, str]:
     """Gets images of animals"""
     try:
-        the_response: Response = get(
-            "https://random.dog/woof.json"
-        )
+        the_response: Response = get("https://random.dog/woof.json")
         response: Dict[str, str] = the_response.json()
         animals: Dict[str, str] = dict()
         animals["animal_image1"] = response["url"]
-        the_response: Response = get(
-            "https://random-d.uk/api/v2/random"
-        )
+        the_response: Response = get("https://random-d.uk/api/v2/random")
         response: Dict[str, str] = the_response.json()
         animals["animal_image2"] = response["url"]
-        the_response: Response = get(
-            "https://randomfox.ca/floof/"
-        )
+        the_response: Response = get("https://randomfox.ca/floof/")
         response: Dict[str, str] = the_response.json()
         animals["animal_image3"] = response["image"]
         animal_list: List[str] = [
@@ -292,25 +286,19 @@ async def getAnimals() -> Dict[str, str]:
             "capybara",
         ]
         animal1: str = choice(animal_list)
-        the_response: Response = get(
-            "https://api.animality.xyz/img/" + animal1
-        )
+        the_response: Response = get("https://api.animality.xyz/img/" + animal1)
         response: Dict[str, str] = the_response.json()
         animals["animal_image4"] = response["link"]
         animal2: str = animal1
-        while animal2==animal1:
+        while animal2 == animal1:
             animal2 = choice(animal_list)
-        the_response: Response = get(
-            "https://api.animality.xyz/img/" + animal2
-        )
+        the_response: Response = get("https://api.animality.xyz/img/" + animal2)
         response: Dict[str, str] = the_response.json()
         animals["animal_image5"] = response["link"]
-        animal3: str=animal2
-        while animal3==animal1 or animal3==animal2:
+        animal3: str = animal2
+        while animal3 == animal1 or animal3 == animal2:
             animal3 = choice(animal_list)
-        the_response: Response = get(
-            "https://api.animality.xyz/img/" + animal3
-        )
+        the_response: Response = get("https://api.animality.xyz/img/" + animal3)
         response: Dict[str, str] = the_response.json()
         animals["animal_image6"] = response["link"]
 
