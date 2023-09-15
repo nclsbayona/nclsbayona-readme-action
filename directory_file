@@ -139,12 +139,12 @@
 <br />
 <p align="center">
 
-<img src="{{ animal_image1 }}" width="100"/>
-<img src="{{ animal_image2 }}" width="100"/>
-<img src="{{ animal_image3 }}" width="100"/>
-<img src="{{ animal_image4 }}" width="100"/>
-<img src="{{ animal_image5 }}" width="100"/>
-<img src="{{ animal_image6 }}" width="100"/>
+<img src="{{ animal_image1 }}" width="180"/>
+<img src="{{ animal_image2 }}" width="180"/>
+<img src="{{ animal_image3 }}" width="180"/>
+<img src="{{ animal_image4 }}" width="180"/>
+<img src="{{ animal_image5 }}" width="180"/>
+<img src="{{ animal_image6 }}" width="180"/>
 
 </p>
 
@@ -156,7 +156,7 @@
 
 <p align="center">
 <a href="https://github.com/nclsbayona" target="_blank">
- <img alt="Github" src="https://img.shields.io/badge/GitHub-%2312100E.svg?&style=for-the-badge&logo=Github&logoColor=white">
+ <img alt="Github" src="https://img.shields.io/badge/GitHub-%2312180E.svg?&style=for-the-badge&logo=Github&logoColor=white">
 </a>
 <a href="https://twitter.com/nclsbayona" target="_blank">
  <img alt="Twitter" src="https://img.shields.io/badge/twitter-%231DA1F2.svg?&style=for-the-badge&logo=twitter&logoColor=white">
