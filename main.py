@@ -59,7 +59,6 @@ async def getDrink(format="string") -> Dict[str, str]:
         return {"error_msj": "An error ocurred please try again"}
 
 
-
 async def getAffirmation() -> Dict[str, str]:
     """Gets a translated text from an quote to a random pop character language from funtranslations API"""
     try:
@@ -186,7 +185,6 @@ async def getAffirmation() -> Dict[str, str]:
         }
 
 
-
 async def getWakaStats(waka_key: str = None, format: str = "string") -> Dict[str, str]:
     """Gets WAKATIME API data, and returns in a dictionary some of the information"""
     try:
@@ -236,7 +234,6 @@ async def getWakaStats(waka_key: str = None, format: str = "string") -> Dict[str
         return {"error_msj": "An error ocurred please verify your inputs and try again"}
 
 
-
 async def getNasaImage(nasa_api_key: str = None) -> Dict[str, str]:
     """Gets the image of the day from NASA Apod API"""
     try:
@@ -248,7 +245,7 @@ async def getNasaImage(nasa_api_key: str = None) -> Dict[str, str]:
         nasa["universe_image_name"] = response["title"]
         nasa[
             "universe_image_copyright"
-        ] = f'©️ {response["copyright"]} @ {response["date"]}'.replace('\n','')
+        ] = f'©️ {response["copyright"]} @ {response["date"]}'.replace("\n","")
         nasa["universe_image_url"] = response["url"]
         nasa["universe_image_description"] = response["explanation"]
 
@@ -256,7 +253,6 @@ async def getNasaImage(nasa_api_key: str = None) -> Dict[str, str]:
 
     except Exception or KeyboardInterrupt:
         return {"error_msj": "An error ocurred please try again"}
-
 
 
 async def getAll(
@@ -274,7 +270,6 @@ async def getAll(
         return dictionary
     except Exception or KeyboardInterrupt:
         return {"error_msj": "Error ocurred"}
-
 
 
 if __name__ == "__main__":
