@@ -3,7 +3,7 @@
 ## For this action you need to have as secrets in your repository
 
 - WAKATIME_API_KEY : Your WakaTime API Key, so the request can be made to the API to get the desired data about your programming activity
-- GH_TOKEN: A Github token with repo and user access to publish new readme
+- GH_TOKEN: A GitHub token with repository and user access to publish new readme
 - NASA_KEY: A NASA Apod API Key, so the request can be made to the API to get the desired data about a picture of the universe
 
 Please use:
