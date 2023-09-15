@@ -182,7 +182,7 @@ async def getAffirmation() -> Dict[str, str]:
     except Exception or KeyboardInterrupt:
         return {
             "text_affirmation1": "An error ocurred", 
-            "text_affirmation2": "Please try again later"
+            "text_affirmation2": "Please try again later",
         }
 
 
