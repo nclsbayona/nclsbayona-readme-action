@@ -8,10 +8,11 @@
 <img src="logo.png" alt="Logo" width="480">
 </p>
 
-<strong align="center">{{ text_affirmation1 }}</strong>
+
 
 <p align="center">
 
+  <strong align="center">{{ text_affirmation1 }}</strong>
   <i>{{ text_affirmation2 }}</i>
 
 </p>
