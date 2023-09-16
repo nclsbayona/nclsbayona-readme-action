@@ -19,7 +19,7 @@
 ----
 
 <details>
-<summary>Maybe a drink? 🍹</summary>
+<summary>Maybe you're looking for a drink? 🍹</summary>
 <br />
 <h4 align="center">{{ drink_name }}</h4>
 <p align="center">
