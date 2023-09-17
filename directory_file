@@ -161,6 +161,50 @@
 <img src="{{ animal_image6 }}" width="180"/>
 </td>
 </tr>
+<tr>
+<td>
+<img src="{{ animal_image7 }}" width="180"/>
+</td>
+<td>
+<img src="{{ animal_image8 }}" width="180"/>
+</td>
+<td>
+<img src="{{ animal_image9 }}" width="180"/>
+</td>
+</tr>
+<tr>
+<td>
+<img src="{{ animal_image10 }}" width="180"/>
+</td>
+<td>
+<img src="{{ animal_image11 }}" width="180"/>
+</td>
+<td>
+<img src="{{ animal_image12 }}" width="180"/>
+</td>
+</tr>
+<tr>
+<td>
+<img src="{{ animal_image13 }}" width="180"/>
+</td>
+<td>
+<img src="{{ animal_image14 }}" width="180"/>
+</td>
+<td>
+<img src="{{ animal_image15 }}" width="180"/>
+</td>
+</tr>
+<tr>
+<td>
+<img src="{{ animal_image16 }}" width="180"/>
+</td>
+<td>
+<img src="{{ animal_image17 }}" width="180"/>
+</td>
+<td>
+<img src="{{ animal_image18 }}" width="180"/>
+</td>
+</tr>
 </table>
 
 ----
