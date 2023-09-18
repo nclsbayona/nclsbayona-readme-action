@@ -137,6 +137,7 @@
 <summary>Maybe you are looking for some cool animal pictures?</summary>
 
 <br />
+<h4 align="center">Here you go!</h4>
 <p align="center">
 
 <img src="{{ animal_image1 }}" width="180"/>
