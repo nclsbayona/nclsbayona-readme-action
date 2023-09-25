@@ -1,10 +1,10 @@
 FROM docker.io/python:3
 
-ADD main.py /main.py
+COPY main.py /main.py
 
-ADD directory_file /directory_file
+COPY directory_file /directory_file
 
-ADD requirements.txt /requirements.txt
+COPY requirements.txt /requirements.txt
 
 RUN chmod +x /main.py
 
