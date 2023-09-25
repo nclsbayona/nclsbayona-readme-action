@@ -357,16 +357,10 @@ async def getAll(
             getAffirmation(),
             getWakaStats(waka_key=waka_time_api_key, format=format),
             getNasaImage(nasa_api_key=nasa_api_key),
-            getAnimals()
+            getAnimals(),
         )
 
-        dictionary: Dict[str, str] = {
-            **drink,
-            **affirmation,
-            **waka,
-            **nasa,
-            **animals
-        }
+        dictionary: Dict[str, str] = {**drink, **affirmation, **waka, **nasa, **animals }
 
         return dictionary
     except Exception or KeyboardInterrupt as e:
