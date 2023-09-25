@@ -2,6 +2,8 @@
 from asyncio import get_event_loop
 import asyncio
 from base64 import b64encode
+import traceback
+
 
 # This is from PyGithub
 from github import Github, InputGitAuthor
@@ -59,6 +61,7 @@ async def getDrink(format="string") -> Dict[str, str]:
     except Exception or KeyboardInterrupt as e:
         print("\nError in: getDrink with format ", format)
         print(e)
+        traceback.print_exc()
         return {"error_msj": "An error ocurred please try again"}
 
 
@@ -184,6 +187,7 @@ async def getAffirmation() -> Dict[str, str]:
     except Exception or KeyboardInterrupt as e:
         print("\nError in: getAffirmation")
         print(e)
+        traceback.print_exc()
         return {
             "text_affirmation1": "Always remember ... ",
             "text_affirmation2": "Mistakes don't make you less capable",
@@ -238,6 +242,7 @@ async def getWakaStats(waka_key: str = None, format: str = "string") -> Dict[str
     except Exception or KeyboardInterrupt as e:
         print("\nError in: getWakaStats")
         print(e)
+        traceback.print_exc()
         return {"error_msj": "An error ocurred please verify your inputs and try again"}
 
 
@@ -261,6 +266,7 @@ async def getNasaImage(nasa_api_key: str = None) -> Dict[str, str]:
     except Exception or KeyboardInterrupt as e:
         print("\nError in: getNasaImage")
         print(e)
+        traceback.print_exc()
         return {
             "universe_image_name": "Aurora Borealis",
             "universe_image_copyright": "Aurora Borealis by Tobias Bjørkli at Pexels",
@@ -333,6 +339,7 @@ async def getAnimals() -> Dict[str, str]:
     except Exception or KeyboardInterrupt as e:
         print("\nError in: getAnimals")
         print(e)
+        traceback.print_exc()
         return {
             "animal_image1": "https://images.pexels.com/photos/1661179/pexels-photo-1661179.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
             "animal_image2": "https://images.pexels.com/photos/17811/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
@@ -376,6 +383,7 @@ async def getAll(
     except Exception or KeyboardInterrupt as e:
         print("\nError in: getAll")
         print(e)
+        traceback.print_exc()
         return {"error_msj": "Error ocurred"}
 
 
