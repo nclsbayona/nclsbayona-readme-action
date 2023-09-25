@@ -359,7 +359,8 @@ async def getAll(
         animals = results[4]
         dictionary: Dict[str, str] = {**drink, **affirmation, **waka, **nasa, **animals}
         return dictionary
-    except Exception or KeyboardInterrupt:
+    except Exception or KeyboardInterrupt as e:
+        print(e)
         return {"error_msj": "Error ocurred"}
 
 
