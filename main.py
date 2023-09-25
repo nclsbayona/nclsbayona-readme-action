@@ -56,7 +56,8 @@ async def getDrink(format="string") -> Dict[str, str]:
 
         return drink
 
-    except Exception or KeyboardInterrupt:
+    except Exception or KeyboardInterrupt as e:
+        print(e)
         return {"error_msj": "An error ocurred please try again"}
 
 
@@ -179,7 +180,8 @@ async def getAffirmation() -> Dict[str, str]:
 
         return new_dictionary
 
-    except Exception or KeyboardInterrupt:
+    except Exception or KeyboardInterrupt as e:
+        print(e)
         return {
             "text_affirmation1": "Always remember ... ",
             "text_affirmation2": "Mistakes don't make you less capable",
@@ -231,7 +233,8 @@ async def getWakaStats(waka_key: str = None, format: str = "string") -> Dict[str
         del temp_list, table_os, table_languages
         return dictionary
 
-    except Exception or KeyboardInterrupt:
+    except Exception or KeyboardInterrupt as e:
+        print(e)
         return {"error_msj": "An error ocurred please verify your inputs and try again"}
 
 
@@ -252,7 +255,8 @@ async def getNasaImage(nasa_api_key: str = None) -> Dict[str, str]:
 
         return nasa
 
-    except Exception or KeyboardInterrupt:
+    except Exception or KeyboardInterrupt as e:
+        print(e)
         return {
             "universe_image_name": "Aurora Borealis",
             "universe_image_copyright": "Aurora Borealis by Tobias Bjørkli at Pexels",
@@ -322,7 +326,8 @@ async def getAnimals() -> Dict[str, str]:
 
         return animals
 
-    except Exception or KeyboardInterrupt:
+    except Exception or KeyboardInterrupt as e:
+        print(e)
         return {
             "animal_image1": "https://images.pexels.com/photos/1661179/pexels-photo-1661179.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
             "animal_image2": "https://images.pexels.com/photos/17811/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
