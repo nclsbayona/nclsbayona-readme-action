@@ -1,5 +1,6 @@
 # coding: utf-8
 from asyncio import get_event_loop
+import asyncio
 from base64 import b64encode
 
 # This is from PyGithub
