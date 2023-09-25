@@ -321,7 +321,7 @@ async def getAnimals() -> Dict[str, str]:
         the_response: Response = get("https://api.animality.xyz/img/kangaroo")
         response: Dict[str, str] = the_response.json()
         animals["animal_image11"] = response["image"]
-        the_response: Response = get("https://api.animality.xyz/img/bunny")
+        the_response: Response = get("https://api.animality.xyz/img/rabbit")
         response: Dict[str, str] = the_response.json()
         animals["animal_image12"] = response["image"]
         the_response: Response = get("https://api.animality.xyz/img/lion")
@@ -342,6 +342,24 @@ async def getAnimals() -> Dict[str, str]:
         the_response: Response = get("https://api.animality.xyz/img/capybara")
         response: Dict[str, str] = the_response.json()
         animals["animal_image18"] = response["image"]
+        the_response: Response = get("https://api.animality.xyz/img/hedgehog")
+        response: Dict[str, str] = the_response.json()
+        animals["animal_image19"] = response["image"]
+        the_response: Response = get("https://api.animality.xyz/img/turtle")
+        response: Dict[str, str] = the_response.json()
+        animals["animal_image20"] = response["image"]
+        the_response: Response = get("https://api.animality.xyz/img/narwhal")
+        response: Dict[str, str] = the_response.json()
+        animals["animal_image21"] = response["image"]
+        the_response: Response = get("https://api.animality.xyz/img/squirrel")
+        response: Dict[str, str] = the_response.json()
+        animals["animal_image22"] = response["image"]
+        the_response: Response = get("https://api.animality.xyz/img/fish")
+        response: Dict[str, str] = the_response.json()
+        animals["animal_image23"] = response["image"]
+        the_response: Response = get("https://api.animality.xyz/img/horse")
+        response: Dict[str, str] = the_response.json()
+        animals["animal_image24"] = response["image"]
 
         return animals
 
