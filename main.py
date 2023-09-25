@@ -360,13 +360,13 @@ async def getAll(
             getAnimals()
         )
 
-    dictionary: Dict[str, str] = {
-        **drink,
-        **affirmation,
-        **waka,
-        **nasa,
-        **animals
-    }
+        dictionary: Dict[str, str] = {
+            **drink,
+            **affirmation,
+            **waka,
+            **nasa,
+            **animals
+        }
 
         return dictionary
     except Exception or KeyboardInterrupt as e:
