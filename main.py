@@ -45,7 +45,10 @@ async def getDrink(format="string") -> Dict[str, str]:
 
         tot: int = len(quantities)
         for i in range(tot):
-            table_drink.add_row([ingredients[i], quantities[i]])
+            try:
+                table_drink.add_row([ingredients[i], quantities[i]])
+            except:
+                table_drink.add_row(["", quantities[i]])
 
         if format == "string":
             drink["table_drink"] = table_drink.get_string(format=True)
@@ -87,7 +90,7 @@ async def getAffirmation() -> Dict[str, str]:
         # Be sure it's a random choice
         translate_to: str = choice(characters)
         #
-        choices: int = randint(1, 3)
+        choices: int = randint(1, 2)
         response: Response = None
         affirmation: str = None
         if choices == 1:
@@ -98,11 +101,12 @@ async def getAffirmation() -> Dict[str, str]:
             response = get("https://zenquotes.io/api/random")
             affirmation = (response.json())[0].get("q")
 
+        """
         elif choices == 3:
             response = get("https://quotes.rest/qod.json?language=en")
-            affirmation = (
-                (response.json()).get("contents").get("quotes")[0].get("quote")
-            )
+            affirmation = (response.json()).get("contents").get("quotes")[0].get("quote")
+        """
+    
 
         del choices
         text: str = affirmation
@@ -255,9 +259,14 @@ async def getNasaImage(nasa_api_key: str = None) -> Dict[str, str]:
         response: Dict[str, str] = the_response.json()
         nasa: Dict[str, str] = dict()
         nasa["universe_image_name"] = response["title"]
-        nasa[
-            "universe_image_copyright"
-        ] = f'©️ {response["copyright"]} @ {response["date"]}'.replace("\n", "")
+        try:
+            nasa[
+                "universe_image_copyright"
+            ] = f'©️ {response["copyright"]} @ {response["date"]}'.replace("\n", "")
+        except:
+            nasa[
+                "universe_image_copyright"
+            ] = f'©️ NASA @ {response["date"]}'.replace("\n", "")
         nasa["universe_image_url"] = response["url"]
         nasa["universe_image_description"] = response["explanation"]
 
@@ -281,58 +290,58 @@ async def getAnimals() -> Dict[str, str]:
         the_response: Response = get("https://api.animality.xyz/img/dog")
         response: Dict[str, str] = the_response.json()
         animals: Dict[str, str] = dict()
-        animals["animal_image1"] = response["link"]
+        animals["animal_image1"] = response["image"]
         the_response: Response = get("https://api.animality.xyz/img/duck")
         response: Dict[str, str] = the_response.json()
-        animals["animal_image2"] = response["link"]
+        animals["animal_image2"] = response["image"]
         the_response: Response = get("https://api.animality.xyz/img/fox")
         response: Dict[str, str] = the_response.json()
-        animals["animal_image3"] = response["link"]
+        animals["animal_image3"] = response["image"]
         the_response: Response = get("https://api.animality.xyz/img/cat")
         response: Dict[str, str] = the_response.json()
-        animals["animal_image4"] = response["link"]
+        animals["animal_image4"] = response["image"]
         the_response: Response = get("https://api.animality.xyz/img/bird")
         response: Dict[str, str] = the_response.json()
-        animals["animal_image5"] = response["link"]
+        animals["animal_image5"] = response["image"]
         the_response: Response = get("https://api.animality.xyz/img/panda")
         response: Dict[str, str] = the_response.json()
-        animals["animal_image6"] = response["link"]
+        animals["animal_image6"] = response["image"]
         the_response: Response = get("https://api.animality.xyz/img/redpanda")
         response: Dict[str, str] = the_response.json()
-        animals["animal_image7"] = response["link"]
+        animals["animal_image7"] = response["image"]
         the_response: Response = get("https://api.animality.xyz/img/koala")
         response: Dict[str, str] = the_response.json()
-        animals["animal_image8"] = response["link"]
+        animals["animal_image8"] = response["image"]
         the_response: Response = get("https://api.animality.xyz/img/whale")
         response: Dict[str, str] = the_response.json()
-        animals["animal_image9"] = response["link"]
+        animals["animal_image9"] = response["image"]
         the_response: Response = get("https://api.animality.xyz/img/dolphin")
         response: Dict[str, str] = the_response.json()
-        animals["animal_image10"] = response["link"]
+        animals["animal_image10"] = response["image"]
         the_response: Response = get("https://api.animality.xyz/img/kangaroo")
         response: Dict[str, str] = the_response.json()
-        animals["animal_image11"] = response["link"]
+        animals["animal_image11"] = response["image"]
         the_response: Response = get("https://api.animality.xyz/img/bunny")
         response: Dict[str, str] = the_response.json()
-        animals["animal_image12"] = response["link"]
+        animals["animal_image12"] = response["image"]
         the_response: Response = get("https://api.animality.xyz/img/lion")
         response: Dict[str, str] = the_response.json()
-        animals["animal_image13"] = response["link"]
+        animals["animal_image13"] = response["image"]
         the_response: Response = get("https://api.animality.xyz/img/bear")
         response: Dict[str, str] = the_response.json()
-        animals["animal_image14"] = response["link"]
+        animals["animal_image14"] = response["image"]
         the_response: Response = get("https://api.animality.xyz/img/frog")
         response: Dict[str, str] = the_response.json()
-        animals["animal_image15"] = response["link"]
+        animals["animal_image15"] = response["image"]
         the_response: Response = get("https://api.animality.xyz/img/penguin")
         response: Dict[str, str] = the_response.json()
-        animals["animal_image16"] = response["link"]
+        animals["animal_image16"] = response["image"]
         the_response: Response = get("https://api.animality.xyz/img/axolotl")
         response: Dict[str, str] = the_response.json()
-        animals["animal_image17"] = response["link"]
+        animals["animal_image17"] = response["image"]
         the_response: Response = get("https://api.animality.xyz/img/capybara")
         response: Dict[str, str] = the_response.json()
-        animals["animal_image18"] = response["link"]
+        animals["animal_image18"] = response["image"]
 
         return animals
 
