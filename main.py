@@ -252,7 +252,12 @@ async def getNasaImage(nasa_api_key: str = None) -> Dict[str, str]:
         return nasa
 
     except Exception or KeyboardInterrupt:
-        return {"error_msj": "An error ocurred please try again"}
+        return {
+            "universe_image_name": "Outer Space Background",
+            "universe_image_copyright": "Image by rawpixel.com at Freepik",
+            "universe_image_url": "https://img.freepik.com/free-photo/outer-space-background_53876-88651.jpg?w=1060&t=st=1695603102~exp=1695603702~hmac=124c2244f1d9fa53cb0a3cb24f182b18e9415ac708fe6b5b501d9eb6ed9b3598",
+            "universe_image_description": "Outer Space Background Photo",
+        }
 
 
 async def getAnimals() -> Dict[str, str]:
@@ -317,7 +322,26 @@ async def getAnimals() -> Dict[str, str]:
         return animals
 
     except Exception or KeyboardInterrupt:
-        return {"error_msj": "An error ocurred please try again"}
+        return {
+            "animal_image1": "https://images.pexels.com/photos/1661179/pexels-photo-1661179.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "animal_image2": "https://images.pexels.com/photos/17811/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "animal_image3": "https://images.pexels.com/photos/2295744/pexels-photo-2295744.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "animal_image4": "https://images.pexels.com/photos/1851164/pexels-photo-1851164.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "animal_image5": "https://images.pexels.com/photos/3608263/pexels-photo-3608263.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "animal_image6": "https://images.pexels.com/photos/1059823/pexels-photo-1059823.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "animal_image7": "https://images.pexels.com/photos/106686/pexels-photo-106686.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "animal_image8": "https://images.pexels.com/photos/4666751/pexels-photo-4666751.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "animal_image9": "https://images.pexels.com/photos/3396657/pexels-photo-3396657.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "animal_image10": "https://images.pexels.com/photos/568022/pexels-photo-568022.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "animal_image11": "https://images.pexels.com/photos/674318/pexels-photo-674318.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "animal_image12": "https://images.pexels.com/photos/927497/pexels-photo-927497.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "animal_image13": "https://images.pexels.com/photos/3493730/pexels-photo-3493730.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "animal_image14": "https://images.pexels.com/photos/567540/pexels-photo-567540.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "animal_image15": "https://images.pexels.com/photos/41315/africa-african-animal-cat-41315.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "animal_image16": "https://images.pexels.com/photos/982230/pexels-photo-982230.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "animal_image17": "https://images.pexels.com/photos/4666747/pexels-photo-4666747.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "animal_image18": "https://images.pexels.com/photos/2313396/pexels-photo-2313396.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        }
 
 
 async def getAll(
