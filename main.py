@@ -57,6 +57,7 @@ async def getDrink(format="string") -> Dict[str, str]:
         return drink
 
     except Exception or KeyboardInterrupt as e:
+        print("\nError in: getDrink with format ", format)
         print(e)
         return {"error_msj": "An error ocurred please try again"}
 
@@ -181,6 +182,7 @@ async def getAffirmation() -> Dict[str, str]:
         return new_dictionary
 
     except Exception or KeyboardInterrupt as e:
+        print("\nError in: getAffirmation")
         print(e)
         return {
             "text_affirmation1": "Always remember ... ",
@@ -234,6 +236,7 @@ async def getWakaStats(waka_key: str = None, format: str = "string") -> Dict[str
         return dictionary
 
     except Exception or KeyboardInterrupt as e:
+        print("\nError in: getWakaStats")
         print(e)
         return {"error_msj": "An error ocurred please verify your inputs and try again"}
 
@@ -256,6 +259,7 @@ async def getNasaImage(nasa_api_key: str = None) -> Dict[str, str]:
         return nasa
 
     except Exception or KeyboardInterrupt as e:
+        print("\nError in: getNasaImage")
         print(e)
         return {
             "universe_image_name": "Aurora Borealis",
@@ -327,6 +331,7 @@ async def getAnimals() -> Dict[str, str]:
         return animals
 
     except Exception or KeyboardInterrupt as e:
+        print("\nError in: getAnimals")
         print(e)
         return {
             "animal_image1": "https://images.pexels.com/photos/1661179/pexels-photo-1661179.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
@@ -369,6 +374,7 @@ async def getAll(
 
         return dictionary
     except Exception or KeyboardInterrupt as e:
+        print("\nError in: getAll")
         print(e)
         return {"error_msj": "Error ocurred"}
 
