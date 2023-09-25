@@ -254,10 +254,10 @@ async def getNasaImage(nasa_api_key: str = None) -> Dict[str, str]:
 
     except Exception or KeyboardInterrupt:
         return {
-            "universe_image_name": "Outer Space Background",
-            "universe_image_copyright": "Image by rawpixel.com at Freepik",
-            "universe_image_url": "https://img.freepik.com/free-photo/outer-space-background_53876-88651.jpg?w=1060&t=st=1695603102~exp=1695603702~hmac=124c2244f1d9fa53cb0a3cb24f182b18e9415ac708fe6b5b501d9eb6ed9b3598",
-            "universe_image_description": "Outer Space Background Photo",
+            "universe_image_name": "Aurora Borealis",
+            "universe_image_copyright": "Aurora Borealis by Tobias Bjørkli at Pexels",
+            "universe_image_url": "https://images.pexels.com/photos/1938351/pexels-photo-1938351.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "universe_image_description": "Picture of a beautiful place on earth",
         }
 
 
