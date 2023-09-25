@@ -10,6 +10,6 @@ RUN chmod +x /main.py
 
 RUN python -m pip install --upgrade pip wheel setuptools
 
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir --requirement requirements.txt
 
 ENTRYPOINT [ "python", "/main.py" ]
