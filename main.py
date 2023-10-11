@@ -292,6 +292,7 @@ async def getNews(news_api_key: str = None) -> Dict[str, str]:
         )
         response: Dict[str, str] = the_response.json()
         if response["status"] != "ok":
+            print(response["code"], response["message"])
             raise Exception("Something happened")
         news: List[Dict[str, str]] = response["articles"]
         section: str = "<ul>"
