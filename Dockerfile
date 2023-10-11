@@ -20,6 +20,7 @@ RUN python -m pip install --upgrade pip wheel setuptools
 ENV WAKATIME_API_KEY=0
 ENV NASA_KEY=0
 ENV GH_TOKEN=0
+ENV NEWS_API_KEY=0
 
 # Install Python dependencies from requirements.txt without caching
 RUN pip install --no-cache-dir -r /requirements.txt
