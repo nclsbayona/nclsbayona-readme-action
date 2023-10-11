@@ -295,7 +295,7 @@ async def getNews(news_api_key: str = None) -> Dict[str, str]:
         news: List[Dict[str, str]] = response["articles"]
         section: str = ""
         for article in news:
-            this_article: str = "<details>\n
+            this_article: str = "<details>\n"
             this_article += f'<summary>{article["title"]} by {article["author"]}</summary>\n'
             this_article += '<p align="center">\n'
             this_article += f'<img src="{article["urlToImage"]}" alt="{article["title"]}" />\n\n<a href="{article["url"]}" > {article["description"]} </a> \n'
