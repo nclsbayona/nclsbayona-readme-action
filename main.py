@@ -1,4 +1,3 @@
-from html import unescape
 from asyncio import get_event_loop
 import asyncio
 from base64 import b64encode
@@ -303,7 +302,7 @@ async def getNews(news_api_key: str = None) -> Dict[str, str]:
             section += this_article + "\n\n"
         section += ""
         return {
-            "news_section": unescape(section),
+            "news_section": section,
         }
 
     except Exception or KeyboardInterrupt as e:
@@ -311,7 +310,7 @@ async def getNews(news_api_key: str = None) -> Dict[str, str]:
         print(e)
         print_exc()
         return {
-            "news_section": unescape("# Excuse me, something unexpected happened!"),
+            "news_section": "# Excuse me, something unexpected happened!",
         }
 
 
