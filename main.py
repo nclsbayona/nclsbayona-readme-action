@@ -287,8 +287,7 @@ async def getNews(news_api_key: str = None) -> Dict[str, str]:
     """Gets some news related to tech"""
     try:
         the_response: Response = get(
-            "https://newsapi.org/v2/top-headlines?pageSize=5&language=en&category=technology&apiKey="
-            + news_api_key
+            f"https://newsapi.org/v2/top-headlines?pageSize=5&language=en&category=technology&apiKey={news_api_key}"
         )
         response: Dict[str, str] = the_response.json()
         if response["status"] != "ok":
