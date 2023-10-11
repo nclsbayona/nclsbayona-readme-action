@@ -2,7 +2,6 @@
 from asyncio import get_event_loop
 import asyncio
 from base64 import b64encode
-import traceback
 
 
 # This is from PyGithub
@@ -64,7 +63,7 @@ async def getDrink(format="string") -> Dict[str, str]:
     except Exception or KeyboardInterrupt as e:
         print("\nError in: getDrink with format ", format)
         print(e)
-        traceback.print_exc()
+        print_exc()
         return {"error_msj": "An error ocurred please try again"}
 
 
@@ -191,7 +190,7 @@ async def getAffirmation() -> Dict[str, str]:
     except Exception or KeyboardInterrupt as e:
         print("\nError in: getAffirmation")
         print(e)
-        traceback.print_exc()
+        print_exc()
         return {
             "text_affirmation1": "Always remember ... ",
             "text_affirmation2": "Mistakes don't make you less capable",
@@ -246,7 +245,7 @@ async def getWakaStats(waka_key: str = None, format: str = "string") -> Dict[str
     except Exception or KeyboardInterrupt as e:
         print("\nError in: getWakaStats")
         print(e)
-        traceback.print_exc()
+        print_exc()
         return {"error_msj": "An error ocurred please verify your inputs and try again"}
 
 
@@ -275,12 +274,42 @@ async def getNasaImage(nasa_api_key: str = None) -> Dict[str, str]:
     except Exception or KeyboardInterrupt as e:
         print("\nError in: getNasaImage")
         print(e)
-        traceback.print_exc()
+        print_exc()
         return {
             "universe_image_name": "Aurora Borealis",
             "universe_image_copyright": "Aurora Borealis by Tobias Bjørkli at Pexels",
             "universe_image_url": "https://images.pexels.com/photos/1938351/pexels-photo-1938351.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
             "universe_image_description": "Picture of a beautiful place on earth",
+        }
+
+
+async def getNews(news_api_key: str = None) -> Dict[str, str]:
+    """Gets some news related to tech"""
+    try:
+        the_response: Response = get(
+            "https://newsapi.org/v2/top-headlines?pageSize=5&language=en&category=technology&apiKey=" + news_api_key
+        )
+        response: Dict[str, str] = the_response.json()
+        if (response["status"] != "ok"):
+            raise Exception("Something happened")
+        news: List[Dict[str, str]] = response["articles"]
+        section: str = "<ul>"
+        for article in news:
+            this_article: str = ""
+            this_article += f"\n<summary>{article["title"]} by {article["author"]}</summary>\n"
+            this_article += f'\n<p align="center">\n<img src="{article["urlToImage"]}"/>\n<a href="{article["url"]}">{article["description"]}</a>\n</p>\n'
+            section += "\n<li>\n<details>\n" + this_article + "\n</details>\n</li>\n"
+        section += "</ul>"
+        return {
+            "news_section": section,
+        }
+
+    except Exception or KeyboardInterrupt as e:
+        print("\nError in: getNews")
+        print(e)
+        print_exc()
+        return {
+            "news_section": "# Excuse me, something unexpected happened!",
         }
 
 
@@ -366,7 +395,7 @@ async def getAnimals() -> Dict[str, str]:
     except Exception or KeyboardInterrupt as e:
         print("\nError in: getAnimals")
         print(e)
-        traceback.print_exc()
+        print_exc()
         return {
             "animal_image1": "https://images.pexels.com/photos/1661179/pexels-photo-1661179.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
             "animal_image2": "https://images.pexels.com/photos/17811/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
@@ -393,24 +422,26 @@ async def getAll(
     waka_time_api_key: str = None,
     nasa_api_key: str = None,
     format: str = "string",
+    news_api_key: str = None,
 ) -> Dict[str, str]:
     """Gets the information gathered using the rest of the functions"""
     try:
-        drink, affirmation, waka, nasa, animals = await asyncio.gather(
+        drink, affirmation, waka, nasa, animals, news = await asyncio.gather(
             getDrink(format=format),
             getAffirmation(),
             getWakaStats(waka_key=waka_time_api_key, format=format),
             getNasaImage(nasa_api_key=nasa_api_key),
             getAnimals(),
+            getNews(news_api_key=news_api_key),
         )
 
-        dictionary: Dict[str, str] = {**drink, **affirmation, **waka, **nasa, **animals}
+        dictionary: Dict[str, str] = {**drink, **affirmation, **waka, **nasa, **animals, **news}
 
         return dictionary
     except Exception or KeyboardInterrupt as e:
         print("\nError in: getAll")
         print(e)
-        traceback.print_exc()
+        print_exc()
         return {"error_msj": "Error ocurred"}
 
 
@@ -434,12 +465,14 @@ if __name__ == "__main__":
             path_to_template_file: str = "/directory_file",
             waka_time_api_key: str = None,
             nasa_api_key: str = None,
+            news_api_key: str = None,
             format: str = "string",
         ) -> bool:
             """Updates a file with the information gathered using the rest of the functions"""
             try:
                 dictionary = await getAll(
                     waka_time_api_key=waka_time_api_key,
+                    news_api_key=news_api_key,
                     nasa_api_key=nasa_api_key,
                     format=format,
                 )
@@ -468,16 +501,18 @@ if __name__ == "__main__":
                 print_exc()
                 return False
 
-        async def main(waka_time_api_key, nasa_api_key, format):
+        async def main(waka_time_api_key, nasa_api_key, format, news_api_key):
             await updateFile(
                 waka_time_api_key=waka_time_api_key,
                 nasa_api_key=nasa_api_key,
                 format=format,
+                news_api_key=news_api_key,
             )
 
         waka_api_key = environ["WAKATIME_API_KEY"]
         nasa_api_key = environ["NASA_KEY"]
         ghtoken = environ["GH_TOKEN"]
+        news_api_key = environ["NEWS_API_KEY"]
         format = "html"
         if ghtoken is None:
             raise Exception("Token not available")
@@ -502,6 +537,7 @@ if __name__ == "__main__":
             main(
                 waka_time_api_key=waka_api_key,
                 nasa_api_key=nasa_api_key,
+                news_api_key=news_api_key,
                 format=format,
             )
         )
