@@ -299,7 +299,7 @@ async def getNews(news_api_key: str = None) -> Dict[str, str]:
             this_article += f'<summary>{article["title"]} by {article["author"]}</summary>\n'
             this_article += '<p align="center">\n'
             this_article += f'<img src="{article["urlToImage"]}" alt="{article["title"]}" />\n\n<a href="{article["url"]}" > {article["description"]} </a> \n'
-            this_article += '</p>\n\n</details>'
+            this_article += '</p>\n<br />\n\n</details>'
             section += this_article + "\n\n"
         section += ""
         return {
