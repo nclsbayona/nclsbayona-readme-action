@@ -294,13 +294,14 @@ async def getNews(news_api_key: str = None) -> Dict[str, str]:
             print(response["code"], response["message"])
             raise Exception("Something happened")
         news: List[Dict[str, str]] = response["articles"]
-        section: str = "<ul>"
+        section: str = ""
         for article in news:
-            this_article: str = ""
-            this_article += f'\n<summary>{article["title"]} by {article["author"]}</summary>\n'
-            this_article += f'\n<p align="center">\n<img src="{article["urlToImage"]}"/>\n<a href="{article["url"]}">{article["description"]}</a>\n</p>\n'
-            section += "\n<li>\n<details>\n" + this_article + "\n</details>\n</li>\n"
-        section += "</ul>"
+            this_article: str = '<p align="center">\n'
+            this_article += f'<h5>{article["title"]} by {article["author"]}</h5>\n'
+            this_article += f'<img src="{article["urlToImage"]}" />\n<a href="{article["url"]}" > {article["description"]} </a> \n'
+            this_article += '</p>'
+            section += this_article + "\n\n"
+        section += ""
         return {
             "news_section": section,
         }
