@@ -237,11 +237,17 @@
 
 </details>
 
+
 <details>
-<summary>Maybe you're looking for some tech-related news? 🪂</summary>
+<summary>Maybe you're looking for some tech-related news? </summary>
+
 <br />
+
 {{ news_section }}
+
 </details>
+
+
 ----
 
 <h3 align="center">Contact me! 📇</h3>
