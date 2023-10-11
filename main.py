@@ -287,10 +287,11 @@ async def getNews(news_api_key: str = None) -> Dict[str, str]:
     """Gets some news related to tech"""
     try:
         the_response: Response = get(
-            "https://newsapi.org/v2/top-headlines?pageSize=5&language=en&category=technology&apiKey=" + news_api_key
+            "https://newsapi.org/v2/top-headlines?pageSize=5&language=en&category=technology&apiKey="
+            + news_api_key
         )
         response: Dict[str, str] = the_response.json()
-        if (response["status"] != "ok"):
+        if response["status"] != "ok":
             raise Exception("Something happened")
         news: List[Dict[str, str]] = response["articles"]
         section: str = "<ul>"
@@ -435,7 +436,14 @@ async def getAll(
             getNews(news_api_key=news_api_key),
         )
 
-        dictionary: Dict[str, str] = {**drink, **affirmation, **waka, **nasa, **animals, **news}
+        dictionary: Dict[str, str] = {
+            **drink, 
+            **affirmation, 
+            **waka, 
+            **nasa, 
+            **animals, 
+            **news,
+        }
 
         return dictionary
     except Exception or KeyboardInterrupt as e:
