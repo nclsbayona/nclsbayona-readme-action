@@ -191,8 +191,8 @@ async def getAffirmation() -> Dict[str, str]:
         print(e)
         print_exc()
         return {
-            "text_affirmation1": "Always remember ... ",
-            "text_affirmation2": "Mistakes don't make you less capable",
+            "text_affirmation1": "Always remember: ",
+            "text_affirmation2": "Mistakes don't make you less capable ...",
         }
 
 
