@@ -1,8 +1,7 @@
 #### 
 FROM debian:12
 RUN apt-get update
-RUN apt-get install python3 python-is-python3 -y
-RUN python -m ensurepip
+RUN apt-get install python3 python-is-python3 python3-pip -y
 ####
 
 ADD main.py /main.py
