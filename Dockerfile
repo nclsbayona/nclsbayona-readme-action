@@ -4,6 +4,9 @@ RUN apt-get update
 RUN apt-get install python3 python-is-python3 python3-full python3-pip -y
 ####
 
+# Set the Working directory
+WORKDIR /
+
 # Copy the main.py file to the root directory of the container
 COPY main.py /main.py
 
@@ -26,4 +29,4 @@ ENV NEWS_API_KEY=0
 RUN python -m venv .venv && .venv/bin/pip install --no-cache-dir --requirement requirements.txt
 
 # Specify the entry point for the container
-ENTRYPOINT [ ".venv/bin/python", "/main.py" ]
+ENTRYPOINT [ "/.venv/bin/python", "/main.py" ]
