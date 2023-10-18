@@ -14,6 +14,6 @@ RUN chmod +x /main.py
 
 # RUN python -m pip install --upgrade pip wheel setuptools
 
-RUN python -m pip install --no-cache-dir --requirement requirements.txt
+RUN python -m venv .venv && .venv/bin/pip install --no-cache-dir --requirement requirements.txt
 
-ENTRYPOINT [ "python", "/main.py" ]
+ENTRYPOINT [ ".venv/bin/python", "/main.py" ]
