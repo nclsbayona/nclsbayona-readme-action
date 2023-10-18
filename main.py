@@ -104,7 +104,6 @@ async def getAffirmation() -> Dict[str, str]:
             response = get("https://quotes.rest/qod.json?language=en")
             affirmation = (response.json()).get("contents").get("quotes")[0].get("quote")
         """
-    
 
         del choices
         text: str = affirmation
@@ -262,9 +261,7 @@ async def getNasaImage(nasa_api_key: str = None) -> Dict[str, str]:
                 "universe_image_copyright"
             ] = f'©️ {response["copyright"]} @ {response["date"]}'.replace("\n", "")
         except:
-            nasa[
-                "universe_image_copyright"
-            ] = f'©️ NASA @ {response["date"]}'.replace("\n", "")
+            nasa["universe_image_copyright"] = f'©️ NASA @ {response["date"]}'.replace("\n", "")
         nasa["universe_image_url"] = response["url"]
         nasa["universe_image_description"] = response["explanation"]
 
@@ -296,10 +293,12 @@ async def getNews(news_api_key: str = None) -> Dict[str, str]:
         section: str = ""
         for article in news:
             this_article: str = "<details>\n"
-            this_article += f'<summary>{article["title"]} by {article["author"]}</summary>\n'
+            this_article += (
+                f'<summary>{article["title"]} by {article["author"]}</summary>\n'
+            )
             this_article += '<p align="center">\n'
             this_article += f'<img src="{article["urlToImage"]}" alt="{article["title"]}" />\n\n<a href="{article["url"]}" > {article["description"]} </a> \n'
-            this_article += '</p>\n<br />\n\n</details>'
+            this_article += "</p>\n<br />\n\n</details>"
             section += this_article + "\n\n"
         section += ""
         return {
@@ -438,11 +437,11 @@ async def getAll(
         )
 
         dictionary: Dict[str, str] = {
-            **drink, 
-            **affirmation, 
-            **waka, 
-            **nasa, 
-            **animals, 
+            **drink,
+            **affirmation,
+            **waka,
+            **nasa,
+            **animals,
             **news,
         }
 
