@@ -261,7 +261,9 @@ async def getNasaImage(nasa_api_key: str = None) -> Dict[str, str]:
                 "universe_image_copyright"
             ] = f'©️ {response["copyright"]} @ {response["date"]}'.replace("\n", "")
         except:
-            nasa["universe_image_copyright"] = f'©️ NASA @ {response["date"]}'.replace("\n", "")
+            nasa["universe_image_copyright"] = f'©️ NASA @ {response["date"]}'.replace(
+                "\n", ""
+            )
         nasa["universe_image_url"] = response["url"]
         nasa["universe_image_description"] = response["explanation"]
 
