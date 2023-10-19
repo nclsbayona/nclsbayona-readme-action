@@ -1,6 +1,7 @@
-# coding: utf-8
 from asyncio import get_event_loop
+import asyncio
 from base64 import b64encode
+
 
 # This is from PyGithub
 from github import Github, InputGitAuthor
@@ -42,7 +43,10 @@ async def getDrink(format="string") -> Dict[str, str]:
 
         tot: int = len(quantities)
         for i in range(tot):
-            table_drink.add_row([ingredients[i], quantities[i]])
+            try:
+                table_drink.add_row([ingredients[i], quantities[i]])
+            except:
+                table_drink.add_row(["", quantities[i]])
 
         if format == "string":
             drink["table_drink"] = table_drink.get_string(format=True)
@@ -55,7 +59,10 @@ async def getDrink(format="string") -> Dict[str, str]:
 
         return drink
 
-    except Exception or KeyboardInterrupt:
+    except Exception or KeyboardInterrupt as e:
+        print("\nError in: getDrink with format ", format)
+        print(e)
+        print_exc()
         return {"error_msj": "An error ocurred please try again"}
 
 
@@ -81,7 +88,7 @@ async def getAffirmation() -> Dict[str, str]:
         # Be sure it's a random choice
         translate_to: str = choice(characters)
         #
-        choices: int = randint(1, 3)
+        choices: int = randint(1, 2)
         response: Response = None
         affirmation: str = None
         if choices == 1:
@@ -92,11 +99,11 @@ async def getAffirmation() -> Dict[str, str]:
             response = get("https://zenquotes.io/api/random")
             affirmation = (response.json())[0].get("q")
 
+        """
         elif choices == 3:
             response = get("https://quotes.rest/qod.json?language=en")
-            affirmation = (
-                (response.json()).get("contents").get("quotes")[0].get("quote")
-            )
+            affirmation = (response.json()).get("contents").get("quotes")[0].get("quote")
+        """
 
         del choices
         text: str = affirmation
@@ -178,10 +185,13 @@ async def getAffirmation() -> Dict[str, str]:
 
         return new_dictionary
 
-    except Exception or KeyboardInterrupt:
+    except Exception or KeyboardInterrupt as e:
+        print("\nError in: getAffirmation")
+        print(e)
+        print_exc()
         return {
-            "text_affirmation1": "An error ocurred",
-            "text_affirmation2": "Please try again later",
+            "text_affirmation1": "Always remember: ",
+            "text_affirmation2": "Mistakes don't make you less capable ...",
         }
 
 
@@ -230,7 +240,10 @@ async def getWakaStats(waka_key: str = None, format: str = "string") -> Dict[str
         del temp_list, table_os, table_languages
         return dictionary
 
-    except Exception or KeyboardInterrupt:
+    except Exception or KeyboardInterrupt as e:
+        print("\nError in: getWakaStats")
+        print(e)
+        print_exc()
         return {"error_msj": "An error ocurred please verify your inputs and try again"}
 
 
@@ -243,86 +256,202 @@ async def getNasaImage(nasa_api_key: str = None) -> Dict[str, str]:
         response: Dict[str, str] = the_response.json()
         nasa: Dict[str, str] = dict()
         nasa["universe_image_name"] = response["title"]
-        nasa[
-            "universe_image_copyright"
-        ] = f'©️ {response["copyright"]} @ {response["date"]}'.replace("\n", "")
+        try:
+            nasa[
+                "universe_image_copyright"
+            ] = f'©️ {response["copyright"]} @ {response["date"]}'.replace("\n", "")
+        except:
+            nasa["universe_image_copyright"] = f'©️ NASA @ {response["date"]}'.replace(
+                "\n", ""
+            )
         nasa["universe_image_url"] = response["url"]
         nasa["universe_image_description"] = response["explanation"]
 
         return nasa
 
-    except Exception or KeyboardInterrupt:
-        return {"error_msj": "An error ocurred please try again"}
+    except Exception or KeyboardInterrupt as e:
+        print("\nError in: getNasaImage")
+        print(e)
+        print_exc()
+        return {
+            "universe_image_name": "Aurora Borealis",
+            "universe_image_copyright": "Aurora Borealis by Tobias Bjørkli at Pexels",
+            "universe_image_url": "https://images.pexels.com/photos/1938351/pexels-photo-1938351.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "universe_image_description": "Picture of a beautiful place on earth",
+        }
+
+
+async def getNews(news_api_key: str = None) -> Dict[str, str]:
+    """Gets some news related to tech"""
+    try:
+        the_response: Response = get(
+            f"https://newsapi.org/v2/top-headlines?pageSize=5&language=en&category=technology&apiKey={news_api_key}"
+        )
+        response: Dict[str, str] = the_response.json()
+        if response["status"] != "ok":
+            print(response["code"], response["message"])
+            raise Exception("Something happened")
+        news: List[Dict[str, str]] = response["articles"]
+        section: str = ""
+        for article in news:
+            this_article: str = "<details>\n"
+            this_article += (
+                f'<summary>{article["title"]} by {article["author"]}</summary>\n'
+            )
+            this_article += '<p align="center">\n'
+            this_article += f'<img src="{article["urlToImage"]}" alt="{article["title"]}" />\n\n<a href="{article["url"]}" > {article["description"]} </a> \n'
+            this_article += "</p>\n<br />\n\n</details>"
+            section += this_article + "\n\n"
+        section += ""
+        return {
+            "news_section": section,
+        }
+
+    except Exception or KeyboardInterrupt as e:
+        print("\nError in: getNews")
+        print(e)
+        print_exc()
+        return {
+            "news_section": "# Excuse me, something unexpected happened!",
+        }
 
 
 async def getAnimals() -> Dict[str, str]:
     """Gets images of animals"""
     try:
-        the_response: Response = get("https://random.dog/woof.json")
+        the_response: Response = get("https://api.animality.xyz/img/dog")
         response: Dict[str, str] = the_response.json()
         animals: Dict[str, str] = dict()
-        animals["animal_image1"] = response["url"]
-        the_response: Response = get("https://random-d.uk/api/v2/random")
+        animals["animal_image1"] = response["image"]
+        the_response: Response = get("https://api.animality.xyz/img/duck")
         response: Dict[str, str] = the_response.json()
-        animals["animal_image2"] = response["url"]
-        the_response: Response = get("https://randomfox.ca/floof/")
+        animals["animal_image2"] = response["image"]
+        the_response: Response = get("https://api.animality.xyz/img/fox")
         response: Dict[str, str] = the_response.json()
         animals["animal_image3"] = response["image"]
-        animal_list: List[str] = [
-            "cat",
-            "bird",
-            "panda",
-            "redpanda",
-            "koala",
-            "whale",
-            "dolphin",
-            "kangaroo",
-            "bunny",
-            "lion",
-            "bear",
-            "frog",
-            "penguin",
-            "axolotl",
-            "capybara",
-        ]
-        animal1: str = choice(animal_list)
-        the_response: Response = get("https://api.animality.xyz/img/" + animal1)
+        the_response: Response = get("https://api.animality.xyz/img/cat")
         response: Dict[str, str] = the_response.json()
-        animals["animal_image4"] = response["link"]
-        animal2: str = animal1
-        while animal2 == animal1:
-            animal2 = choice(animal_list)
-        the_response: Response = get("https://api.animality.xyz/img/" + animal2)
+        animals["animal_image4"] = response["image"]
+        the_response: Response = get("https://api.animality.xyz/img/bird")
         response: Dict[str, str] = the_response.json()
-        animals["animal_image5"] = response["link"]
-        animal3: str = animal2
-        while animal3 == animal1 or animal3 == animal2:
-            animal3 = choice(animal_list)
-        the_response: Response = get("https://api.animality.xyz/img/" + animal3)
+        animals["animal_image5"] = response["image"]
+        the_response: Response = get("https://api.animality.xyz/img/panda")
         response: Dict[str, str] = the_response.json()
-        animals["animal_image6"] = response["link"]
+        animals["animal_image6"] = response["image"]
+        the_response: Response = get("https://api.animality.xyz/img/redpanda")
+        response: Dict[str, str] = the_response.json()
+        animals["animal_image7"] = response["image"]
+        the_response: Response = get("https://api.animality.xyz/img/koala")
+        response: Dict[str, str] = the_response.json()
+        animals["animal_image8"] = response["image"]
+        the_response: Response = get("https://api.animality.xyz/img/whale")
+        response: Dict[str, str] = the_response.json()
+        animals["animal_image9"] = response["image"]
+        the_response: Response = get("https://api.animality.xyz/img/dolphin")
+        response: Dict[str, str] = the_response.json()
+        animals["animal_image10"] = response["image"]
+        the_response: Response = get("https://api.animality.xyz/img/kangaroo")
+        response: Dict[str, str] = the_response.json()
+        animals["animal_image11"] = response["image"]
+        the_response: Response = get("https://api.animality.xyz/img/rabbit")
+        response: Dict[str, str] = the_response.json()
+        animals["animal_image12"] = response["image"]
+        the_response: Response = get("https://api.animality.xyz/img/lion")
+        response: Dict[str, str] = the_response.json()
+        animals["animal_image13"] = response["image"]
+        the_response: Response = get("https://api.animality.xyz/img/bear")
+        response: Dict[str, str] = the_response.json()
+        animals["animal_image14"] = response["image"]
+        the_response: Response = get("https://api.animality.xyz/img/frog")
+        response: Dict[str, str] = the_response.json()
+        animals["animal_image15"] = response["image"]
+        the_response: Response = get("https://api.animality.xyz/img/penguin")
+        response: Dict[str, str] = the_response.json()
+        animals["animal_image16"] = response["image"]
+        the_response: Response = get("https://api.animality.xyz/img/axolotl")
+        response: Dict[str, str] = the_response.json()
+        animals["animal_image17"] = response["image"]
+        the_response: Response = get("https://api.animality.xyz/img/capybara")
+        response: Dict[str, str] = the_response.json()
+        animals["animal_image18"] = response["image"]
+        the_response: Response = get("https://api.animality.xyz/img/hedgehog")
+        response: Dict[str, str] = the_response.json()
+        animals["animal_image19"] = response["image"]
+        the_response: Response = get("https://api.animality.xyz/img/turtle")
+        response: Dict[str, str] = the_response.json()
+        animals["animal_image20"] = response["image"]
+        the_response: Response = get("https://api.animality.xyz/img/narwhal")
+        response: Dict[str, str] = the_response.json()
+        animals["animal_image21"] = response["image"]
+        the_response: Response = get("https://api.animality.xyz/img/squirrel")
+        response: Dict[str, str] = the_response.json()
+        animals["animal_image22"] = response["image"]
+        the_response: Response = get("https://api.animality.xyz/img/fish")
+        response: Dict[str, str] = the_response.json()
+        animals["animal_image23"] = response["image"]
+        the_response: Response = get("https://api.animality.xyz/img/horse")
+        response: Dict[str, str] = the_response.json()
+        animals["animal_image24"] = response["image"]
 
         return animals
 
-    except Exception or KeyboardInterrupt:
-        return {"error_msj": "An error ocurred please try again"}
+    except Exception or KeyboardInterrupt as e:
+        print("\nError in: getAnimals")
+        print(e)
+        print_exc()
+        return {
+            "animal_image1": "https://images.pexels.com/photos/1661179/pexels-photo-1661179.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "animal_image2": "https://images.pexels.com/photos/17811/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "animal_image3": "https://images.pexels.com/photos/2295744/pexels-photo-2295744.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "animal_image4": "https://images.pexels.com/photos/1851164/pexels-photo-1851164.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "animal_image5": "https://images.pexels.com/photos/3608263/pexels-photo-3608263.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "animal_image6": "https://images.pexels.com/photos/1059823/pexels-photo-1059823.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "animal_image7": "https://images.pexels.com/photos/106686/pexels-photo-106686.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "animal_image8": "https://images.pexels.com/photos/4666751/pexels-photo-4666751.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "animal_image9": "https://images.pexels.com/photos/3396657/pexels-photo-3396657.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "animal_image10": "https://images.pexels.com/photos/568022/pexels-photo-568022.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "animal_image11": "https://images.pexels.com/photos/674318/pexels-photo-674318.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "animal_image12": "https://images.pexels.com/photos/927497/pexels-photo-927497.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "animal_image13": "https://images.pexels.com/photos/3493730/pexels-photo-3493730.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "animal_image14": "https://images.pexels.com/photos/567540/pexels-photo-567540.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "animal_image15": "https://images.pexels.com/photos/41315/africa-african-animal-cat-41315.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "animal_image16": "https://images.pexels.com/photos/982230/pexels-photo-982230.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "animal_image17": "https://images.pexels.com/photos/4666747/pexels-photo-4666747.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "animal_image18": "https://images.pexels.com/photos/2313396/pexels-photo-2313396.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        }
 
 
 async def getAll(
     waka_time_api_key: str = None,
     nasa_api_key: str = None,
     format: str = "string",
+    news_api_key: str = None,
 ) -> Dict[str, str]:
     """Gets the information gathered using the rest of the functions"""
     try:
-        drink = await getDrink(format=format)
-        affirmation = await getAffirmation()
-        waka = await getWakaStats(waka_key=waka_time_api_key, format=format)
-        nasa = await getNasaImage(nasa_api_key=nasa_api_key)
-        animals = await getAnimals()
-        dictionary: Dict[str, str] = {**drink, **affirmation, **waka, **nasa, **animals}
+        drink, affirmation, waka, nasa, animals, news = await asyncio.gather(
+            getDrink(format=format),
+            getAffirmation(),
+            getWakaStats(waka_key=waka_time_api_key, format=format),
+            getNasaImage(nasa_api_key=nasa_api_key),
+            getAnimals(),
+            getNews(news_api_key=news_api_key),
+        )
+
+        dictionary: Dict[str, str] = {
+            **drink,
+            **affirmation,
+            **waka,
+            **nasa,
+            **animals,
+            **news,
+        }
+
         return dictionary
-    except Exception or KeyboardInterrupt:
+    except Exception or KeyboardInterrupt as e:
+        print("\nError in: getAll")
+        print(e)
+        print_exc()
         return {"error_msj": "Error ocurred"}
 
 
@@ -346,12 +475,14 @@ if __name__ == "__main__":
             path_to_template_file: str = "/directory_file",
             waka_time_api_key: str = None,
             nasa_api_key: str = None,
+            news_api_key: str = None,
             format: str = "string",
         ) -> bool:
             """Updates a file with the information gathered using the rest of the functions"""
             try:
                 dictionary = await getAll(
                     waka_time_api_key=waka_time_api_key,
+                    news_api_key=news_api_key,
                     nasa_api_key=nasa_api_key,
                     format=format,
                 )
@@ -380,16 +511,18 @@ if __name__ == "__main__":
                 print_exc()
                 return False
 
-        async def main(waka_time_api_key, nasa_api_key, format):
+        async def main(waka_time_api_key, nasa_api_key, format, news_api_key):
             await updateFile(
                 waka_time_api_key=waka_time_api_key,
                 nasa_api_key=nasa_api_key,
                 format=format,
+                news_api_key=news_api_key,
             )
 
         waka_api_key = environ["WAKATIME_API_KEY"]
         nasa_api_key = environ["NASA_KEY"]
         ghtoken = environ["GH_TOKEN"]
+        news_api_key = environ["NEWS_API_KEY"]
         format = "html"
         if ghtoken is None:
             raise Exception("Token not available")
@@ -414,6 +547,7 @@ if __name__ == "__main__":
             main(
                 waka_time_api_key=waka_api_key,
                 nasa_api_key=nasa_api_key,
+                news_api_key=news_api_key,
                 format=format,
             )
         )

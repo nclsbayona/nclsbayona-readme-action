@@ -1,17 +1,22 @@
-![Greetings](https://socialify.git.ci/nclsbayona/nclsbayona/image?description=1&font=KoHo&pattern=Charlie%20Brown&theme=Dark)
+<p align="center">
+
+  <img src="https://socialify.git.ci/nclsbayona/nclsbayona/image?description=1&descriptionEditable=Come%20check%20my%20profile!&font=Bitter&pattern=Signal&theme=Dark" alt="nclsbayona" width="640" height="320" />
+
+</p>
 
 <h2 align="center">👋 Hey there 👋</h2>
 
 <h3 align="center">I'm really grateful that you came here 😎</h3>
 
-<p  align="center">
+<!--p  align="center">
 <img src="logo.png" alt="Logo" width="480">
-</p>
+</p-->
 
-<strong align="center">{{ text_affirmation1 }}</strong>
+
 
 <p align="center">
 
+  <strong align="center">{{ text_affirmation1 }}</strong>
   <i>{{ text_affirmation2 }}</i>
 
 </p>
@@ -50,7 +55,7 @@
 </details>
 
 <details>
-<summary>Maybe you want to know more about my profile? 🪂</summary>
+<summary>Maybe you're interested in learning more about my profile? 🪂</summary>
 <br />
 <h5 align="center">👀 Visitor count</h5>
 <p align="center">
@@ -74,17 +79,17 @@
 
 </details>
 <details>
-<summary>Maybe you want to check out my stats? 🐣</summary>
+<summary>Maybe you're interested in checking out my stats? 🐣</summary>
 <br />
 <h4 align="center">General GitHub Stats 🌀</h4>
 
 <p align="center">
 
 <!--h5>😃 General Overview</h5-->
-<img src="https://github-readme-stats.vercel.app/api?username=nclsbayona&show_icons=true&count_private=true&include_all_commits=true&locale=en&theme=tokyonight" width="360">
+<img src="https://github-readme-stats.vercel.app/api?username=nclsbayona&show_icons=true&count_private=true&include_all_commits=true&locale=en&theme=tokyonight" width="260">
 
 <!--h5>Life-Time Stats Overview 😃</h5-->
-<img src="https://github-readme-streak-stats.herokuapp.com/?user=nclsbayona&theme=algolia" width="360">
+<img src="https://github-readme-streak-stats.herokuapp.com/?user=nclsbayona&theme=algolia" width="260">
 
 </p>
 
@@ -134,30 +139,122 @@
 </details>
 
 <details>
-<summary>Maybe you are looking for some cool animal pictures?</summary>
+<summary>Maybe you're looking for some cool animal pictures? 👁️</summary>
 
 <br />
-<h4 align="center">Here you go!</h4>
-<p align="center">
-
+<table align="center">
+<tr>
+<td>
 <img src="{{ animal_image1 }}" width="180"/>
+</td>
+<td>
 <img src="{{ animal_image2 }}" width="180"/>
+</td>
+<td>
 <img src="{{ animal_image3 }}" width="180"/>
+</td>
+</tr>
+<tr>
+<td>
 <img src="{{ animal_image4 }}" width="180"/>
+</td>
+<td>
 <img src="{{ animal_image5 }}" width="180"/>
+</td>
+<td>
 <img src="{{ animal_image6 }}" width="180"/>
-
-</p>
+</td>
+</tr>
+<tr>
+<td>
+<img src="{{ animal_image7 }}" width="180"/>
+</td>
+<td>
+<img src="{{ animal_image8 }}" width="180"/>
+</td>
+<td>
+<img src="{{ animal_image9 }}" width="180"/>
+</td>
+</tr>
+<tr>
+<td>
+<img src="{{ animal_image10 }}" width="180"/>
+</td>
+<td>
+<img src="{{ animal_image11 }}" width="180"/>
+</td>
+<td>
+<img src="{{ animal_image12 }}" width="180"/>
+</td>
+</tr>
+<tr>
+<td>
+<img src="{{ animal_image13 }}" width="180"/>
+</td>
+<td>
+<img src="{{ animal_image14 }}" width="180"/>
+</td>
+<td>
+<img src="{{ animal_image15 }}" width="180"/>
+</td>
+</tr>
+<tr>
+<td>
+<img src="{{ animal_image16 }}" width="180"/>
+</td>
+<td>
+<img src="{{ animal_image17 }}" width="180"/>
+</td>
+<td>
+<img src="{{ animal_image18 }}" width="180"/>
+</td>
+</tr>
+<tr>
+<td>
+<img src="{{ animal_image19 }}" width="180"/>
+</td>
+<td>
+<img src="{{ animal_image20 }}" width="180"/>
+</td>
+<td>
+<img src="{{ animal_image21 }}" width="180"/>
+</td>
+</tr>
+<tr>
+<td>
+<img src="{{ animal_image22 }}" width="180"/>
+</td>
+<td>
+<img src="{{ animal_image23 }}" width="180"/>
+</td>
+<td>
+<img src="{{ animal_image24 }}" width="180"/>
+</td>
+</tr>
+</table>
 
 ----
 
 </details>
 
+
+<details>
+<summary>Maybe you're looking for some tech-related news? </summary>
+
+<br />
+
+{{{ news_section }}}
+
+</details>
+
+
+----
+
 <h3 align="center">Contact me! 📇</h3>
 
 <p align="center">
 <a href="https://github.com/nclsbayona" target="_blank">
- <img alt="Github" src="https://img.shields.io/badge/GitHub-%2312100E.svg?&style=for-the-badge&logo=Github&logoColor=white">
+ <img alt="Github" src="https://img.shields.io/badge/GitHub-%2312180E.svg?&style=for-the-badge&logo=Github&logoColor=white">
 </a>
 <a href="https://twitter.com/nclsbayona" target="_blank">
  <img alt="Twitter" src="https://img.shields.io/badge/twitter-%231DA1F2.svg?&style=for-the-badge&logo=twitter&logoColor=white">
