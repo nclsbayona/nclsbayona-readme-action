@@ -425,7 +425,6 @@ async def getAll(
     waka_time_api_key: str = None,
     nasa_api_key: str = None,
     format: str = "string",
-    news_api_key: str = None,
 ) -> Dict[str, str]:
     """Gets the information gathered using the rest of the functions"""
     try:
@@ -473,14 +472,12 @@ if __name__ == "__main__":
             path_to_template_file: str = "/directory_file",
             waka_time_api_key: str = None,
             nasa_api_key: str = None,
-            news_api_key: str = None,
             format: str = "string",
         ) -> bool:
             """Updates a file with the information gathered using the rest of the functions"""
             try:
                 dictionary = await getAll(
                     waka_time_api_key=waka_time_api_key,
-                    news_api_key=news_api_key,
                     nasa_api_key=nasa_api_key,
                     format=format,
                 )
@@ -509,12 +506,11 @@ if __name__ == "__main__":
                 print_exc()
                 return False
 
-        async def main(waka_time_api_key, nasa_api_key, format, news_api_key):
+        async def main(waka_time_api_key, nasa_api_key, format):
             await updateFile(
                 waka_time_api_key=waka_time_api_key,
                 nasa_api_key=nasa_api_key,
                 format=format,
-                news_api_key=news_api_key,
             )
 
         waka_api_key = environ["WAKATIME_API_KEY"]
