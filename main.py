@@ -520,7 +520,6 @@ if __name__ == "__main__":
         waka_api_key = environ["WAKATIME_API_KEY"]
         nasa_api_key = environ["NASA_KEY"]
         ghtoken = environ["GH_TOKEN"]
-        news_api_key = environ["NEWS_API_KEY"]
         format = "html"
         if ghtoken is None:
             raise Exception("Token not available")
@@ -545,7 +544,6 @@ if __name__ == "__main__":
             main(
                 waka_time_api_key=waka_api_key,
                 nasa_api_key=nasa_api_key,
-                news_api_key=news_api_key,
                 format=format,
             )
         )
