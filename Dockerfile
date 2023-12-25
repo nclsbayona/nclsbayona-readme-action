@@ -23,7 +23,7 @@ RUN chmod +x /main.py
 ENV WAKATIME_API_KEY=0
 ENV NASA_KEY=0
 ENV GH_TOKEN=0
-ENV NEWS_API_KEY=0
+# ENV NEWS_API_KEY=0
 
 # Install Python dependencies from requirements.txt without caching
 RUN python -m venv .venv && .venv/bin/pip install --no-cache-dir --requirement requirements.txt

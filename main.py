@@ -429,13 +429,12 @@ async def getAll(
 ) -> Dict[str, str]:
     """Gets the information gathered using the rest of the functions"""
     try:
-        drink, affirmation, waka, nasa, animals, news = await asyncio.gather(
+        drink, affirmation, waka, nasa, animals = await asyncio.gather(
             getDrink(format=format),
             getAffirmation(),
             getWakaStats(waka_key=waka_time_api_key, format=format),
             getNasaImage(nasa_api_key=nasa_api_key),
             getAnimals(),
-            getNews(news_api_key=news_api_key),
         )
 
         dictionary: Dict[str, str] = {
@@ -444,7 +443,6 @@ async def getAll(
             **waka,
             **nasa,
             **animals,
-            **news,
         }
 
         return dictionary
