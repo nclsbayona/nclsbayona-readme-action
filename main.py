@@ -520,9 +520,11 @@ if __name__ == "__main__":
         if ghtoken is None:
             raise Exception("Token not available")
         g = Github(ghtoken)
+        username = "nclsbayona"
+        """
         headers = {"Authorization": "Bearer " + ghtoken}
         # The GraphQL query to get commit data.
-        userInfoQuery = """
+        userInfoQuery = ""
         {
             viewer {
             login
@@ -530,10 +532,11 @@ if __name__ == "__main__":
             id
             }
         }
-        """
+        ""
         user_data = run_query(userInfoQuery)  # Execute the query
         username = user_data["data"]["viewer"]["login"]
         print("Username " + username)
+        """
         repo = g.get_repo(f"{username}/{username}")
         loop = get_event_loop()
         loop.run_until_complete(
