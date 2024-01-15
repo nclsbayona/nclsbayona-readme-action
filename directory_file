@@ -23,7 +23,7 @@
 
 ----
 
-<details>
+<details name="info">
 <summary>Maybe you're looking for a drink? 🍹</summary>
 <br />
 <h4 align="center">{{ drink_name }}</h4>
@@ -54,7 +54,7 @@
 
 </details>
 
-<details>
+<details name="info">
 <summary>Maybe you're interested in learning more about my profile? 🪂</summary>
 <br />
 <h5 align="center">👀 Visitor count</h5>
@@ -78,7 +78,7 @@
 ----
 
 </details>
-<details>
+<details name="info">
 <summary>Maybe you're interested in checking out my stats? 🐣</summary>
 <br />
 <h4 align="center">General GitHub Stats 🌀</h4>
@@ -121,7 +121,7 @@
 ----
 </details>
 
-<details>
+<details name="info">
 <summary>Maybe you're looking to see something about our universe? 🔭</summary>
 
 <br />
@@ -138,7 +138,7 @@
 
 </details>
 
-<details>
+<details name="info">
 <summary>Maybe you're looking for some cool animal pictures? 👁️</summary>
 
 <br />
