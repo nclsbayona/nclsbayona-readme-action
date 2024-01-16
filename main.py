@@ -446,6 +446,7 @@ async def makeBody(
     try:
       
       body_specific_dictionary: Dict[str, str] = {}
+      body_dictionary: Dict[str, str] = {}
       body_specific_dictionary["username"] = username
       drink, animals = await asyncio.gather(
           getDrink(format=format),
@@ -479,7 +480,10 @@ async def makeBody(
         with open(template_filepath, "r") as file:
           body_specific_dictionary["nasa"] = render(render(file, nasa).replace("USERNAME_HERE", "{{ username }}"), body_specific_dictionary)
 
-      return body_specific_dictionary
+      template_filepath: str = "render_templates/body_template_file"
+      with open(template_filepath, "r") as file:
+        body_dictionary["body"] = render(file, body_specific_dictionary)
+      return body_dictionary
     except Exception or KeyboardInterrupt as e:
         print("\nError in: makeBody")
         print(e)
