@@ -585,11 +585,15 @@ if __name__ == "__main__":
 
         try:
           waka_api_key = environ["WAKATIME_API_KEY"]
-        except:
+        except Exception as e:
+          print("\nError getting WAKA_API_KEY")
+          print_exc()
           waka_api_key = None
         try:
           nasa_api_key = environ["NASA_KEY"]
         except:
+          print("\nError getting NASA_API_KEY")
+          print_exc()
           nasa_api_key = None
         """
         ghtoken = environ["GH_TOKEN"]
