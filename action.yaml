@@ -48,8 +48,6 @@ runs:
         WAKATIME_API_KEY: ${{ inputs.wakatime-api-key }}
         NASA_KEY: ${{ inputs.nasa-api-key }}
         USERNAME: ${{ inputs.username }}
-    - name: Push Changes to repository
-      uses: stefanzweifel/git-auto-commit-action@v5
   
 branding:
   icon: user-check
