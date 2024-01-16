@@ -33,6 +33,9 @@ runs:
       run: |
         wget https://raw.githubusercontent.com/nclsbayona/nclsbayona-readme-action/master/main.py
         git clone https://github.com/nclsbayona/nclsbayona-readme-action.git && mv nclsbayona-readme-action/render_templates . && rm -rf nclsbayona-readme-action
+    - name: Remove old README
+      run: rm -rf README.md
+      shell: bash
     - name: Setup python
       uses: actions/setup-python@v5
       with:
