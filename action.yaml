@@ -27,6 +27,12 @@ inputs:
 runs:
   using: "composite"
   steps: 
+    - name: Download necessary files and folder
+      continue-on-error: false
+      shell: bash
+      run: |
+        wget https://raw.githubusercontent.com/nclsbayona/nclsbayona-readme-action/master/main.py
+        git clone https://github.com/nclsbayona/nclsbayona-readme-action.git && mv nclsbayona-readme-action/render_templates . && rm -rf nclsbayona-readme-action
     - name: Setup python
       uses: actions/setup-python@v5
       with:
@@ -41,6 +47,9 @@ runs:
         WAKATIME_API_KEY: ${{ inputs.wakatime-api-key }}
         NASA_KEY: ${{ inputs.nasa-api-key }}
         USERNAME: ${{ inputs.username }}
+    - name: Delete files and folder
+      shell: bash
+      run: rm -rf main.py render_templates
   
 branding:
   icon: user-check
