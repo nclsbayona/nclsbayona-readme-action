@@ -1,9 +1,9 @@
-{{ drink }}
+{{{ drink }}}
 
-{{ profile }}
+{{{ profile }}}
 
-{{ stats }}
+{{{ stats }}}
 
-{{ nasa }}
+{{{ nasa }}}
 
-{{ animals }}
+{{{ animals }}}
