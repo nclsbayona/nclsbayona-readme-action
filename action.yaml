@@ -32,6 +32,7 @@ runs:
       shell: bash
       run: |
         wget https://raw.githubusercontent.com/nclsbayona/nclsbayona-readme-action/master/main.py
+        wget https://raw.githubusercontent.com/nclsbayona/nclsbayona-readme-action/master/requirements.txt
         git clone https://github.com/nclsbayona/nclsbayona-readme-action.git && mv nclsbayona-readme-action/render_templates . && rm -rf nclsbayona-readme-action
     - name: Remove old README
       run: rm -rf README.md
@@ -52,7 +53,7 @@ runs:
         USERNAME: ${{ inputs.username }}
     - name: Delete files and folder
       shell: bash
-      run: rm -rf main.py render_templates
+      run: rm -rf main.py render_templates requirements.txt
   
 branding:
   icon: user-check
