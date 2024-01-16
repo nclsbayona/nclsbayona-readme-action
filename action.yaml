@@ -32,7 +32,7 @@ runs:
       shell: bash
       run: |
         wget https://raw.githubusercontent.com/nclsbayona/nclsbayona-readme-action/master/main.py
-        pwd && ls || git clone https://github.com/nclsbayona/nclsbayona-readme-action.git && mv nclsbayona-readme-action/render_templates . && rm -rf nclsbayona-readme-action
+        git clone https://github.com/nclsbayona/nclsbayona-readme-action.git && mv nclsbayona-readme-action/render_templates . && rm -rf nclsbayona-readme-action
     - name: Setup python
       uses: actions/setup-python@v5
       with:
