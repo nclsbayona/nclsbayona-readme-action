@@ -65,5 +65,13 @@
 </ol>
 
 <h2>Contributors</h2>
+<!-- readme: contributors -start -->
+<!-- readme: contributors -end -->
 
+<h2>Collaborators</h2>
+<!-- readme: collaborators -start -->
+<!-- readme: collaborators -end -->
 
+<h2>Bots</h2>
+<!-- readme: bots -start -->
+<!-- readme: bots -end -->
