@@ -66,12 +66,42 @@
 
 <h2>Contributors</h2>
 <!-- readme: contributors -start -->
+<table>
+<tr>
+    <td align="center">
+        <a href="https://github.com/nclsbayona">
+            <img src="https://avatars.githubusercontent.com/u/59931437?v=4" width="100;" alt="nclsbayona"/>
+            <br />
+            <sub><b>Null</b></sub>
+        </a>
+    </td></tr>
+</table>
 <!-- readme: contributors -end -->
 
 <h2>Collaborators</h2>
 <!-- readme: collaborators -start -->
+<table>
+<tr>
+    <td align="center">
+        <a href="https://github.com/nclsbayona">
+            <img src="https://avatars.githubusercontent.com/u/59931437?v=4" width="100;" alt="nclsbayona"/>
+            <br />
+            <sub><b>Null</b></sub>
+        </a>
+    </td></tr>
+</table>
 <!-- readme: collaborators -end -->
 
 <h2>Bots</h2>
 <!-- readme: bots -start -->
+<table>
+<tr>
+    <td align="center">
+        <a href="https://github.com/dependabot[bot]">
+            <img src="https://avatars.githubusercontent.com/in/29110?v=4" width="100;" alt="dependabot[bot]"/>
+            <br />
+            <sub><b>dependabot[bot]</b></sub>
+        </a>
+    </td></tr>
+</table>
 <!-- readme: bots -end -->
