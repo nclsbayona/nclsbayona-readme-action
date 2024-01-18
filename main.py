@@ -14,8 +14,22 @@ from requests import get
 from requests.models import Response
 
 
-# nclsbayona
-async def getDrink(format="string") -> Dict[str, str]:
+# By: nclsbayona
+def getEnvironment(name: str) -> str:
+    return environ[name]
+
+## Global stuff
+github_username: str = getEnvironment("GITHUB_USERNAME")
+wakatime_api_key: str = getEnvironment("WAKATIME_API_KEY")
+nasa_api_key: str = getEnvironment("NASA_KEY")
+file_path: str = getEnvironment("FILE_PATH")
+template_file_path: str = getEnvironment("TEMPLATE_FILE_PATH")
+drink_format: str = getEnvironment("DRINK_FORMAT")
+wakatime_format: str = getEnvironment("WAKATIME_FORMAT")
+
+## Functions
+async def getDrink() -> Dict[str, str]:
+    global drink_format
     """Gets a random drink information from The Cocktail DB API"""
     try:
         the_response: Response = get(
@@ -46,13 +60,13 @@ async def getDrink(format="string") -> Dict[str, str]:
             except:
                 table_drink.add_row(["", quantities[i]])
 
-        if format == "string":
+        if drink_format == "string":
             drink["table_drink"] = table_drink.get_string(format=True)
-        elif format == "html":
+        elif drink_format == "html":
             drink["table_drink"] = table_drink.get_html_string(format=True)
-        elif format == "json":
+        elif drink_format == "json":
             drink["table_drink"] = table_drink.get_json_string(format=True)
-        elif format == "csv":
+        elif drink_format == "csv":
             drink["table_drink"] = table_drink.get_csv_string(format=True)
 
         return drink
@@ -193,11 +207,13 @@ async def getAffirmation() -> Dict[str, str]:
         }
 
 
-async def getWakaStats(waka_key: str = None, format: str = "string") -> Dict[str, str]:
+async def getWakaStats() -> Dict[str, str]:
     """Gets WAKATIME API data, and returns in a dictionary some of the information"""
     try:
+        global wakatime_api_key
+        global wakatime_format
         dictionary: Dict[str, str] = dict()
-        encoded_key: str = str(b64encode(waka_key.encode("utf-8")), "utf-8")
+        encoded_key: str = str(b64encode(wakatime_api_key.encode("utf-8")), "utf-8")
         wakatime_data: Dict = get(
             "https://wakatime.com/api/v1/users/current/stats/last_7_days",
             headers={"Authorization": f"Basic {encoded_key}"},
@@ -222,16 +238,16 @@ async def getWakaStats(waka_key: str = None, format: str = "string") -> Dict[str
             temp_list.append("{hours} hours and {minutes} minutes".format(**os))
             table_os.add_row(temp_list.copy())
 
-        if format == "string":
+        if wakatime_format == "string":
             dictionary["languages"] = table_languages.get_string(format=True)
             dictionary["coded_on_os"] = table_os.get_string(format=True)
-        elif format == "html":
+        elif wakatime_format == "html":
             dictionary["languages"] = table_languages.get_html_string(format=True)
             dictionary["coded_on_os"] = table_os.get_html_string(format=True)
-        elif format == "json":
+        elif wakatime_format == "json":
             dictionary["languages"] = table_languages.get_json_string(format=True)
             dictionary["coded_on_os"] = table_os.get_json_string(format=True)
-        elif format == "csv":
+        elif wakatime_format == "csv":
             dictionary["languages"] = table_languages.get_csv_string(format=True)
             dictionary["coded_on_os"] = table_os.get_csv_string(format=True)
 
@@ -245,9 +261,10 @@ async def getWakaStats(waka_key: str = None, format: str = "string") -> Dict[str
         return {"error_msj": "An error ocurred please verify your inputs and try again"}
 
 
-async def getNasaImage(nasa_api_key: str = None) -> Dict[str, str]:
+async def getNasaImage() -> Dict[str, str]:
     """Gets the image of the day from NASA Apod API"""
     try:
+        global nasa_api_key
         the_response: Response = get(
             "https://api.nasa.gov/planetary/apod?api_key=" + nasa_api_key
         )
@@ -419,14 +436,15 @@ async def getAnimals() -> Dict[str, str]:
             "animal_image18": "https://images.pexels.com/photos/2313396/pexels-photo-2313396.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         }
 
-async def makeHeader(username: str = "") -> Dict[str, str]:
+async def makeHeader() -> Dict[str, str]:
   try:
+    global github_username
     header_specific_dictionary: Dict[str, str] = {}
-    header_specific_dictionary["username"] = username
+    header_specific_dictionary["github_username"] = github_username
     drink = await getDrink()
     template_filepath: str = "render_templates/header_template_file"
     with open(template_filepath, "r") as file:
-      header_specific_dictionary["header"] = render(render(file, drink).replace("USERNAME_HERE", "{{ username }}"), header_specific_dictionary)
+      header_specific_dictionary["header"] = render(render(file, drink).replace("GITHUB_USERNAME_HERE", "{{ github_username }}"), header_specific_dictionary)
     return header_specific_dictionary
   except Exception or KeyboardInterrupt as e:
     print("\nError in: makeHeader")
@@ -436,20 +454,17 @@ async def makeHeader(username: str = "") -> Dict[str, str]:
       "header": "<img src='https://img.freepik.com/free-vector/hello-words-pattern-different-languages_23-2147868000.jpg?w=740&t=st=1705366490~exp=1705367090~hmac=97bab448b3d6cd02555c84f5e8a58a18f1fde784d7c7ed8d2b2b0d83a65ceea7' width='640' height='320' />"
     }
     
-async def makeBody(
-    waka_time_api_key: str = None,
-    nasa_api_key: str = None,
-    username: str = "",
-    format: str = "string",
-) -> Dict[str, str]:
+async def makeBody() -> Dict[str, str]:
     """Gets the information gathered using the rest of the functions"""
     try:
-      
+      global github_username
+      global wakatime_api_key
+      global nasa_api_key
       body_specific_dictionary: Dict[str, str] = {}
       body_dictionary: Dict[str, str] = {}
-      body_specific_dictionary["username"] = username
+      body_specific_dictionary["github_username"] = github_username
       drink, animals = await asyncio.gather(
-          getDrink(format=format),
+          getDrink(),
           getAnimals(),
       )
 
@@ -468,17 +483,17 @@ async def makeBody(
         with open(template_filepath, "r") as file:
           body_specific_dictionary["animals"] = render(file, animals)
       
-      if waka_time_api_key is not None:
-        waka = await getWakaStats(waka_key=waka_time_api_key, format=format)
+      if len(wakatime_api_key) > 1:
+        waka = await getWakaStats()
         template_filepath: str = "render_templates/body_templates/stats_template_file"
         with open(template_filepath, "r") as file:
           body_specific_dictionary["stats"] = render(render(file, waka).replace("USERNAME_HERE", "{{ username }}"), body_specific_dictionary)
 
-      if nasa_api_key is not None:
-        nasa = await getNasaImage(nasa_api_key=nasa_api_key)
+      if len(nasa_api_key) > 1:
+        nasa = await getNasaImage()
         template_filepath: str = "render_templates/body_templates/nasa_template_file"
         with open(template_filepath, "r") as file:
-          body_specific_dictionary["nasa"] = render(render(file, nasa).replace("USERNAME_HERE", "{{ username }}"), body_specific_dictionary)
+          body_specific_dictionary["nasa"] = render(file, nasa)
 
       template_filepath: str = "render_templates/body_template_file"
       with open(template_filepath, "r") as file:
@@ -490,10 +505,11 @@ async def makeBody(
         print_exc()
         return {"body": "Error ocurred !"}
 
-async def makeFooter(username: str = "") -> Dict[str, str]:
+async def makeFooter() -> Dict[str, str]:
   try:
+    global github_username
     footer_specific_dictionary: Dict[str, str] = {}
-    footer_specific_dictionary["username"] = username
+    footer_specific_dictionary["github_username"] = github_username
     template_filepath: str = "render_templates/footer_template_file"
     with open(template_filepath, "r") as file:
       footer_specific_dictionary["footer"] = render(file, footer_specific_dictionary)
@@ -506,9 +522,9 @@ async def makeFooter(username: str = "") -> Dict[str, str]:
       "footer": ":D"
     }
 
+## Code to execute when executing this
 if __name__ == "__main__":
     try:
-
         """def run_query(query):
             request = post(
                 "https://api.github.com/graphql", json={"query": query}, headers=headers
@@ -522,41 +538,26 @@ if __name__ == "__main__":
                     )
                 )
         """
-
-        async def updateFile(
-            path_to_template_file: str = "render_templates/main_template_file",
-            path_to_file: str = "README.md",
-            waka_time_api_key: str = None,
-            nasa_api_key: str = None,
-            username: str = "",
-            format: str = "string",
-        ) -> bool:
+        async def updateFile() -> bool:
             """Updates a file with the information gathered using the rest of the functions"""
             try:
+                global template_file_path
+                global file_path
                 dictionary: Dict[str, str] = {}
               
-                dictionary.update(await makeHeader(
-                  username=username
-                ))
+                dictionary.update(await makeHeader())
               
-                dictionary.update(await makeBody(
-                    waka_time_api_key=waka_time_api_key,
-                    nasa_api_key=nasa_api_key,
-                    username=username,
-                    format=format,
-                ))
+                dictionary.update(await makeBody())
 
-                dictionary.update(await makeFooter(
-                  username=username
-                ))
+                dictionary.update(await makeFooter())
               
                 print("The dictionary\n", dictionary)
 
-                with open(path_to_template_file, "r") as template_file:
-                    new_readme = render(template_file, dictionary)
+                with open(template_file_path, "r") as template_file:
+                    new_file = render(template_file, dictionary)
                   
-                with open(path_to_file, "w") as readme_file:
-                  readme_file.write(new_readme)
+                with open(file_path, "w") as readme_file:
+                  readme_file.write(new_file)
                   
                 """committer = InputGitAuthor(
                     "readme-bot",
@@ -567,38 +568,18 @@ if __name__ == "__main__":
                 repo.update_file(
                     path=old_readme.path,
                     message="Updated the README file",
-                    content=new_readme,
+                    content=new_file,
                     sha=old_readme.sha,
                     committer=committer,
                 )"""
 
-                print("\n\nReadme updated\n", new_readme)
+                print("\n\File updated\n", new_file)
                 return True
             except Exception or KeyboardInterrupt:
                 print("\nError in: updateFile")
                 print_exc()
                 return False
-
-        async def main(waka_time_api_key, nasa_api_key, username, format):
-            await updateFile(
-                waka_time_api_key=waka_time_api_key,
-                nasa_api_key=nasa_api_key,
-                username=username,
-                format=format,
-            )
-
-        try:
-          waka_api_key = environ["WAKATIME_API_KEY"]
-        except Exception as e:
-          print("\nError getting WAKA_API_KEY")
-          print_exc()
-          waka_api_key = None
-        try:
-          nasa_api_key = environ["NASA_KEY"]
-        except:
-          print("\nError getting NASA_API_KEY")
-          print_exc()
-          nasa_api_key = None
+        
         """
         ghtoken = environ["GH_TOKEN"]
         format = "html"
@@ -625,12 +606,7 @@ if __name__ == "__main__":
         """
         loop = get_event_loop()
         loop.run_until_complete(
-            main(
-                waka_time_api_key=waka_api_key,
-                nasa_api_key=nasa_api_key,
-                username=environ["USERNAME"],
-                format=format,
-            )
+            updateFile()
         )
         loop.close()
     except Exception as e:
