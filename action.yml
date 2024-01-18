@@ -44,7 +44,7 @@ runs:
     - name: Install dependencies
       shell: bash
       run: pip install -r requirements.txt
-    - name: Generate README
+    - name: Generate file
       shell: bash
       run: python main.py
       env:
