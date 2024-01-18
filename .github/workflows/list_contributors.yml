@@ -9,7 +9,7 @@ jobs:
         - name: Checkout
           uses: actions/checkout@v2
         - name: List Contributors
-          uses: Maanuj-Vora/List-Contributors@0.1.6
+          uses: Maanuj-Vora/List-Contributors@5565d33b5e2065bbe7b1c27353d4b54be31fdb8c
           with:
             REPO_NAME: '${{github.repository}}'
             ACCESS_TOKEN: ${{secrets.GITHUB_TOKEN}}
