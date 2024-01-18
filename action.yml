@@ -7,15 +7,38 @@ inputs:
     required: false
     description: 'Python version to use to run the file'
     default: '3.10'
+  drink-format:
+    required: false
+    default: 'string'
+    description: 'The format to output drink instructions (string|html|json|csv)'
+  wakatime-format:
+    required: false
+    default: 'string'
+    description: 'The format to output wakatime information (string|html|json|csv)'
   wakatime-api-key:
     required: false
-    description: 'Wakatime API Key to display information about time online'
+    default: ''
+    description: 'Wakatime API Key to display information about time on PC. Not adding a value to this input disables the lookup of info on Wakatime servers'
   nasa-api-key:
     required: false
-    description: 'Nasa API Key to display a photo of the universe'
-  username:
+    default: ''
+    description: 'Nasa API Key to display a photo of the universe. Not adding a value to this input disables the lookup of info on Nasa servers'
+  file-path:
+    required: false
+    default: 'README.md'
+    description: 'File path of the file we want to generate'
+  template-file-path:
+    required: false
+    default: 'render_templates/main_template_file'
+    description: 'File path of the template we use to generate the file'
+  github-username:
     required: true
-    description: 'Username of the user running the action'
+    description: 'Github username of the user running the action'
+  remove-old-readme:
+    required: false
+    description: 'Whether or not this action should delete the old README'
+    default: true
+  
   # github-token:
     # required: true
     # description: 'GitHub Token with permissions to push the new README to the repository'
@@ -34,7 +57,8 @@ runs:
         wget https://raw.githubusercontent.com/nclsbayona/nclsbayona-readme-action/master/main.py
         wget https://raw.githubusercontent.com/nclsbayona/nclsbayona-readme-action/master/requirements.txt
         git clone https://github.com/nclsbayona/nclsbayona-readme-action.git && mv nclsbayona-readme-action/render_templates . && rm -rf nclsbayona-readme-action
-    - name: Remove old README
+    - if: ${{ inputs.remove-old-readme }}
+      name: Remove old README
       run: rm -rf README.md
       shell: bash
     - name: Setup python
@@ -51,6 +75,9 @@ runs:
         WAKATIME_API_KEY: ${{ inputs.wakatime-api-key }}
         NASA_KEY: ${{ inputs.nasa-api-key }}
         USERNAME: ${{ inputs.username }}
+        FILE_PATH: ${{ inputs.file-path }}
+        DRINK_FORMAT: ${{ inputs.drink-format }}
+        WAKATIME_FORMAT: ${{ inputs.wakatime-format }}
     - name: Delete files and folder
       shell: bash
       run: rm -rf main.py render_templates requirements.txt
