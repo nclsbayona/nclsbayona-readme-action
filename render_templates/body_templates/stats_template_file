@@ -6,10 +6,10 @@
 <p align="center">
 
 <!--h5>😃 General Overview</h5-->
-<img src="https://github-readme-stats.vercel.app/api?username=USERNAME_HERE&show_icons=true&count_private=true&include_all_commits=true&locale=en&theme=tokyonight" width="260">
+<img src="https://github-readme-stats.vercel.app/api?username=GITHUB_USERNAME_HERE&show_icons=true&count_private=true&include_all_commits=true&locale=en&theme=tokyonight" width="260">
 
 <!--h5>Life-Time Stats Overview 😃</h5-->
-<img src="https://github-readme-streak-stats.herokuapp.com/?user=USERNAME_HERE&theme=algolia" width="260">
+<img src="https://github-readme-streak-stats.herokuapp.com/?user=GITHUB_USERNAME_HERE&theme=algolia" width="260">
 
 </p>
 
@@ -20,7 +20,7 @@
 <p align="center">
 
 <!--h5>Most Used Languages Stats 💾</h5-->
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=USERNAME_HERE&show_icons=true&locale=en&langs_count=5&theme=tokyonight">
+<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=GITHUB_USERNAME_HERE&show_icons=true&locale=en&langs_count=5&theme=tokyonight">
 
 </p>
 
