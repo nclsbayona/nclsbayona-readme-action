@@ -1,0 +1,19 @@
+name: Acknowledge the Contributors
+on: [push]
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+        - name: Checkout
+          uses: actions/checkout@v2
+        - name: List Contributors
+          uses: Maanuj-Vora/List-Contributors@0.1.6
+          with:
+            REPO_NAME: '${{github.repository}}'
+            ACCESS_TOKEN: ${{secrets.GITHUB_TOKEN}}
+            CONTRIBUTOR: '<h2>Contributors</h2>'
+            FILEPATH: '/README.md'
+            COLUMN_PER_ROW: '4'
+            IMG_WIDTH: '50'
