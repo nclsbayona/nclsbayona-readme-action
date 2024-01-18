@@ -6,14 +6,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-        - name: Checkout
-          uses: actions/checkout@v2
-        - name: List Contributors
-          uses: Maanuj-Vora/List-Contributors@5565d33b5e2065bbe7b1c27353d4b54be31fdb8c
-          with:
-            REPO_NAME: '${{github.repository}}'
-            ACCESS_TOKEN: ${{secrets.GITHUB_TOKEN}}
-            CONTRIBUTOR: '<h2>Contributors</h2>'
-            FILEPATH: '/README.md'
-            COLUMN_PER_ROW: '4'
-            IMG_WIDTH: '50'
+        - name: Contribute List
+          uses: akhilmhdh/contributors-readme-action@v2.3.6
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
