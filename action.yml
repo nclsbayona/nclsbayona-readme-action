@@ -74,7 +74,7 @@ runs:
       env:
         WAKATIME_API_KEY: ${{ inputs.wakatime-api-key }}
         NASA_KEY: ${{ inputs.nasa-api-key }}
-        USERNAME: ${{ inputs.username }}
+        GITHUB_USERNAME: ${{ inputs.github-username }}
         FILE_PATH: ${{ inputs.file-path }}
         DRINK_FORMAT: ${{ inputs.drink-format }}
         WAKATIME_FORMAT: ${{ inputs.wakatime-format }}
