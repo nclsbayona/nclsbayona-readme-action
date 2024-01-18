@@ -76,6 +76,7 @@ runs:
         NASA_KEY: ${{ inputs.nasa-api-key }}
         GITHUB_USERNAME: ${{ inputs.github-username }}
         FILE_PATH: ${{ inputs.file-path }}
+        TEMPLATE_FILE_PATH: ${{ inputs.template-file-path }}
         DRINK_FORMAT: ${{ inputs.drink-format }}
         WAKATIME_FORMAT: ${{ inputs.wakatime-format }}
     - name: Delete files and folder
