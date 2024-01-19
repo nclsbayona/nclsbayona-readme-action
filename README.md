@@ -8,14 +8,101 @@
       <summary>
         <h3>What this action does?</h3>
       </summary>
-      This action builds a file (I usee it for my profile README but it's not limited to that) for you using some APIs and also some information about you.
+      This action builds a file (I use it for my profile README but it's not limited to that) for you using some APIs and also some information about you.
       <details name="built">
         <summary>
           <h4>What information does this action support?</h4>
         </summary>
         This action supports:
         <ul>
-          <li>GitHub username --> github-username</li>
+          <li>
+              python-version:
+              required: false
+              description: 'Python version to use to run the file'
+              default: '3.10'
+          </li>
+          <li>
+              drink-format:
+              required: false
+              default: 'html'
+              description: 'The format to output drink instructions (string|html|json|csv)'
+          </li>
+          <li>
+            wakatime-format:
+            required: false
+            default: 'html'
+            description: 'The format to output wakatime information (string|html|json|csv)'
+          </li>
+          <li>
+            wakatime-api-key:
+            required: false
+            default: ''
+            description: 'Wakatime API Key to display information about time on PC. Not adding a value to this input disables the lookup of info on Wakatime servers'
+          </li>
+          <li>
+            nasa-api-key:
+            required: false
+            default: ''
+            description: 'Nasa API Key to display a photo of the universe. Not adding a value to this input disables the lookup of info on Nasa servers'
+          </li>
+          <li>
+            file-path:
+            required: false
+            default: 'README.md'
+            description: 'File path of the file we want to generate'
+          </li>
+          <li>
+            template-file-path:
+            required: false
+            default: 'render_templates/main_template_file'
+            description: 'File path of the template we use to generate the file'
+          </li>
+          <li>
+            github-username:
+            required: true
+            description: 'Github username of the user running the action'
+          </li>
+          <li>
+            telegram-username:
+            required: false
+            default: ''
+            description: 'Telegram username of the user running the action'
+          </li>
+          <li>
+            twitter-username:
+            required: false
+            default: ''
+            description: 'Twitter username of the user running the action'
+          </li>
+          <li>
+            linkedin-username:
+            required: false
+            default: ''
+            description: 'LinkedIn username of the user running the action'
+          </li>
+          <li>
+            webpage-url:
+            required: false
+            default: ''
+            description: 'The url to the user webpage'
+          </li>
+          <li>
+            webpage-qr:
+            required: false
+            default: ''
+            description: 'A QR to the user webpage'
+          </li>
+          <li>
+            contributions-url:
+            required: true
+            description: 'URL to a grid an image of user contributions'
+          </li>
+          <li>
+            remove-old-readme:
+            required: false
+            description: 'Whether or not this action should delete the old README'
+            default: true
+          </li>
         </ul>
         <br />
       </details>
@@ -59,6 +146,9 @@
       <summary>
         <h3>How can I use this action?</h3>
       </summary>
+      To use this action you can include in your workflow file a step that uses this action, defining the variables you want to.
+      Here's an example
+      <img src="https://github.com/nclsbayona/nclsbayona-readme-action/assets/59931437/96f1f3c8-7103-4f1a-bd38-08d6cd3c60c1" />
       <hr />
     </details>
   </li>
