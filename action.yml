@@ -96,7 +96,7 @@ runs:
       run: python main.py
       env:
         WAKATIME_API_KEY: ${{ inputs.wakatime-api-key }}
-        NASA_KEY: ${{ inputs.nasa-api-key }}
+        NASA_API_KEY: ${{ inputs.nasa-api-key }}
         GITHUB_USERNAME: ${{ inputs.github-username }}
         TELEGRAM_USERNAME: ${{ inputs.telegram-username }}
         TWITTER_USERNAME: ${{ inputs.twitter-username }}
