@@ -72,7 +72,7 @@
         <a href="https://github.com/nclsbayona">
             <img src="https://avatars.githubusercontent.com/u/59931437?v=4" width="100;" alt="nclsbayona"/>
             <br />
-            <sub><b>Null</b></sub>
+            <sub><b>nclsbayona</b></sub>
         </a>
     </td></tr>
 </table>
@@ -86,7 +86,7 @@
         <a href="https://github.com/nclsbayona">
             <img src="https://avatars.githubusercontent.com/u/59931437?v=4" width="100;" alt="nclsbayona"/>
             <br />
-            <sub><b>Null</b></sub>
+            <sub><b>nclsbayona</b></sub>
         </a>
     </td></tr>
 </table>
