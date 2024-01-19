@@ -441,7 +441,7 @@ async def makeHeader() -> Dict[str, str]:
     global github_username
     header_specific_dictionary: Dict[str, str] = {}
     header_specific_dictionary["github_username"] = github_username
-    drink = await getDrink()
+    drink = await getAffirmation()
     template_filepath: str = "render_templates/header_template_file"
     with open(template_filepath, "r") as file:
       header_specific_dictionary["header"] = render(render(file, drink).replace("GITHUB_USERNAME_HERE", "{{ github_username }}"), header_specific_dictionary)
