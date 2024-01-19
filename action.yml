@@ -34,6 +34,18 @@ inputs:
   github-username:
     required: true
     description: 'Github username of the user running the action'
+  telegram-username:
+    required: false
+    default: ''
+    description: 'Telegram username of the user running the action'
+  twitter-username:
+    required: false
+    default: ''
+    description: 'Twitter username of the user running the action'
+  linkedin-username:
+    required: false
+    default: ''
+    description: 'LinkedIn username of the user running the action'
   remove-old-readme:
     required: false
     description: 'Whether or not this action should delete the old README'
@@ -75,6 +87,9 @@ runs:
         WAKATIME_API_KEY: ${{ inputs.wakatime-api-key }}
         NASA_KEY: ${{ inputs.nasa-api-key }}
         GITHUB_USERNAME: ${{ inputs.github-username }}
+        TELEGRAM_USERNAME: ${{ inputs.telegram-username }}
+        TWITTER_USERNAME: ${{ inputs.twitter-username }}
+        linkedin_USERNAME: ${{ inputs.linkedin-username }}
         FILE_PATH: ${{ inputs.file-path }}
         TEMPLATE_FILE_PATH: ${{ inputs.template-file-path }}
         DRINK_FORMAT: ${{ inputs.drink-format }}
