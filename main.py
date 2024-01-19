@@ -487,7 +487,7 @@ async def makeBody() -> Dict[str, str]:
         waka = await getWakaStats()
         template_filepath: str = "render_templates/body_templates/stats_template_file"
         with open(template_filepath, "r") as file:
-          body_specific_dictionary["stats"] = render(render(file, waka).replace("USERNAME_HERE", "{{ username }}"), body_specific_dictionary)
+          body_specific_dictionary["stats"] = render(render(file, waka).replace("GITHUB_USERNAME_HERE", "{{ github_username }}"), body_specific_dictionary)
 
       if len(nasa_api_key) > 1:
         nasa = await getNasaImage()
