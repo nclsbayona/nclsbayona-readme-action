@@ -20,12 +20,19 @@ def getEnvironment(name: str) -> str:
 
 ## Global stuff
 github_username: str = getEnvironment("GITHUB_USERNAME")
+telegram_username: str = getEnvironment("TELEGRAM_USERNAME")
+twitter_username: str = getEnvironment("TWITTER_USERNAME")
+linkedin_username: str = getEnvironment("LINKEDIN_USERNAME")
 wakatime_api_key: str = getEnvironment("WAKATIME_API_KEY")
 nasa_api_key: str = getEnvironment("NASA_KEY")
 file_path: str = getEnvironment("FILE_PATH")
 template_file_path: str = getEnvironment("TEMPLATE_FILE_PATH")
 drink_format: str = getEnvironment("DRINK_FORMAT")
 wakatime_format: str = getEnvironment("WAKATIME_FORMAT")
+webpage_url: str = getEnvironment("WEBPAGE_URL")
+webpage_qr: str = getEnvironment("WEBPAGE_QR")
+contributions_url: str = getEnvironment("CONTRIBUTIONS_URL")
+
 
 ## Functions
 async def getDrink() -> Dict[str, str]:
@@ -483,13 +490,13 @@ async def makeBody() -> Dict[str, str]:
         with open(template_filepath, "r") as file:
           body_specific_dictionary["animals"] = render(file, animals)
       
-      if len(wakatime_api_key) > 1:
+      if len(wakatime_api_key) > 0:
         waka = await getWakaStats()
         template_filepath: str = "render_templates/body_templates/stats_template_file"
         with open(template_filepath, "r") as file:
           body_specific_dictionary["stats"] = render(render(file, waka).replace("GITHUB_USERNAME_HERE", "{{ github_username }}"), body_specific_dictionary)
 
-      if len(nasa_api_key) > 1:
+      if len(nasa_api_key) > 0:
         nasa = await getNasaImage()
         template_filepath: str = "render_templates/body_templates/nasa_template_file"
         with open(template_filepath, "r") as file:
@@ -508,8 +515,47 @@ async def makeBody() -> Dict[str, str]:
 async def makeFooter() -> Dict[str, str]:
   try:
     global github_username
+    global telegram_username
+    global twitter_username
+    global linkedin_username
+    global webpage_url
+    global webpage_qr
+    global contributions_url
     footer_specific_dictionary: Dict[str, str] = {}
-    footer_specific_dictionary["github_username"] = github_username
+    footer_specific_dictionary["contributions_url"] = contributions_url
+    usernames_specific_dictionary: Dict[str, str] = {}
+    usernames_specific_dictionary["github_username"] = github_username
+
+    footer_specific_dictionary["github"] = f"""<a href="https://github.com/{github_username}" target="_blank">
+ <img alt="Github" src="https://img.shields.io/badge/GitHub-%2312180E.svg?&style=for-the-badge&logo=Github&logoColor=white">
+</a>"""
+
+    if len(telegram_username) > 0:
+        footer_specific_dictionary["telegram"] = f"""<a href="https://t.me/{telegram_username}" target="_blank">
+ <img alt="Telegram" src="https://img.shields.io/badge/-TELEGRAM-blue?&style=for-the-badge&logo=telegram&logoColor=white">
+</a>"""
+
+    if len(twitter_username) > 0:
+        footer_specific_dictionary["twitter"] = f"""<a href="https://twitter.com/{twitter_username}" target="_blank">
+ <img alt="Twitter" src="https://img.shields.io/badge/twitter-%231DA1F2.svg?&style=for-the-badge&logo=twitter&logoColor=white">
+</a>"""
+
+    if len(linkedin_username) > 0:
+        footer_specific_dictionary["linkedin"] = f"""<a href="https://www.linkedin.com/in/{linkedin_username}" target="_blank">
+ <img alt="LinkedIn" src="https://img.shields.io/badge/-LINKEDIN-lightblue?&style=for-the-badge&logo=linkedin&logoColor=white">
+</a>"""
+
+    if len(webpage_url) > 0:
+        footer_specific_dictionary["webpage"] = """<h3 align="center">Visit my webpage 🛸</h3>
+<p align="center">"""
+        if len(webpage_qr) > 0:
+            footer_specific_dictionary["webpage"] += f"""<a href=\"{webpage_url}\" target="_blank">
+ <img src=\"{webpage_qr}\">
+</a>"""
+        else:
+            footer_specific_dictionary["webpage"] += f"""<a href=\"{webpage_url}\" target="_blank">Click here !</a>"""
+        footer_specific_dictionary["webpage"] += "</p>"
+
     template_filepath: str = "render_templates/footer_template_file"
     with open(template_filepath, "r") as file:
       footer_specific_dictionary["footer"] = render(file, footer_specific_dictionary)
