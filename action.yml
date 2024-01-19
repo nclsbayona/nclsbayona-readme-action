@@ -46,6 +46,17 @@ inputs:
     required: false
     default: ''
     description: 'LinkedIn username of the user running the action'
+  webpage-url:
+    required: false
+    default: ''
+    description: 'The url to the user webpage'
+  webpage-qr:
+    required: false
+    default: ''
+    description: 'A QR to the user webpage'
+  contributions-url:
+    required: true
+    description: 'URL to a grid an image of user contributions'
   remove-old-readme:
     required: false
     description: 'Whether or not this action should delete the old README'
@@ -89,11 +100,14 @@ runs:
         GITHUB_USERNAME: ${{ inputs.github-username }}
         TELEGRAM_USERNAME: ${{ inputs.telegram-username }}
         TWITTER_USERNAME: ${{ inputs.twitter-username }}
-        linkedin_USERNAME: ${{ inputs.linkedin-username }}
+        LINKEDIN_USERNAME: ${{ inputs.linkedin-username }}
         FILE_PATH: ${{ inputs.file-path }}
         TEMPLATE_FILE_PATH: ${{ inputs.template-file-path }}
         DRINK_FORMAT: ${{ inputs.drink-format }}
         WAKATIME_FORMAT: ${{ inputs.wakatime-format }}
+        WEBPAGE_URL: ${{ inputs.webpage-url }}
+        WEBPAGE_QR: ${{ inputs.webpage-qr }}
+        CONTRIBUTIONS_URL: ${{ inputs.contributions-url }}
     - name: Delete files and folder
       shell: bash
       run: rm -rf main.py render_templates requirements.txt
