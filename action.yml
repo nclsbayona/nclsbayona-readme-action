@@ -9,11 +9,11 @@ inputs:
     default: '3.10'
   drink-format:
     required: false
-    default: 'string'
+    default: 'html'
     description: 'The format to output drink instructions (string|html|json|csv)'
   wakatime-format:
     required: false
-    default: 'string'
+    default: 'html'
     description: 'The format to output wakatime information (string|html|json|csv)'
   wakatime-api-key:
     required: false
