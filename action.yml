@@ -6,61 +6,86 @@ inputs:
   python-version:
     required: false
     description: 'Python version to use to run the file'
-    default: '3.10'
+    default: 3.10
+    type: number
   drink-format:
     required: false
     default: 'html'
     description: 'The format to output drink instructions (string|html|json|csv)'
+    type: choice
+    options:
+      - 'string'
+      - 'html'
+      - 'json'
+      - 'csv'
   wakatime-format:
     required: false
     default: 'html'
     description: 'The format to output wakatime information (string|html|json|csv)'
+    type: choice
+    options:
+      - 'string'
+      - 'html'
+      - 'json'
+      - 'csv'
   wakatime-api-key:
     required: false
     default: ''
+    type: string
     description: 'Wakatime API Key to display information about time on PC. Not adding a value to this input disables the lookup of info on Wakatime servers'
   nasa-api-key:
     required: false
+    type: string
     default: ''
     description: 'Nasa API Key to display a photo of the universe. Not adding a value to this input disables the lookup of info on Nasa servers'
   file-path:
+    type: string
     required: false
     default: 'README.md'
     description: 'File path of the file we want to generate'
   template-file-path:
+    type: string
     required: false
     default: 'render_templates/main_template_file'
     description: 'File path of the template we use to generate the file'
   github-username:
+    type: string
     required: true
     description: 'Github username of the user running the action'
   telegram-username:
+    type: string
     required: false
     default: ''
     description: 'Telegram username of the user running the action'
   twitter-username:
+    type: string 
     required: false
     default: ''
     description: 'Twitter username of the user running the action'
   linkedin-username:
+    type: string
     required: false
     default: ''
     description: 'LinkedIn username of the user running the action'
   webpage-url:
+    type: string 
     required: false
     default: ''
     description: 'The url to the user webpage'
   webpage-qr:
+    type: string 
     required: false
     default: ''
     description: 'A QR to the user webpage'
   contributions-url:
     required: true
-    description: 'URL to a grid an image of user contributions'
+    type: string 
+    description: 'URL to an image of user contributions'
   remove-old-readme:
     required: false
     description: 'Whether or not this action should delete the old README'
     default: true
+    type: boolean
   
   # github-token:
     # required: true
