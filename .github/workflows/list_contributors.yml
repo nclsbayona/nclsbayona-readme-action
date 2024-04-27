@@ -1,11 +1,16 @@
 name: Acknowledge the Contributors
 on: 
-  push:
+  pull_request:
+    branches: 
+      - 'main'
+    types: 
+      - 'closed'
   workflow_dispatch:
 permissions:
   contents: write
 jobs:
   build:
+    if: ${{ github.event.pull_request.merged }}
     runs-on: ubuntu-latest
     steps:
         - name: Contribute List
