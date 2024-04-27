@@ -168,20 +168,6 @@
 </table>
 <!-- readme: contributors -end -->
 
-<h2>Collaborators</h2>
-<!-- readme: collaborators -start -->
-<table>
-<tr>
-    <td align="center">
-        <a href="https://github.com/nclsbayona">
-            <img src="https://avatars.githubusercontent.com/u/59931437?v=4" width="100;" alt="nclsbayona"/>
-            <br />
-            <sub><b>nclsbayona</b></sub>
-        </a>
-    </td></tr>
-</table>
-<!-- readme: collaborators -end -->
-
 <h2>Bots</h2>
 <!-- readme: bots -start -->
 <table>
