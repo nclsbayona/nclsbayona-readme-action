@@ -164,6 +164,13 @@
             <br />
             <sub><b>nclsbayona</b></sub>
         </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/semantic-release-bot">
+            <img src="https://avatars.githubusercontent.com/u/32174276?v=4" width="100;" alt="semantic-release-bot"/>
+            <br />
+            <sub><b>semantic-release-bot</b></sub>
+        </a>
     </td></tr>
 </table>
 <!-- readme: contributors -end -->
