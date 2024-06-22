@@ -120,7 +120,7 @@
         <summary>
           <h4>Why is this action a composite action?</h4>
         </summary>
-        This action is a composite action because I wanted to learn more about them. I understand that It might have been easier to use containers for this since the environment is always the same but the generated file would also be in the container and I did not find how could I share that file with the runner so people could use the generated file the way they wanted (Upload it to a remote server, store it in the repository, upload as an artifact to use it somewhere else ...). So I found it useful to keep this action as a composite action. Anyways, if you want to develop this action using containers feel free to do it (I have to admit I created two other versions that use containers, you can check them at the different branches of this repo!).
+        This action is a composite action because I wanted to learn more about them. I understand that It might have been easier to use containers for this since the environment is always the same but the generated file would also be in the container and I didn't wanted to upload and then download that file or to mount a volume to share that file with the runner so people could use the generated file the way they wanted (Upload it to a remote server, store it in the repository, upload as an artifact to use it somewhere else ...). So I found it useful to keep this action as a composite action. Anyways, if you want to develop this action using containers feel free to do it (I have to admit I created two other versions that use containers, you can check them at the different branches of this repo!).
         <br />
       </details>
       <details name="built">
