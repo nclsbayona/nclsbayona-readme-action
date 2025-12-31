@@ -8,10 +8,14 @@ from random import choice, randint
 from traceback import print_exc
 from typing import Dict, List
 
+
+
 from chevron.renderer import render
 from prettytable import PrettyTable
 from requests import get
 from requests.models import Response
+import xml.etree.ElementTree as ET
+from datetime import datetime
 
 
 # By: nclsbayona
@@ -29,9 +33,10 @@ file_path: str = getEnvironment("FILE_PATH")
 template_file_path: str = getEnvironment("TEMPLATE_FILE_PATH")
 drink_format: str = getEnvironment("DRINK_FORMAT")
 wakatime_format: str = getEnvironment("WAKATIME_FORMAT")
-webpage_url: str = getEnvironment("WEBPAGE_URL")
+webpage_url: str = getEnvironment("WEBPAGE_URL")    
 webpage_qr: str = getEnvironment("WEBPAGE_QR")
 contributions_url: str = getEnvironment("CONTRIBUTIONS_URL")
+feed_url: str = getEnvironment("FEED_URL")
 
 
 ## Functions
@@ -338,7 +343,47 @@ async def getNasaImage() -> Dict[str, str]:
         }
 """
 
+async def getFeed() -> Dict[str, str]:
+    """Gets latest publications from an RSS feed"""
+    try:
+        limit = 5
+        global feed_url
+        feed_content: str = ""
 
+        if len(feed_url) > 0:
+            response: Response = get(feed_url, timeout=10)
+            response.raise_for_status()
+            root = ET.fromstring(response.content)
+
+        else:
+            return {"feed": "No feed URL provided."}
+
+        items = root.findall('.//item')[:limit]
+
+        for item in items:
+            title_el = item.find('title').text
+            link_el = item.find('link').text
+            pub_el = item.find('pubDate').text
+
+            # Parse date robustly using parsedate_to_datetime, fallback to strptime or raw text
+            formatted_date = ""
+            if pub_el is not None:
+                try:
+                    formatted_date = datetime.strptime(pub_el, '%a, %d %b %Y %H:%M:%S %Z').strftime('%B %d, %Y')
+                except Exception:
+                    formatted_date = pub_el
+
+            feed_content += f'[{title_el}]({link_el})\n> <sup>{formatted_date}</sup>\n\n'
+
+        if feed_content == "":
+            feed_content = "No feed items found."
+
+        return {"feed": feed_content}
+    except Exception as e:
+        print("\nError in: getFeed")
+        print(e)
+        print_exc()
+        return {"feed": "Error fetching feed."}
 async def getAnimals() -> Dict[str, str]:
     """Gets images of animals"""
     try:
@@ -467,12 +512,14 @@ async def makeBody() -> Dict[str, str]:
       global github_username
       global wakatime_api_key
       global nasa_api_key
+      global feed_url
       body_specific_dictionary: Dict[str, str] = {}
       body_dictionary: Dict[str, str] = {}
       body_specific_dictionary["github_username"] = github_username
-      drink, animals = await asyncio.gather(
+      drink, animals, feed = await asyncio.gather(
           getDrink(),
           getAnimals(),
+          getFeed(),
       )
 
       if True:
@@ -501,6 +548,11 @@ async def makeBody() -> Dict[str, str]:
         template_filepath: str = "render_templates/body_templates/nasa_template_file"
         with open(template_filepath, "r") as file:
           body_specific_dictionary["nasa"] = render(file, nasa)
+        
+      if len(feed_url) > 0:
+        template_filepath: str = "render_templates/body_templates/feed_template_file"
+        with open(template_filepath, "r") as file:
+          body_specific_dictionary["feed"] = render(file, feed)
 
       template_filepath: str = "render_templates/body_template_file"
       with open(template_filepath, "r") as file:

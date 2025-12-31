@@ -81,6 +81,11 @@ inputs:
     required: true
     type: string 
     description: 'URL to an image of user contributions'
+  feed_url:
+    type: string 
+    required: false
+    default: ''
+    description: 'The url to the user rss feed'
   remove-old-readme:
     required: false
     description: 'Whether or not this action should delete the old README'
@@ -134,6 +139,7 @@ runs:
         WEBPAGE_URL: ${{ inputs.webpage-url }}
         WEBPAGE_QR: ${{ inputs.webpage-qr }}
         CONTRIBUTIONS_URL: ${{ inputs.contributions-url }}
+        FEED_URL: ${{ inputs.feed_url }}
     - name: Delete files and folder
       shell: bash
       run: rm -rf main.py render_templates requirements.txt
