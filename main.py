@@ -9,7 +9,6 @@ from traceback import print_exc
 from typing import Dict, List
 
 
-
 from chevron.renderer import render
 from prettytable import PrettyTable
 from requests import get
@@ -21,6 +20,7 @@ from datetime import datetime
 # By: nclsbayona
 def getEnvironment(name: str) -> str:
     return environ[name]
+
 
 ## Global stuff
 github_username: str = getEnvironment("GITHUB_USERNAME")
@@ -343,6 +343,7 @@ async def getNasaImage() -> Dict[str, str]:
         }
 """
 
+
 async def getFeed() -> Dict[str, str]:
     """Gets latest publications from an RSS feed"""
     try:
@@ -358,22 +359,26 @@ async def getFeed() -> Dict[str, str]:
         else:
             return {"feed": "No feed URL provided."}
 
-        items = root.findall('.//item')[:limit]
+        items = root.findall(".//item")[:limit]
 
         for item in items:
-            title_el = item.find('title').text
-            link_el = item.find('link').text
-            pub_el = item.find('pubDate').text
+            title_el = item.find("title").text
+            link_el = item.find("link").text
+            pub_el = item.find("pubDate").text
 
             # Parse date robustly using parsedate_to_datetime, fallback to strptime or raw text
             formatted_date = ""
             if pub_el is not None:
                 try:
-                    formatted_date = datetime.strptime(pub_el, '%a, %d %b %Y %H:%M:%S %Z').strftime('%B %d, %Y')
+                    formatted_date = datetime.strptime(
+                        pub_el, "%a, %d %b %Y %H:%M:%S %Z"
+                    ).strftime("%B %d, %Y")
                 except Exception:
                     formatted_date = pub_el
 
-            feed_content += f'[{title_el}]({link_el})\n> <sup>{formatted_date}</sup>\n\n'
+            feed_content += (
+                f"[{title_el}]({link_el})\n> <sup>{formatted_date}</sup>\n\n"
+            )
 
         if feed_content == "":
             feed_content = "No feed items found."
@@ -384,6 +389,8 @@ async def getFeed() -> Dict[str, str]:
         print(e)
         print_exc()
         return {"feed": "Error fetching feed."}
+
+
 async def getAnimals() -> Dict[str, str]:
     """Gets images of animals"""
     try:
@@ -487,6 +494,7 @@ async def getAnimals() -> Dict[str, str]:
             "animal_image17": "https://images.pexels.com/photos/4666747/pexels-photo-4666747.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
             "animal_image18": "https://images.pexels.com/photos/2313396/pexels-photo-2313396.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         }
+
 
 async def makeHeader() -> Dict[str, str]:
   try:
