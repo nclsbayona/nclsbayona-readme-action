@@ -103,6 +103,12 @@
             description: 'Whether or not this action should delete the old README'
             default: true
           </li>
+          <li>
+            feed-url:
+            required: false
+            description: 'The URL for a feed of the user'
+            default: ''
+          </li>
         </ul>
         <br />
       </details>
@@ -130,7 +136,7 @@
         This action does the following steps:
         <ol>
           <li>Download required files (main.py , requirements.txt and a directory containing the render templates for the file that is going to be generated) </li>
-          <li>Remove the old README file</li>
+          <li>Remove the old README file (Conditionally)</li>
           <li>Setup Python in the runner</li>
           <li>Install the required dependencies</li>
           <li>Generate the file using the main.py</li>
