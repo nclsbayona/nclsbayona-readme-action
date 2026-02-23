@@ -102,7 +102,10 @@ inputs:
     
 runs:
   using: "composite"
-  steps: 
+  defaults:
+    run:
+      working-directory: ${{github.action_path}}
+  steps:
     - if: ${{ inputs.remove-old-readme }}
       name: Remove old README
       run: rm -rf README.md
