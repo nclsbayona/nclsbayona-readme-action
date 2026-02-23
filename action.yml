@@ -3,11 +3,6 @@ author: "nclsbayona"
 description: "Update your README file with some data acquired via some APIs and information about you"
 
 inputs:
-  python-version:
-    required: false
-    description: 'Python version to use to run the file'
-    default: '3.10'
-    type: string
   drink-format:
     required: false
     default: 'html'
@@ -43,11 +38,6 @@ inputs:
     required: false
     default: 'README.md'
     description: 'File path of the file we want to generate'
-  template-file-path:
-    type: string
-    required: false
-    default: 'render_templates/main_template_file'
-    description: 'File path of the template we use to generate the file'
   github-username:
     type: string
     required: true
@@ -110,8 +100,9 @@ runs:
     - name: Setup python
       uses: actions/setup-python@v5
       with:
-        python-version: ${{ inputs.python-version }} 
+        python-version: '3.10'
         cache: 'pip'
+        pip-install: '${{ github.action_path }}/requirements.txt'
     - name: Install dependencies
       shell: bash
       run: pip install -r "${{ github.action_path }}/requirements.txt"
@@ -126,7 +117,7 @@ runs:
         TWITTER_USERNAME: ${{ inputs.twitter-username }}
         LINKEDIN_USERNAME: ${{ inputs.linkedin-username }}
         FILE_PATH: ${{ inputs.file-path }}
-        TEMPLATE_FILE_PATH: ${{ inputs.template-file-path }}
+        TEMPLATE_FILE_PATH: "${{ github.action_path }}/render_templates/main_template_file"
         DRINK_FORMAT: ${{ inputs.drink-format }}
         WAKATIME_FORMAT: ${{ inputs.wakatime-format }}
         WEBPAGE_URL: ${{ inputs.webpage-url }}
