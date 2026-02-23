@@ -16,12 +16,6 @@
         This action supports:
         <ul>
           <li>
-              python-version:
-              required: false
-              description: 'Python version to use to run the file'
-              default: '3.10'
-          </li>
-          <li>
               drink-format:
               required: false
               default: 'html'
@@ -50,12 +44,6 @@
             required: false
             default: 'README.md'
             description: 'File path of the file we want to generate'
-          </li>
-          <li>
-            template-file-path:
-            required: false
-            default: 'render_templates/main_template_file'
-            description: 'File path of the template we use to generate the file'
           </li>
           <li>
             github-username:
