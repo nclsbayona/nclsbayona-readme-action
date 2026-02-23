@@ -502,7 +502,7 @@ async def makeHeader() -> Dict[str, str]:
     header_specific_dictionary: Dict[str, str] = {}
     header_specific_dictionary["github_username"] = github_username
     drink = await getAffirmation()
-    template_filepath: str = "render_templates/header_template_file"
+    template_filepath: str = "${GITHUB_ACTION_PATH}/render_templates/header_template_file"
     with open(template_filepath, "r") as file:
       header_specific_dictionary["header"] = render(render(file, drink).replace("GITHUB_USERNAME_HERE", "{{ github_username }}"), header_specific_dictionary)
     return header_specific_dictionary
@@ -531,38 +531,38 @@ async def makeBody() -> Dict[str, str]:
       )
 
       if True:
-        template_filepath: str = "render_templates/body_templates/drink_template_file"
+        template_filepath: str = "${GITHUB_ACTION_PATH}/render_templates/body_templates/drink_template_file"
         with open(template_filepath, "r") as file:
           body_specific_dictionary["drink"] = render(file, drink)
 
       if True:
-        template_filepath: str = "render_templates/body_templates/profile_template_file"
+        template_filepath: str = "${GITHUB_ACTION_PATH}/render_templates/body_templates/profile_template_file"
         with open(template_filepath, "r") as file:
           body_specific_dictionary["profile"] = render(file, body_specific_dictionary)
 
       if True:
-        template_filepath: str = "render_templates/body_templates/animals_template_file"
+        template_filepath: str = "${GITHUB_ACTION_PATH}/render_templates/body_templates/animals_template_file"
         with open(template_filepath, "r") as file:
           body_specific_dictionary["animals"] = render(file, animals)
       
       if len(wakatime_api_key) > 0:
         waka = await getWakaStats()
-        template_filepath: str = "render_templates/body_templates/stats_template_file"
+        template_filepath: str = "${GITHUB_ACTION_PATH}/render_templates/body_templates/stats_template_file"
         with open(template_filepath, "r") as file:
           body_specific_dictionary["stats"] = render(render(file, waka).replace("GITHUB_USERNAME_HERE", "{{ github_username }}"), body_specific_dictionary)
 
       if len(nasa_api_key) > 0:
         nasa = await getNasaImage()
-        template_filepath: str = "render_templates/body_templates/nasa_template_file"
+        template_filepath: str = "${GITHUB_ACTION_PATH}/render_templates/body_templates/nasa_template_file"
         with open(template_filepath, "r") as file:
           body_specific_dictionary["nasa"] = render(file, nasa)
         
       if len(feed_url) > 0:
-        template_filepath: str = "render_templates/body_templates/feed_template_file"
+        template_filepath: str = "${GITHUB_ACTION_PATH}/render_templates/body_templates/feed_template_file"
         with open(template_filepath, "r") as file:
           body_specific_dictionary["feed"] = render(file, feed)
 
-      template_filepath: str = "render_templates/body_template_file"
+      template_filepath: str = "${GITHUB_ACTION_PATH}/render_templates/body_template_file"
       with open(template_filepath, "r") as file:
         body_dictionary["body"] = render(file, body_specific_dictionary)
       return body_dictionary
@@ -616,7 +616,7 @@ async def makeFooter() -> Dict[str, str]:
             footer_specific_dictionary["webpage"] += f"""<a href=\"{webpage_url}\" target="_blank">Click here !</a>"""
         footer_specific_dictionary["webpage"] += "</p>"
 
-    template_filepath: str = "render_templates/footer_template_file"
+    template_filepath: str = "${GITHUB_ACTION_PATH}/render_templates/footer_template_file"
     with open(template_filepath, "r") as file:
       footer_specific_dictionary["footer"] = render(file, footer_specific_dictionary)
     return footer_specific_dictionary
