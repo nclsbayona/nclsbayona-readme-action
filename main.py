@@ -91,27 +91,8 @@ async def getDrink() -> Dict[str, str]:
 
 
 async def getAffirmation() -> Dict[str, str]:
-    """Gets a translated text from an quote to a random pop character language from funtranslations API"""
-    try:
-        characters: List[str] = [
-            "pirate",
-            "minion",
-            "sindarin",
-            "oldenglish",
-            "dothraki",
-            "valyrian",
-            "vulcan",
-            "klingon",
-            "yoda",
-            "sith",
-            "cheunh",
-            "gungan",
-            "mandalorian",
-            "huttese",
-        ]
-        # Be sure it's a random choice
-        translate_to: str = choice(characters)
-        #
+    """Gets a quote"""
+    try:#
         choices: int = randint(1, 2)
         response: Response = None
         affirmation: str = None
@@ -122,90 +103,14 @@ async def getAffirmation() -> Dict[str, str]:
         elif choices == 2:
             response = get("https://zenquotes.io/api/random")
             affirmation = (response.json())[0].get("q")
-
-        """
-        elif choices == 3:
-            response = get("https://quotes.rest/qod.json?language=en")
-            affirmation = (response.json()).get("contents").get("quotes")[0].get("quote")
-        """
-
         del choices
         text: str = affirmation
-        response = get(
-            f"https://api.funtranslations.com/translate/{translate_to}.json?text={affirmation}"
-        )
-        affirmation = (response.json()).get("contents").get("translated")
-        affirmation = f'Someone once said: "{affirmation}"'
-        text = f'-- "{text}" in {translate_to} language --'
+        affirmation = f'Never forget:'
+        text = f'"{text}"'
 
         new_dictionary: Dict[str, str] = dict()
         new_dictionary["text_affirmation1"] = affirmation
         new_dictionary["text_affirmation2"] = text
-
-        """
-        if translate_to == "yoda":
-            new_dictionary[
-                "affirmation_image"
-            ] = "https://tukaramatthews.com/wp-content/uploads/2015/03/FullSizeRender.jpg"
-        elif translate_to == "pirate":
-            new_dictionary[
-                "affirmation_image"
-            ] = "https://image.flaticon.com/icons/png/512/287/287744.png"
-        elif translate_to == "minion":
-            new_dictionary[
-                "affirmation_image"
-            ] = "https://4.bp.blogspot.com/-kLGmroF-doI/VeJhCJlpeyI/AAAAAAAASK4/TRvjlSKu4nk/s1600/13.jpeg"
-        elif translate_to == "sindarin":
-            new_dictionary[
-                "affirmation_image"
-            ] = "https://i.etsystatic.com/8273882/r/il/c6deb3/475904358/il_570xN.475904358_enru.jpg"
-        elif translate_to == "oldenglish":
-            new_dictionary[
-                "affirmation_image"
-            ] = "https://i.etsystatic.com/21833494/r/il/7e76dd/2140080884/il_570xN.2140080884_ikw0.jpg"
-        elif translate_to == "ferblatin":
-            new_dictionary[
-                "affirmation_image"
-            ] = "https://i.ytimg.com/vi/I3nAGsT2skc/maxresdefault.jpg"
-        elif translate_to == "dothraki":
-            new_dictionary[
-                "affirmation_image"
-            ] = "https://www.trbimg.com/img-55791e95/turbine/la-oe-0611-peterson-game-of-thrones-dothraki-20150611"
-        elif translate_to == "valyrian":
-            new_dictionary[
-                "affirmation_image"
-            ] = "https://duet-cdn.vox-cdn.com/thumbor/0x0:2933x2100/750x500/filters:focal(1716x679:1717x680):format(webp)/cdn0.vox-cdn.com/uploads/chorus_asset/file/3361192/Emilia_Clarke_as_Daenerys_Targaryen__photo_Helen_Sloan_HBO.0.jpg"
-        elif translate_to == "vulcan":
-            new_dictionary[
-                "affirmation_image"
-            ] = "https://geneticliteracyproject.org/wp-content/uploads/2017/01/Leonard-Nimoy.png"
-        elif translate_to == "klingon":
-            new_dictionary[
-                "affirmation_image"
-            ] = "https://static.independent.co.uk/s3fs-public/thumbnails/image/2016/03/14/19/9-klingon-star-trek.jpg"
-        elif translate_to == "pig-latin":
-            new_dictionary[
-                "affirmation_image"
-            ] = "https://miro.medium.com/v2/resize:fit:600/format:png/0*2FCuv0KJMX2knKa0.png"
-        elif translate_to == "sith":
-            new_dictionary["affirmation_image"] = "https://i.redd.it/ra6s480wfi701.jpg"
-        elif translate_to == "cheunh":
-            new_dictionary[
-                "affirmation_image"
-            ] = "https://www.thathashtagshow.com/wp-content/uploads/2019/07/steadfast-1024x655.jpg"
-        elif translate_to == "gungan":
-            new_dictionary[
-                "affirmation_image"
-            ] = "https://img1.wikia.nocookie.net/__cb20091012212518/aliens/images/9/93/Gungan-Otolla.jpg"
-        elif translate_to == "mandalorian":
-            new_dictionary[
-                "affirmation_image"
-            ] = "https://cdn.dribbble.com/users/2110632/screenshots/5607696/dribbble-03_2x.png"
-        elif translate_to == "huttese":
-            new_dictionary[
-                "affirmation_image"
-            ] = "https://static.memrise.com/img/400sqf/from/uploads/course_photos/6265139000150814054627.jpeg"
-        """
 
         return new_dictionary
 
