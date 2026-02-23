@@ -102,10 +102,14 @@ inputs:
     
 runs:
   using: "composite"
-  defaults:
-    run:
-      working-directory: ${{github.action_path}}
   steps:
+    - name: Download necessary files and folder
+      continue-on-error: false
+      shell: bash
+      run: |
+        wget https://raw.githubusercontent.com/nclsbayona/nclsbayona-readme-action/master/main.py
+        wget https://raw.githubusercontent.com/nclsbayona/nclsbayona-readme-action/master/requirements.txt
+        git clone https://github.com/nclsbayona/nclsbayona-readme-action.git && mv nclsbayona-readme-action/render_templates . && rm -rf nclsbayona-readme-action
     - if: ${{ inputs.remove-old-readme }}
       name: Remove old README
       run: rm -rf README.md
