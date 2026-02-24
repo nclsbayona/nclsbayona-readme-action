@@ -17,7 +17,8 @@ on:
     - cron: '30 12 1 * *'
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
-semantic-release:
+jobs:
+  semantic-release:
     name: Semantic Release
     runs-on: ubuntu-latest
     permissions:
