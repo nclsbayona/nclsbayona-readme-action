@@ -1,5 +1,12 @@
 # My Sample Changelog
 
+## [1.1.1](https://github.com/nclsbayona/nclsbayona-readme-action/compare/v1.1.0...v1.1.1) (2026-02-24)
+
+
+### Bug Fixes
+
+* Update action.yml ([e56f101](https://github.com/nclsbayona/nclsbayona-readme-action/commit/e56f101dd7bf358e138f69d13e1ba82f9a56e30e))
+
 # [1.1.0](https://github.com/nclsbayona/nclsbayona-readme-action/compare/v1.0.0...v1.1.0) (2026-02-24)
 
 
