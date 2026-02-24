@@ -86,9 +86,9 @@
             description: 'URL to a grid an image of user contributions'
           </li>
           <li>
-            remove-old-readme:
+            remove-old-file:
             required: false
-            description: 'Whether or not this action should delete the old README'
+            description: 'Whether or not this action should delete the old file'
             default: true
           </li>
           <li>
