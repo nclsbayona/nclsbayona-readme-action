@@ -76,9 +76,9 @@ inputs:
     required: false
     default: ''
     description: 'The url to the user rss feed'
-  remove-old-readme:
+  remove-old-file:
     required: false
-    description: 'Whether or not this action should delete the old README'
+    description: 'Whether or not this action should delete the old file'
     default: true
     type: boolean
   
@@ -93,9 +93,9 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - if: ${{ inputs.remove-old-readme }}
+    - if: ${{ inputs.remove-old-file }}
       name: Remove old README
-      run: rm -rf README.md
+      run: rm -rf ${{ inputs.file-path }}
       shell: bash
     - name: Setup python
       uses: actions/setup-python@v6
