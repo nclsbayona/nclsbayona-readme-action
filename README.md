@@ -127,12 +127,10 @@
         </summary>
         This action does the following steps:
         <ol>
-          <li>Download required files (main.py , requirements.txt and a directory containing the render templates for the file that is going to be generated) </li>
-          <li>Remove the old README file (Conditionally)</li>
+          <li>Remove the old file (Conditionally)</li>
           <li>Setup Python in the runner</li>
           <li>Install the required dependencies</li>
           <li>Generate the file using the main.py</li>
-          <li>Delete the downloaded files</li>
         </ol>
         <br />
       </details>
