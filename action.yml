@@ -3,6 +3,11 @@ author: "nclsbayona"
 description: "Update your README file with some data acquired via some APIs and information about you"
 
 inputs:
+  quote-src:
+    required: false
+    default: ''
+    description: The source for the quote to show
+    type: string
   drink-format:
     required: false
     default: 'html'
@@ -124,6 +129,7 @@ runs:
         WEBPAGE_QR: ${{ inputs.webpage-qr }}
         CONTRIBUTIONS_URL: ${{ inputs.contributions-url }}
         FEED_URL: ${{ inputs.feed_url }}
+        QUOTE_SRC: ${{ inputs.quote_src }}
   
 branding:
   icon: user-check
