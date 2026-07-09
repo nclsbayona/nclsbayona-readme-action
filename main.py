@@ -94,7 +94,7 @@ async def getDrink() -> Dict[str, str]:
 async def getAffirmation() -> Dict[str, str]:
     """Gets a quote"""
     try:
-        if quote_src.startswith("image:"):
+        if quote_src and quote_src.startswith("image:"):
             return {
               "affirmation": '<img src="{image_url}" alt="Affirmation" align="center" />'.format(image_url=quote_src[6:])
             }
