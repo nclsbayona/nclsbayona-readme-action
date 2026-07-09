@@ -19,20 +19,20 @@ inputs:
     description: 'The format to output drink instructions (string|html|json|csv)'
     type: choice
     options:
-      - 'string'
-      - 'html'
-      - 'json'
-      - 'csv'
+    - 'string'
+    - 'html'
+    - 'json'
+    - 'csv'
   wakatime-format:
     required: false
     default: 'html'
     description: 'The format to output wakatime information (string|html|json|csv)'
     type: choice
     options:
-      - 'string'
-      - 'html'
-      - 'json'
-      - 'csv'
+    - 'string'
+    - 'html'
+    - 'json'
+    - 'csv'
   wakatime-api-key:
     required: false
     default: ''
@@ -58,7 +58,7 @@ inputs:
     default: ''
     description: 'Telegram username of the user running the action'
   twitter-username:
-    type: string 
+    type: string
     required: false
     default: ''
     description: 'Twitter username of the user running the action'
@@ -68,21 +68,21 @@ inputs:
     default: ''
     description: 'LinkedIn username of the user running the action'
   webpage-url:
-    type: string 
+    type: string
     required: false
     default: ''
     description: 'The url to the user webpage'
   webpage-qr:
-    type: string 
+    type: string
     required: false
     default: ''
     description: 'A QR to the user webpage'
   contributions-url:
     required: true
-    type: string 
+    type: string
     description: 'URL to an image of user contributions'
-  feed_url:
-    type: string 
+  feed-url:
+    type: string
     required: false
     default: ''
     description: 'The url to the user rss feed'
@@ -91,52 +91,51 @@ inputs:
     description: 'Whether or not this action should delete the old file'
     default: true
     type: boolean
-  
-  # github-token:
+    # github-token:
     # required: true
     # description: 'GitHub Token with permissions to push the new README to the repository'
 
-# outputs:
-  # status:
+    # outputs:
+    # status:
     # description: 'The status of the action run'
-    
+
 runs:
   using: "composite"
   steps:
-    - if: ${{ inputs.remove-old-file }}
-      name: Remove old README
-      run: rm -rf ${{ inputs.file-path }}
-      shell: bash
-    - name: Setup python
-      uses: actions/setup-python@v6
-      with:
-        python-version: '3.13'
-        cache-dependency-path: '${{ github.action_path }}/requirements.txt'
-        # pip-install: '${{ github.action_path }}/requirements.txt'
-    - name: Install dependencies
-      shell: bash
-      run: pip install -r "${{ github.action_path }}/requirements.txt"
-    - name: Generate file
-      shell: bash
-      run: python "${{ github.action_path }}/main.py"
-      env:
-        WAKATIME_API_KEY: ${{ inputs.wakatime-api-key }}
-        NASA_API_KEY: ${{ inputs.nasa-api-key }}
-        GITHUB_USERNAME: ${{ inputs.github-username }}
-        TELEGRAM_USERNAME: ${{ inputs.telegram-username }}
-        TWITTER_USERNAME: ${{ inputs.twitter-username }}
-        LINKEDIN_USERNAME: ${{ inputs.linkedin-username }}
-        FILE_PATH: ${{ inputs.file-path }}
-        TEMPLATE_FILE_PATH: "${{ github.action_path }}/render_templates/main_template_file"
-        DRINK_FORMAT: ${{ inputs.drink-format }}
-        WAKATIME_FORMAT: ${{ inputs.wakatime-format }}
-        WEBPAGE_URL: ${{ inputs.webpage-url }}
-        WEBPAGE_QR: ${{ inputs.webpage-qr }}
-        CONTRIBUTIONS_URL: ${{ inputs.contributions-url }}
-        FEED_URL: ${{ inputs.feed_url }}
-        QUOTE_SRC: ${{ inputs.quote-src }}
-        WELCOME_MSG: ${{ inputs.welcome-msg }}
-  
+  - if: ${{ inputs.remove-old-file }}
+    name: Remove old README
+    run: rm -rf ${{ inputs.file-path }}
+    shell: bash
+  - name: Setup python
+    uses: actions/setup-python@v6
+    with:
+      python-version: '3.13'
+      cache-dependency-path: '${{ github.action_path }}/requirements.txt'
+      # pip-install: '${{ github.action_path }}/requirements.txt'
+  - name: Install dependencies
+    shell: bash
+    run: pip install -r "${{ github.action_path }}/requirements.txt"
+  - name: Generate file
+    shell: bash
+    run: python "${{ github.action_path }}/main.py"
+    env:
+      WAKATIME_API_KEY: ${{ inputs.wakatime-api-key }}
+      NASA_API_KEY: ${{ inputs.nasa-api-key }}
+      GITHUB_USERNAME: ${{ inputs.github-username }}
+      TELEGRAM_USERNAME: ${{ inputs.telegram-username }}
+      TWITTER_USERNAME: ${{ inputs.twitter-username }}
+      LINKEDIN_USERNAME: ${{ inputs.linkedin-username }}
+      FILE_PATH: ${{ inputs.file-path }}
+      TEMPLATE_FILE_PATH: "${{ github.action_path }}/render_templates/main_template_file"
+      DRINK_FORMAT: ${{ inputs.drink-format }}
+      WAKATIME_FORMAT: ${{ inputs.wakatime-format }}
+      WEBPAGE_URL: ${{ inputs.webpage-url }}
+      WEBPAGE_QR: ${{ inputs.webpage-qr }}
+      CONTRIBUTIONS_URL: ${{ inputs.contributions-url }}
+      FEED_URL: ${{ inputs.feed-url }}
+      QUOTE_SRC: ${{ inputs.quote-src }}
+      WELCOME_MSG: ${{ inputs.welcome-msg }}
+
 branding:
   icon: user-check
   color: blue
