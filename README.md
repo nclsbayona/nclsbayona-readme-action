@@ -69,6 +69,18 @@
             description: 'LinkedIn username of the user running the action'
           </li>
           <li>
+            quote-src:
+            required: false
+            default: ''
+            description: 'Source for the quote shown in the header (image:<url>, affirmations.dev, zenquotes.io)'
+          </li>
+          <li>
+            welcome-msg:
+            required: false
+            default: 'Welcome to my profile!'
+            description: 'The welcome message to show in the README file'
+          </li>
+          <li>
             webpage-url:
             required: false
             default: ''
@@ -145,6 +157,15 @@
       To use this action you can include in your workflow file a step that uses this action, defining the variables you want to.
       Here's an example
       <img src="https://github.com/nclsbayona/nclsbayona-readme-action/assets/59931437/96f1f3c8-7103-4f1a-bd38-08d6cd3c60c1" />
+      <pre>
+- uses: nclsbayona/nclsbayona-readme-action@main
+  with:
+    github-username: youruser
+    contributions-url: https://gh-contributions.now.sh/api?user=youruser
+    quote-src: zenquotes.io
+    welcome-msg: "Welcome to my profile!"
+    feed-url: https://example.com/feed.xml
+      </pre>
       <hr />
     </details>
   </li>
