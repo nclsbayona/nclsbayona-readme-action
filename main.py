@@ -106,6 +106,8 @@ async def getAffirmation() -> Dict[str, str]:
         elif quote_src == "zenquotes.io":
             response = get("https://zenquotes.io/api/random")
             affirmation = (response.json())[0].get("q")
+        else:
+            raise Exception("Invalid quote source")
         text: str = affirmation
         affirmation = f'Never forget:'
         text = f'"{text}"'

@@ -129,7 +129,7 @@ runs:
         WEBPAGE_QR: ${{ inputs.webpage-qr }}
         CONTRIBUTIONS_URL: ${{ inputs.contributions-url }}
         FEED_URL: ${{ inputs.feed_url }}
-        QUOTE_SRC: ${{ inputs.quote_src }}
+        QUOTE_SRC: ${{ inputs.quote-src }}
   
 branding:
   icon: user-check
