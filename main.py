@@ -37,6 +37,7 @@ webpage_url: str = getEnvironment("WEBPAGE_URL")
 webpage_qr: str = getEnvironment("WEBPAGE_QR")
 contributions_url: str = getEnvironment("CONTRIBUTIONS_URL")
 feed_url: str = getEnvironment("FEED_URL")
+quote_src: str = getEnvironment("QUOTE_SRC")
 
 
 ## Functions
@@ -92,25 +93,25 @@ async def getDrink() -> Dict[str, str]:
 
 async def getAffirmation() -> Dict[str, str]:
     """Gets a quote"""
-    try:#
-        choices: int = randint(1, 2)
+    try:
+        if quote_src.startswith("image:"):
+            return {
+              "affirmation": '<img src="{image_url}" alt="Affirmation" align="center" />'.format(image_url=quote_src[6:])
+            }
         response: Response = None
         affirmation: str = None
-        if choices == 1:
-            response = get("https://affirmations.dev")
-            affirmation = (response.json()).get("affirmation")
-
-        elif choices == 2:
+        if quote_src == "affirmations.dev":
+            response: Response = get("https://affirmations.dev")
+            affirmation: str = (response.json()).get("affirmation")
+        elif quote_src == "zenquotes.io":
             response = get("https://zenquotes.io/api/random")
             affirmation = (response.json())[0].get("q")
-        del choices
         text: str = affirmation
         affirmation = f'Never forget:'
         text = f'"{text}"'
 
         new_dictionary: Dict[str, str] = dict()
-        new_dictionary["text_affirmation1"] = affirmation
-        new_dictionary["text_affirmation2"] = text
+        new_dictionary["affirmation"] = f'<strong align="center">{affirmation}</strong> <br /> <i>{text}</i>'
 
         return new_dictionary
 
@@ -119,8 +120,7 @@ async def getAffirmation() -> Dict[str, str]:
         print(e)
         print_exc()
         return {
-            "text_affirmation1": "Always remember: ",
-            "text_affirmation2": "Mistakes don't make you less capable ...",
+            "affirmation": '<strong align="center">Always remember: </strong> <br /> <i>Mistakes don\'t make you less capable ...</i>'
         }
 
 

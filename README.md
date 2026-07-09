@@ -150,6 +150,41 @@
   </li>
 </ol>
 
+  <h2>Run locally</h2>
+
+  <p>Quick steps to run the generator locally for testing or development.</p>
+
+  <ol>
+    <li>Install dependencies:
+      <pre>pip install -r requirements.txt</pre>
+    </li>
+    <li>Export a minimal set of environment variables (example):
+      <pre>
+  export GITHUB_USERNAME=youruser
+  export GITHUB_ACTION_PATH=$(pwd)
+  export FILE_PATH=README.md
+  export TEMPLATE_FILE_PATH=render_templates/main_template_file
+  export CONTRIBUTIONS_URL=https://gh-contributions.now.sh/api?user=youruser
+      </pre>
+    </li>
+    <li>Run the script:
+      <pre>python3 main.py</pre>
+    </li>
+  </ol>
+
+  <h2>Quote source options</h2>
+
+  <p>The `QUOTE_SRC` environment variable controls how the header "affirmation" is generated. Supported values:</p>
+
+  <ul>
+    <li><b>image:&lt;url&gt;</b> — embeds an image in the header (e.g. <code>image:https://example.com/img.jpg</code>).</li>
+    <li><b>affirmations.dev</b> — fetches a short affirmation from <a href="https://affirmations.dev">affirmations.dev</a>.</li>
+    <li><b>zenquotes.io</b> — fetches a random quote from <a href="https://zenquotes.io">zenquotes.io</a>.</li>
+  </ul>
+
+  <hr />
+
+
 <h2>Contributors</h2>
 <!-- readme: contributors -start -->
 <table>
