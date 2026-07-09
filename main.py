@@ -584,7 +584,7 @@ if __name__ == "__main__":
                     committer=committer,
                 )"""
 
-                print("\n\File updated\n", new_file)
+                print("\nFile updated\n", new_file)
                 return True
             except Exception or KeyboardInterrupt:
                 print("\nError in: updateFile")
