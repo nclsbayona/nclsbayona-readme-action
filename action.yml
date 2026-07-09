@@ -8,6 +8,11 @@ inputs:
     default: ''
     description: The source for the quote to show
     type: string
+  welcome-msg:
+    required: false
+    default: 'Welcome to my profile!'
+    description: 'The welcome message to show in the README file'
+    type: string
   drink-format:
     required: false
     default: 'html'
@@ -130,6 +135,7 @@ runs:
         CONTRIBUTIONS_URL: ${{ inputs.contributions-url }}
         FEED_URL: ${{ inputs.feed_url }}
         QUOTE_SRC: ${{ inputs.quote-src }}
+        WELCOME_MSG: ${{ inputs.welcome-msg }}
   
 branding:
   icon: user-check

@@ -38,6 +38,7 @@ webpage_qr: str = getEnvironment("WEBPAGE_QR")
 contributions_url: str = getEnvironment("CONTRIBUTIONS_URL")
 feed_url: str = getEnvironment("FEED_URL")
 quote_src: str = getEnvironment("QUOTE_SRC")
+welcome_msg: str = getEnvironment("WELCOME_MSG")
 
 
 ## Functions
@@ -410,6 +411,7 @@ async def makeHeader() -> Dict[str, str]:
     header_specific_dictionary["github_username"] = github_username
     drink = await getAffirmation()
     template_filepath: str = getEnvironment("GITHUB_ACTION_PATH") + "/render_templates/header_template_file"
+    header_specific_dictionary["welcome_msg"] = f"<h3 align='center'>{welcome_msg}</h3>" if welcome_msg != "" else ""
     with open(template_filepath, "r") as file:
       header_specific_dictionary["header"] = render(render(file, drink).replace("GITHUB_USERNAME_HERE", "{{ github_username }}"), header_specific_dictionary)
     return header_specific_dictionary
