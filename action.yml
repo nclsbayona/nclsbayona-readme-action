@@ -107,7 +107,7 @@ runs:
     run: rm -rf ${{ inputs.file-path }}
     shell: bash
   - name: Setup python
-    uses: actions/setup-python@v6
+    uses: actions/setup-python@v7
     with:
       python-version: '3.13'
       cache-dependency-path: '${{ github.action_path }}/requirements.txt'
