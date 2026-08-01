@@ -1,5 +1,17 @@
 # My Sample Changelog
 
+# [1.2.0](https://github.com/nclsbayona/nclsbayona-readme-action/compare/v1.1.5...v1.2.0) (2026-08-01)
+
+
+### Features
+
+* Update action.yml ([316c138](https://github.com/nclsbayona/nclsbayona-readme-action/commit/316c1385ef55689ab5ea70cda611509658eab8d8))
+* Update Quote SRC ([1dab9ec](https://github.com/nclsbayona/nclsbayona-readme-action/commit/1dab9ec6a0945c3869d37d5dee64f3cd30a8e6a2))
+* Update Quote SRC ([6ee070e](https://github.com/nclsbayona/nclsbayona-readme-action/commit/6ee070ec99b7f36bfa5389460a4670115db4e7ef))
+* Update Quote SRC ([18aa751](https://github.com/nclsbayona/nclsbayona-readme-action/commit/18aa751cfdd3cd345e7d75aed7b64fc20640b8cf))
+* Update Quote SRC ([3a8bc42](https://github.com/nclsbayona/nclsbayona-readme-action/commit/3a8bc420be9ea17ec1c4bc0f53886fe39a7baf2e))
+* Update Quote SRC ([b221af2](https://github.com/nclsbayona/nclsbayona-readme-action/commit/b221af2e25e08a26c0bfa48954ded1e917b5cc32))
+
 ## [1.1.5](https://github.com/nclsbayona/nclsbayona-readme-action/compare/v1.1.4...v1.1.5) (2026-07-01)
 
 ## [1.1.4](https://github.com/nclsbayona/nclsbayona-readme-action/compare/v1.1.3...v1.1.4) (2026-05-01)
